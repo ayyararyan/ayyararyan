@@ -1,13 +1,6 @@
 - 👋 Hi, I’m @ayyararyan
-$$ <style>
-  body {
-    font-family: "Book Antiqua", serif;
-    font-size: 11px;
-    text-align: justify;
-  }
-</style>
-
-- 👀 I’m interested in ...
+<p align="justify">
+👀 I’m interested in ...
 - I have developed a profound interest in data driven risk management and aim to leverage
 data (we can rephrase this as “New Gold”) in making investors aware of existing market
 inefficiencies , simultaneously assessing psychological phenomenon affecting their decision-
@@ -16,6 +9,10 @@ perception. In a technically nuanced perspective, rational investors must assess
 between risk and return keeping in mind the premise that markets are inherently uncertain.
 Risk Management, akin to navigating a delicate tightrope, presents both formidable
 complexity and immense rewards. This is something I would love to explore further.
+</p>
+
+
+- 
 - 🌱 I’m currently learning ...
 - Python, SPSS, Bloomberg, SAS, R, STATA
 - 💞️ I’m looking to collaborate on ...
