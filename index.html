@@ -1,319 +1,443 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aryan Ayyar | Financial Economist</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Aryan Ayyar</title>
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet"/>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Noto+Serif:wght@600&family=Noto+Serif+SC:wght@600&display=swap" rel="stylesheet"/>
 
-  <style>
+<style>
+/* ─── PALETTE ───────────────────────────────────────── */
+:root{
+  --clr-main:#555879;          /* deep slate (text / buttons)   */
+  --clr-link:#98A1BC;          /* steel-blue accent / links     */
+  --bg-parch:#DED3C4;          /* warm parchment section        */
+  --bg-cream:#F4EBD3;          /* light cream section           */
+}
 
+/* ─── RESET + TYPE ─────────────────────────────────── */
+*{box-sizing:border-box;margin:0;padding:0}
 
-/* ==== SPLASH SCREEN ==== */
+body{
+  font-family:"Libre Baskerville", Baskerville, serif;
+  background:#fff;color:var(--clr-main);line-height:1.6;
+}
+h1,h2,h3{font-weight:700}
+a{color:var(--clr-link);text-decoration:none}
+a:hover{opacity:.85}
+
+/* ─── SECTIONS ─────────────────────────────────────── */
+.alt-1{background:var(--bg-parch)}
+.alt-2{background:var(--bg-cream)}
+.alt-3{background:#fff}
+
+/* ─── SPLASH ───────────────────────────────────────── */
 #splash{
   position:fixed;inset:0;z-index:9999;
-  background:var(--snow);            /* same gentle palette */
-  display:flex;align-items:center;justify-content:center;
-  transition:opacity .7s ease;
-  cursor:pointer;
+  background:#fff;display:flex;justify-content:center;align-items:center;
+  cursor:pointer;transition:opacity .6s ease,visibility 0s .6s;
 }
-#splash.fade{opacity:0;pointer-events:none;}   /* after click */
+#splash.fade{opacity:0;visibility:hidden;pointer-events:none}
+.splash-inner{text-align:center}
+.splash-inner h1{font-size:clamp(2rem,6vw,3.2rem)}
+.splash-inner h1 span{color:var(--clr-link)}
+.splash-inner p{margin-top:1rem;color:var(--clr-main);font-size:.95rem}
 
-.splash-inner{text-align:center;line-height:1.3}
-.splash-inner h1{
-  font-family:"Playfair Display",serif;
-  font-size:clamp(2rem,6vw,3.2rem);
-  font-weight:600;color:var(--text-main);
+/* ─── NAVBAR ───────────────────────────────────────── */
+.nav{
+  background:#fff;backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--bg-parch);box-shadow:0 3px 12px rgba(0,0,0,.04);
+  padding:.9rem 1rem;position:sticky;top:0;z-index:100;
 }
-.splash-inner h1 span{color:var(--accent);}
-.splash-inner p{
-  margin-top:1rem;font-size:.95rem;color:var(--text-muted);
+.nav .container{max-width:1100px;margin:auto;display:flex;justify-content:space-between;align-items:center}
+.nav a{
+  position:relative;margin-left:1.4rem;font-size:1.05rem;
 }
-  /* ----------  PALETTE  ---------- */
-  :root{
-    --snow:        #FFFAFA;
-    --seashell:    #FFF5EE;
-    --cornsilk:    #FFF8DC;
-    --white-choc:  #F7F3E3;
+.nav a:first-of-type{margin-left:0}
+.nav a::after{
+  content:"";position:absolute;left:0;bottom:-4px;width:0;height:2px;
+  background:var(--clr-link);transition:width .25s
+}
+.nav a:hover::after{width:100%}
+.brand{
+  font-family:"Noto Serif","Noto Serif SC",serif;
+  font-weight:600;white-space:nowrap
+}
 
-    --accent:      #b89c7d;   /* warm latte for links / buttons */
-    --text-main:   #333;
-    --text-muted:  #666;
-  }
+/* ─── HERO ─────────────────────────────────────────── */
+.hero{
+  height:56vh;background:url("hero.jpg") center/cover no-repeat;
+  position:relative;display:flex;justify-content:center;align-items:center;text-align:center;
+}
+.hero::after{content:"";position:absolute;inset:0;background:rgba(85,88,121,.45)}
+.hero .content{position:relative;z-index:1;max-width:680px;padding:0 1rem}
+.hero h1{font-size:clamp(3rem,7vw,5rem);color:#fff;text-shadow:0 2px 6px rgba(0,0,0,.55)}
+.hero p{color:#fff;margin-bottom:1.6rem}
+.btn{
+  display:inline-block;background:var(--clr-main);color:#fff;
+  padding:.75rem 1.5rem;border-radius:4px;font-weight:700
+}
 
-  /* ----------  GLOBAL RESET  ---------- */
-  *{box-sizing:border-box;margin:0;padding:0}
+/* ─── TAG CLOUD ───────────────────────────────────── */
+.tags{display:flex;justify-content:center;flex-wrap:wrap;gap:1rem;padding:2rem 0}
+.tip{
+  position:relative;padding:.7rem 1.9rem;border-radius:999px;font-weight:700;cursor:default;
+  background:#fff;border:2px solid var(--bg-parch);transition:.25s
+}
+.tip:hover{transform:scale(1.1);box-shadow:0 6px 18px rgba(0,0,0,.08)}
+.tip::after{
+  content:attr(data-def);position:absolute;left:50%;bottom:140%;transform:translateX(-50%) scale(.9);
+  background:var(--bg-cream);border:2px solid var(--bg-parch);border-radius:16px;
+  padding:1rem 1.4rem;font-size:.9rem;color:var(--clr-main);
+  box-shadow:0 6px 24px rgba(0,0,0,.1);opacity:0;pointer-events:none;transition:.3s;max-width:280px;text-align:center
+}
+.tip:hover::after{opacity:1;transform:translateX(-50%) scale(1)}
 
-  body{
-    font-family:"IBM Plex Sans",sans-serif;
-    background:var(--snow);
-    color:var(--text-main);
-    line-height:1.75;
-  }
+.tip{                    /* pill itself */
+  position:relative;
+  z-index:10;            /* establishes a stacking context */
+}
 
-  h1,h2,h3{
-    font-family:"Playfair Display",serif;
-    font-weight:200;
-  }
+.tip::after,
+.tip::before{
+  z-index:11;            /* bubble + nub now sit in front of everything */
+}
 
-  a{
-    color:var(--accent);
-    text-decoration:none;
-  }
-  a:hover{opacity:.85}
+/* overwrite the previous card style */
+.card-flex{
+  display:flex;flex-direction:column;align-items:center;gap:.6rem;
+  background:var(--bg-cream);                  /* single off-white tone   */
+  border-radius:10px;padding:1.6rem 1.8rem;
+  box-shadow:0 3px 8px rgba(0,0,0,.05);
+  transition:transform .25s,box-shadow .25s;
+  text-align:center;
+}
+.card-flex:hover{
+  transform:translateY(-5px);
+  box-shadow:0 8px 20px rgba(0,0,0,.10);
+}
 
-  /* ----------  SECTION BACKGROUNDS  ---------- */
-  .alt-0{background:var(--snow);}        /* hero overlay + default */
-  .alt-1{background:var(--seashell);}
-  .alt-2{background:var(--cornsilk);}
-  .alt-3{background:var(--white-choc);}
+/* top ribbon, now subtler */
+.card-flex::before{
+  content:"";display:block;height:4px;border-radius:4px 4px 0 0;
+  background:var(--clr-main);                  /* deep slate ribbon */
+  margin:-1.6rem -1.8rem 1rem -1.8rem;
+}
+/* make all cards pure white + light border */
+.card-flex{
+  background:#fff;                 /* plain white */
+  border:1px solid #e5e5e5;        /* subtle outline */
+}
 
-  /* ----------  NAVBAR  ---------- */
-  .nav{
-    background:rgba(255,255,255,.7);
-    backdrop-filter:blur(4px);
-    border-bottom:1px solid #eee;
-    padding:.85rem 0;
-    position:sticky;top:0;z-index:100;
-  }
-  .nav .container{
-    display:flex;align-items:center;justify-content:space-between;
-  }
-  .nav a{
-    color:var(--text-main);
-    margin-left:1.4rem;
-    font-weight:500;
-    opacity:.8;
-    font-size:.95rem;
-  }
-  .nav a:hover{opacity:1}
 
-  /* ----------  HERO  ---------- */
-  .hero{
-    height:56vh;
-    background:url("hero.jpg") center/cover no-repeat;
-    position:relative;
-    display:flex;flex-direction:column;justify-content:center;align-items:flex-start;
-  }
-  .hero::after{
-    content:"";
-    position:absolute;inset:0;
-    background:var(--snow);
-    opacity:.2;
-  }
-  .hero .content{
-    position:relative;z-index:1;
-    padding-left:7%;
-    max-width:640px;
-  }
-  .hero h1{font-size:2.5rem;margin-bottom:.55rem}
-  .hero p {font-size:1.15rem;margin-bottom:1.6rem;color:var(--text-muted)}
-  .btn{
-    display:inline-block;
-    background:var(--accent);color:#fff;
-    padding:.78rem 1.5rem;
-    border-radius:4px;
-    font-weight:600;
-    font-size:.95rem;
-    transition:filter .2s;
-  }
-  .btn:hover{filter:brightness(1.1)}
+.timeline{border-left:3px solid var(--clr-main);padding-left:1.4rem;margin-top:1.1rem}
+.timeline-item{position:relative;margin-bottom:1.5rem}
+.timeline-item::before{content:"";position:absolute;left:-1rem;top:.25rem;width:.7rem;height:.7rem;border-radius:50%;background:var(--clr-main)}
 
-  /* ----------  TAGS  ---------- */
-  .tags span{
-    display:inline-block;
-    background:#fff;
-    border:1px solid #e6e6e6;
-    padding:.32rem .7rem;
-    border-radius:4px;
-    margin:.35rem;
-    font-size:.85rem;
-  }
+/* ─── RESEARCH TAG CAROUSEL ─────────────────────────── */
+.tag-rail{
+  display:grid;grid-auto-flow:column;gap:.8rem;
+  overflow-x:auto;padding:1.4rem 0 1rem;scroll-snap-type:x mandatory}
+.tag-rail::-webkit-scrollbar{display:none}
+.tag-rail span{
+  scroll-snap-align:center;
+  white-space:nowrap;
+  background:#fff;border:1px solid #e4e4e4;border-radius:999px;
+  padding:.55rem 1.3rem;font-weight:700;transition:.25s}
+.tag-rail span:hover{background:var(--bg-cream);transform:scale(1.1)}
 
-  /* ----------  CARD GRID  ---------- */
-  .grid{display:grid;gap:1.8rem}
-  @media(min-width:680px){.grid{grid-template-columns:repeat(2,1fr)}}
+/* ─── PUBLICATION GRID WITH ICON ───────────────────── */
+.paper-grid{display:grid;gap:1.6rem}
+@media(min-width:680px){.paper-grid{grid-template-columns:repeat(2,1fr)}}
+.paper{
+  border:1px solid #e5e5e5;border-radius:10px;padding:1.5rem;
+  box-shadow:0 3px 8px rgba(0,0,0,.04);transition:.25s}
+.paper:hover{transform:translateY(-4px);box-shadow:0 8px 20px rgba(0,0,0,.08)}
+.paper a{display:inline-flex;align-items:center;gap:.4rem}
+.paper a::after{content:"↗︎";font-size:.8rem}
 
-  .card{
-    background:#fff;
-    border:1px solid #e9e4dc;
-    border-radius:8px;
-    padding:1.6rem;
-    box-shadow:0 3px 10px rgba(0,0,0,.03);
-    transition:transform .25s,box-shadow .25s,border-color .25s;
-  }
-  .card h3{margin-bottom:.55rem;font-size:1.12rem}
+/* ── Accordions: understated elegance ───────────────── */
+.accordion{
+  --bd:#e3e3e3;                 /* local shorthand */
+  --hl:#98A1BC;                 /* soft blue */
+}
 
-  #publications .card:hover{
-    transform:translateY(-5px);
-    box-shadow:0 7px 20px rgba(0,0,0,.06);
-    border-color:var(--accent);
-  }
-  #publications .card:hover h3{color:var(--accent)}
+/* frame */
+.accordion details{
+  border:1px solid var(--bd);border-radius:6px;margin-bottom:.9rem;
+  transition:border-color .25s,box-shadow .25s;
+}
 
-  /* ----------  TIMELINE  ---------- */
-  .timeline{
-    border-left:3px solid var(--accent);
-    padding-left:1.4rem;
-    margin-top:1.3rem;
-  }
-  .timeline-item{position:relative;margin-bottom:2rem}
-  .timeline-item::before{
-    content:"";
-    position:absolute;left:-1.05rem;top:.28rem;
-    width:.8rem;height:.8rem;border-radius:50%;
-    background:var(--accent);
-  }
+/* summary row */
+.accordion summary{
+  list-style:none;cursor:pointer;padding:.85rem 1.2rem;
+  font-weight:700;position:relative;
+}
 
-  /* ----------  FOOTER  ---------- */
-  footer{
-    text-align:center;
-    padding:2rem .5rem;
-    font-size:.82rem;
-    color:var(--text-muted);
-    background:#ffffff;
-    border-top:1px solid #eee;
-  }
+/* ▸ arrow */
+.accordion summary::before{
+  content:"▸";font-size:.85rem;color:var(--clr-main);
+  margin-right:.6rem;transition:transform .25s;
+}
+/* ── permanently-open accordion tweaks ─────────────── */
+.accordion details[open] summary{cursor:default}
+.accordion details[open] summary::before{display:none}   /* hide ‘▸’ arrow */
+}
 
-  /* ----------  DARK-MODE  ---------- */
-  @media(prefers-color-scheme:dark){
-    body{background:#141414;color:#ddd}
-    .nav{background:#1e1e1e;border-color:#333}
-    .card{background:#1f1f1f;border-color:#333;box-shadow:none}
-    .timeline{border-color:#8d7c68}
-  }
-  </style>
+/* subtle highlight when open */
+.accordion details[open]{border-color:var(--hl);box-shadow:0 4px 14px rgba(0,0,0,.06)}
+.accordion p{padding:0 1.2rem 1rem;font-size:.95rem}
+
+/* link buttons inside */
+.accordion p a{
+  display:inline-block;margin-top:.55rem;padding:.35rem .85rem;
+  font-size:.83rem;border:1px solid var(--hl);border-radius:4px;
+  color:var(--hl);text-decoration:none;transition:background .25s,color .25s;
+}
+.accordion p a:hover{background:var(--hl);color:#fff}
+
+/* ── Research tags: quieter hover ───────────────────── */
+.tag-rail span{
+  background:#fff;border:1px solid var(--bd);
+  padding:.5rem 1.2rem;font-weight:700;
+  transition:background .2s,transform .2s;
+}
+.tag-rail span:hover{background:var(--bg-cream);transform:translateY(-2px)}
+
+/* ── Education timeline: slim line & dot pop ───────── */
+.edu-line{border-left:2px solid var(--bd)}
+.edu-item::before{
+  width:.65rem;height:.65rem;left:-.95rem;top:.42rem;
+  background:var(--clr-link);opacity:.85;transition:opacity .25s}
+.edu-item:hover::before{opacity:1}
+    
+/* ─── FOOTER ───────────────────────────────────────── */
+footer{text-align:center;padding:2rem .5rem;font-size:.82rem;color:var(--clr-link);background:#fff;border-top:1px solid var(--bg-parch)}
+
+/* ── GLOBAL SPACING TUNE-UP ───────────────────────────── */
+
+/* full-width section breathing room */
+section[class^="alt-"]{padding:3.2rem 0}
+
+/* container side-gutters + auto max-width */
+.container{
+  max-width:900px;
+  margin-inline:auto;
+  padding-inline:1.6rem;
+}
+
+/* vertical rhythm inside each container */
+.container > * + *{margin-top:1.6rem}
+
+/* headings */
+h2{margin-bottom:1.2rem}
+h3{margin-top:.4rem;margin-bottom:.6rem}
+
+/* accordion details blocks */
+.accordion details{margin-bottom:1.2rem}
+
+/* research tag rail */
+.tag-rail{margin-top:1rem;margin-bottom:.6rem}
+
+/* working-paper / publication paragraph spacing */
+.accordion p{margin-top:.6rem}
+
+/* education semicircle */
+.edu-line{margin-top:2.4rem}
+.edu-item{margin-bottom:2.4rem}
+
+/* card-flex outer gap (for any single cards you stack) */
+.card-flex{margin-top:1.4rem}
+
+    /* experience photo styling */
+.exp-photo{
+  margin-top:2rem;text-align:center;
+}
+.exp-photo img{
+  width:100%;max-width:620px;height:auto;
+  border-radius:8px;box-shadow:0 4px 14px rgba(0,0,0,.08);
+}
+.exp-photo figcaption{
+  margin-top:.6rem;font-size:.85rem;color:var(--clr-link);
+}
+</style>
 </head>
 
-
-
-<script>
-(function(){
-  const splash = document.getElementById('splash');
-  if(!splash) return;
-
-  function dismiss(){
-    splash.classList.add('fade');
-    // remove from DOM after fade
-    setTimeout(()=>splash.remove(), 700);
-    window.removeEventListener('keydown', keyHandler);
-  }
-  function keyHandler(e){
-    if(e.key==='Enter' || e.key===' ') dismiss();
-  }
-
-  splash.addEventListener('click', dismiss);
-  window.addEventListener('keydown', keyHandler);
-})();
-</script>
-    
 <body>
 
-<!-- ╔══  SPLASH  ══╗ -->
+<!-- SPLASH -->
 <div id="splash">
   <div class="splash-inner">
     <h1>Let’s&nbsp;Dive&nbsp;into&nbsp;<br><span>Zen Economics</span></h1>
-    <p>(click anywhere to enter)</p>
+    <p>(click anywhere or press Enter)</p>
   </div>
 </div>
-<!-- ╚══════════════╝ -->
-    
+
+<!-- NAVBAR -->
 <nav class="nav">
   <div class="container">
-    <strong style="font-size:1.03rem">Aryan Ayyar</strong>
+    <strong class="brand">आर्यन अय्यर | Aryan Ayyar | 阿亚尔·阿里安</strong>
     <div>
-      <a href="#research">Research</a><a href="#publications">Publications</a>
-      <a href="#experience">Experience</a><a href="#education">Education</a><a href="#contact">Contact</a>
+     <a href="#publications">Publications</a><a href="#education">Education</a><a href="#contact">Contact</a>
     </div>
   </div>
 </nav>
 
+<!-- HERO -->
 <header class="hero">
   <div class="content">
-    <h1>Zen Economist</h1>
-    <p>The Hong Kong Polytechnic University</p>
+    <h1>Zen Economics</h1>
     <a href="#contact" class="btn">Get in touch</a>
   </div>
 </header>
 
-<section id="research" class="alt-1">
-  <div class="container">
-    <h2>Research Interests</h2>
-    <div class="tags">
-      <span>Financial Economics</span><span>Market Microstructure</span><span>Asset Pricing</span>
-    </div>
-  </div>
-</section>
 
-<section id="publications" class="alt-2">
+    <!-- handshake photo -->
+<figure class="exp-photo">
+  <img src="polyu.jpg" alt="Aryan Ayyar greeting a colleague at PolyU event">
+  <figcaption>Celebrating joint research milestones at PolyU, 2025</figcaption>
+</figure>
+<!-- PUBLICATIONS – always open -->
+<section id="publications" class="alt-3" style="text-align:left">
   <div class="container">
     <h2>Publications</h2>
-    <div class="grid">
-      <div class="card">
-        <h3><a href="https://www.dropbox.com/scl/fi/shlmwcc8fri8i8qe87ds7/Momentum-Reversals-and-Liquidity-Indian-Evidence.pdf?rlkey=7fsvpkq152fylpcoj5nm6ekpn&dl=0" target="_blank">
-          Momentum, Liquidity &amp; Stock Returns: Indian Evidence</a></h3>
-        <p><em>Pacific Basin Finance Journal</em>, 2023</p>
-      </div>
-      <div class="card">
-        <h3><a href="https://www.dropbox.com/s/DROPBOX_LINK_2?dl=0" target="_blank">
-          Green Bonds — Sustainable Investments Dilemma</a></h3>
-        <p><em>IVEY Case Publishing</em>, 2025</p>
-      </div>
+
+    <div class="accordion" style="margin-top:1.2rem">
+      <details open>
+        <summary>Momentum, Liquidity & Stock Returns: Indian Evidence ↗︎</summary>
+        <p>
+          <emph>Pacific Basin Finance Journal</emph> , 2023<br>
+          Research assistance for authors Madhu Veeraraghavan and Abhishek Rohit.<br>
+          <a href="https://www.dropbox.com/scl/fi/shlmwcc8fri8i8qe87ds7/Momentum-Reversals-and-Liquidity-Indian-Evidence.pdf?dl=0" target="_blank">
+            Download
+          </a>
+        </p>
+      </details>
+
+      <details open>
+        <summary>Green Bonds — Sustainable Investments Dilemma ↗︎</summary>
+        <p>
+          <em>IVEY Case Publishing</em>, 2025<br>
+          <a href="https://www.dropbox.com/s/DROPBOX_LINK_2?dl=0" target="_blank">View case</a>
+        </p>
+      </details>
     </div>
-    <h3 style="margin-top:3rem">Work in Progress</h3>
-    <ul style="margin-left:1.3rem;list-style:disc;line-height:1.85">
-      <li>Informed Trading, Precision Neglect &amp; Return Persistence (2025, w/ Linti Zhang)</li>
-      <li>Asymmetric Information &amp; Strategic Behavior (2025)</li>
-      <li>Asset Pricing Anomalies in an Emerging Market (2025, w/ Linti Zhang)</li>
-    </ul>
   </div>
 </section>
 
-<section id="experience" class="alt-3">
+<!-- WORKING PAPERS – always open -->
+<section id="wip" class="alt-3" style="text-align:left">
   <div class="container">
-    <h2>Experience</h2>
-    <div class="card">
-      <h3>Research Assistant · TA PAI Management Institute</h3>
-      <p><em>Dec 2022 – Jul 2024</em></p>
-      <ul style="margin-left:1.2rem;list-style:disc;line-height:1.85">
-        <li>Collaborated with Profs. Madhu Veeraraghavan, Krishna Prasad &amp; Durga Prasad</li>
-        <li>Empirical work on momentum, liquidity, and green-bond markets</li>
-      </ul>
+    <h2>Work in Progress</h2>
+
+    <div class="accordion">
+      <details open>
+        <summary>Asset Pricing Anomalies in an Emerging Market ↗︎</summary>
+        <p>Working paper [with Linti Zhang, 2025].</p>
+      </details>
+
+      <details open>
+        <summary>Individualistic Cultures’ Pro-Environmental Preferences in Green Financing ↗︎</summary>
+        <p>
+          Working paper [with Krishna Prasad and Durga Prasad , 2024]<br>
+          <a href="docs/gb_01_12.pdf" target="_blank">Download</a>
+        </p>
+      </details>
+
+      <details open>
+        <summary>Dynamic Order Execution Mechanisms ↗︎</summary>
+        <p>
+          Master’s thesis  [under Te Feng Chen.PolyU, 2025]<br>
+          <a href="docs/mast-thes.pdf" target="_blank">Download</a>
+        </p>
+      </details>
+
+      <details open>
+        <summary>Asymmetric Information and Strategic Behavior ↗︎</summary>
+        <p>
+          A multiperiod model of insider leverage limits and market depth.<br>
+          <a href="https://www.dropbox.com/scl/fi/dpooh39dqo1w1t6iupgft/bp-mkt.pdf?dl=0" target="_blank">Download</a>
+        </p>
+      </details>
     </div>
   </div>
 </section>
 
-<section id="education" class="alt-4">
+<!-- INDEPENDENT COMMENTARY – always open -->
+<section id="commentary" class="alt-3" style="text-align:left">
+  <div class="container">
+    <h2>Independent Commentary</h2>
+
+    <div class="accordion" style="margin-top:1.2rem">
+      <details open>
+        <summary>Competitive Equilibrium Models ↗︎</summary>
+        <p>
+          Notes on Arrow–Debreu, SMD aggregation and welfare results<br>
+          <a href="https://www.dropbox.com/scl/fi/1ku5x53mp5uyijacmijj4/equilibrium-models.pdf?dl=0" target="_blank">Download</a>
+        </p>
+      </details>
+
+      <details open>
+        <summary>Rational Expectations and Informational Efficiency ↗︎</summary>
+        <p>
+          Primer on Grossman–Stiglitz, Kyle and noisy REE models<br>
+          <a href="https://www.dropbox.com/scl/fi/nqyo8pyxlmbg8mtkobq1l/rational-expectations.pdf?dl=0" target="_blank">Download</a>
+        </p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION – semicircle timeline -->
+<section id="education" class="alt-3" style="text-align:left">
+   
   <div class="container">
     <h2>Education</h2>
-    <div class="timeline">
-      <div class="timeline-item">
-        <h3>MS Finance · The Hong Kong Polytechnic University</h3>
-        <p>2024 – 2025<br/>Dissertation: <strong>Dynamic Order Execution Mechanisms</strong> (Advisor: Prof. Te Feng Chen)</p>
+    <div class="edu-line">
+      <div class="edu-item">
+        <p><strong>MS Finance</strong>, The Hong Kong Polytechnic University (2024 – 25)</p>
       </div>
-      <div class="timeline-item">
-        <h3>BTech Mechatronics Engineering · Manipal Institute of Technology</h3>
-        <p>2019 – 2023<br/>Dissertation: <strong>Green Financing: An Algorithmic Approach</strong> (Advisor: Krishna Prasad)</p>
+      <div class="edu-item">
+        <p><strong>BTech Mechatronics Engineering</strong>, Manipal Institute of Technology (2019 – 23)</p>
       </div>
     </div>
   </div>
 </section>
-
-<section id="contact" class="alt-1">
+    
+<!-- CONTACT -->
+<section id="contact" class="alt-2" style="text-align:center">
   <div class="container">
     <h2>Contact</h2>
-    <p>Email: <a href="mailto:aryan.ayyar@outlook.in">aryan.ayyar@outlook.in</a><br/>
-       Phone: +852 5299 6471&nbsp;•&nbsp;
-       <a href="https://www.linkedin.com/in/your-linkedin" target="_blank">LinkedIn</a></p>
-    <p style="margin-top:1.5rem"><a class="btn" href="cv.pdf" target="_blank">Download CV ↗︎</a></p>
+
+    <div class="card-flex" style="flex-direction:row;gap:1.8rem;align-items:center">
+      <!-- text & buttons -->
+      <div style="flex:1">
+        <p>Email · <a href="mailto:aryan.ayyar@outlook.in">aryan.ayyar@outlook.in</a><br>
+           Phone · +852&nbsp;5299&nbsp;6471<br>
+           <a href="https://www.linkedin.com/in/your-linkedin" target="_blank">LinkedIn</a>
+        </p>
+
+        <a class="btn" href="cv.pdf" target="_blank" style="margin-top:1rem">
+          Download&nbsp;CV&nbsp;↗︎
+        </a>
+      </div>
+
+    </div>
   </div>
 </section>
+</section><footer>© 2025 Aryan Ayyar</footer>
 
-<footer>
-  © 2025 Aryan Ayyar · built with vanilla HTML &amp; CSS
-</footer>
-
+<!-- Splash dismiss -->
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  const s=document.getElementById('splash');
+  if(!s) return;
+  const dismiss=()=>{s.classList.add('fade');setTimeout(()=>s.remove(),600)};
+  s.addEventListener('click',dismiss);
+  addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ')dismiss()});
+});
+</script>
 </body>
 </html>
