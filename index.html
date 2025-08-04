@@ -5,190 +5,314 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Aryan Ayyar | Financial Economist</title>
 
-  <!-- IBM Plex Sans (closest free analogue to JPMorgan's house font) -->
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet"/>
 
   <style>
-  /* ---------- palette ---------- */
+
+
+/* ==== SPLASH SCREEN ==== */
+#splash{
+  position:fixed;inset:0;z-index:9999;
+  background:var(--snow);            /* same gentle palette */
+  display:flex;align-items:center;justify-content:center;
+  transition:opacity .7s ease;
+  cursor:pointer;
+}
+#splash.fade{opacity:0;pointer-events:none;}   /* after click */
+
+.splash-inner{text-align:center;line-height:1.3}
+.splash-inner h1{
+  font-family:"Playfair Display",serif;
+  font-size:clamp(2rem,6vw,3.2rem);
+  font-weight:600;color:var(--text-main);
+}
+.splash-inner h1 span{color:var(--accent);}
+.splash-inner p{
+  margin-top:1rem;font-size:.95rem;color:var(--text-muted);
+}
+  /* ----------  PALETTE  ---------- */
   :root{
-    --jp-navy: #002f6c;
-    --jp-light: #f3f3f3;
-    --jp-grey:  #555;
-    --jp-link:  #0060df;
+    --snow:        #FFFAFA;
+    --seashell:    #FFF5EE;
+    --cornsilk:    #FFF8DC;
+    --white-choc:  #F7F3E3;
+
+    --accent:      #b89c7d;   /* warm latte for links / buttons */
+    --text-main:   #333;
+    --text-muted:  #666;
   }
 
-  /* ---------- global ---------- */
+  /* ----------  GLOBAL RESET  ---------- */
   *{box-sizing:border-box;margin:0;padding:0}
-  body{
-    font-family:"IBM Plex Sans", -apple-system, BlinkMacSystemFont,
-                "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    color:#111; line-height:1.75; background:#fff;
-  }
-  h1,h2,h3{font-weight:700;font-family:"IBM Plex Sans",sans-serif}
-  a{color:var(--jp-link);text-decoration:none}
-  a:hover{text-decoration:underline}
-  section{padding:4.5rem 0}
-  .container{width:90%;max-width:1200px;margin:auto}
 
-  /* (keep the rest of your existing CSS unchanged) */
-  /* ---------- navbar ---------- */
-  .nav{background:var(--jp-navy);padding:.9rem 0;position:sticky;top:0;z-index:100;}
-  .nav .container{display:flex;align-items:center;justify-content:space-between}
-  .nav a{color:#fff;font-size:.95rem;margin-left:1.5rem;opacity:.9;font-weight:500}
+  body{
+    font-family:"IBM Plex Sans",sans-serif;
+    background:var(--snow);
+    color:var(--text-main);
+    line-height:1.75;
+  }
+
+  h1,h2,h3{
+    font-family:"Playfair Display",serif;
+    font-weight:200;
+  }
+
+  a{
+    color:var(--accent);
+    text-decoration:none;
+  }
+  a:hover{opacity:.85}
+
+  /* ----------  SECTION BACKGROUNDS  ---------- */
+  .alt-0{background:var(--snow);}        /* hero overlay + default */
+  .alt-1{background:var(--seashell);}
+  .alt-2{background:var(--cornsilk);}
+  .alt-3{background:var(--white-choc);}
+
+  /* ----------  NAVBAR  ---------- */
+  .nav{
+    background:rgba(255,255,255,.7);
+    backdrop-filter:blur(4px);
+    border-bottom:1px solid #eee;
+    padding:.85rem 0;
+    position:sticky;top:0;z-index:100;
+  }
+  .nav .container{
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .nav a{
+    color:var(--text-main);
+    margin-left:1.4rem;
+    font-weight:500;
+    opacity:.8;
+    font-size:.95rem;
+  }
   .nav a:hover{opacity:1}
 
-  /* ---------- hero ---------- */
-  .hero{height:60vh;background:url("https://images.unsplash.com/photo-1521120098171-1be41c0d45eb?auto=format&fit=crop&w=1800&q=60") center/cover no-repeat;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;color:#fff;position:relative;}
-  .hero::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.45)}
-  .hero .content{position:relative;z-index:1;padding-left:7%;max-width:650px}
-  .hero h1{font-size:2.7rem;line-height:1.2;margin-bottom:.6rem}
-  .hero p{font-size:1.2rem;margin-bottom:1.8rem}
-  .btn{display:inline-block;background:#fff;color:var(--jp-navy);padding:.8rem 1.6rem;border-radius:4px;font-weight:600}
-  .btn:hover{background:#e6eefc}
+  /* ----------  HERO  ---------- */
+  .hero{
+    height:56vh;
+    background:url("hero.jpg") center/cover no-repeat;
+    position:relative;
+    display:flex;flex-direction:column;justify-content:center;align-items:flex-start;
+  }
+  .hero::after{
+    content:"";
+    position:absolute;inset:0;
+    background:var(--snow);
+    opacity:.2;
+  }
+  .hero .content{
+    position:relative;z-index:1;
+    padding-left:7%;
+    max-width:640px;
+  }
+  .hero h1{font-size:2.5rem;margin-bottom:.55rem}
+  .hero p {font-size:1.15rem;margin-bottom:1.6rem;color:var(--text-muted)}
+  .btn{
+    display:inline-block;
+    background:var(--accent);color:#fff;
+    padding:.78rem 1.5rem;
+    border-radius:4px;
+    font-weight:600;
+    font-size:.95rem;
+    transition:filter .2s;
+  }
+  .btn:hover{filter:brightness(1.1)}
 
-  /* ---------- tag cloud ---------- */
-  .tags span{display:inline-block;background:var(--jp-light);padding:.35rem .8rem;border-radius:3px;margin:.3rem .25rem;font-size:.85rem;font-weight:600;color:var(--jp-navy)}
+  /* ----------  TAGS  ---------- */
+  .tags span{
+    display:inline-block;
+    background:#fff;
+    border:1px solid #e6e6e6;
+    padding:.32rem .7rem;
+    border-radius:4px;
+    margin:.35rem;
+    font-size:.85rem;
+  }
 
-  /* ---------- card grid ---------- */
-  .grid{display:grid;gap:2rem}
-  @media(min-width:700px){.grid{grid-template-columns:repeat(2,1fr)}}
-  .card{background:#fff;border:1px solid #ddd;border-radius:6px;padding:1.8rem;box-shadow:0 4px 12px rgba(0,0,0,.04)}
-  .card h3{margin-bottom:.6rem;font-size:1.15rem;color:var(--jp-navy)}
+  /* ----------  CARD GRID  ---------- */
+  .grid{display:grid;gap:1.8rem}
+  @media(min-width:680px){.grid{grid-template-columns:repeat(2,1fr)}}
 
-  /* ---------- timeline ---------- */
-  .timeline{border-left:4px solid var(--jp-navy);padding-left:1.6rem;margin-top:1.6rem}
-  .timeline-item{margin-bottom:2.2rem;position:relative}
-  .timeline-item::before{content:"";position:absolute;left:-1.15rem;top:.35rem;width:.75rem;height:.75rem;border-radius:50%;background:var(--jp-navy)}
-  .timeline-item h3{font-size:1.1rem;color:var(--jp-navy)}
+  .card{
+    background:#fff;
+    border:1px solid #e9e4dc;
+    border-radius:8px;
+    padding:1.6rem;
+    box-shadow:0 3px 10px rgba(0,0,0,.03);
+    transition:transform .25s,box-shadow .25s,border-color .25s;
+  }
+  .card h3{margin-bottom:.55rem;font-size:1.12rem}
 
-  /* ---------- footer ---------- */
-  footer{background:#fafafa;text-align:center;padding:2rem .5rem;font-size:.85rem;color:var(--jp-grey)}
+  #publications .card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 7px 20px rgba(0,0,0,.06);
+    border-color:var(--accent);
+  }
+  #publications .card:hover h3{color:var(--accent)}
 
-  /* ---------- dark-mode (prefers-color-scheme) ---------- */
-  @media (prefers-color-scheme:dark){
-    body{background:#111;color:#ddd}
-    section{border-color:#333}
-    .nav{background:#001e46}
-    .tag{background:#003d80;color:#a9c7ff}
-    .card{background:#1c1c1c;border-color:#333;box-shadow:none}
-    .timeline{border-color:#005}
-    .timeline-item::before{background:#a9c7ff}
+  /* ----------  TIMELINE  ---------- */
+  .timeline{
+    border-left:3px solid var(--accent);
+    padding-left:1.4rem;
+    margin-top:1.3rem;
+  }
+  .timeline-item{position:relative;margin-bottom:2rem}
+  .timeline-item::before{
+    content:"";
+    position:absolute;left:-1.05rem;top:.28rem;
+    width:.8rem;height:.8rem;border-radius:50%;
+    background:var(--accent);
+  }
+
+  /* ----------  FOOTER  ---------- */
+  footer{
+    text-align:center;
+    padding:2rem .5rem;
+    font-size:.82rem;
+    color:var(--text-muted);
+    background:#ffffff;
+    border-top:1px solid #eee;
+  }
+
+  /* ----------  DARK-MODE  ---------- */
+  @media(prefers-color-scheme:dark){
+    body{background:#141414;color:#ddd}
+    .nav{background:#1e1e1e;border-color:#333}
+    .card{background:#1f1f1f;border-color:#333;box-shadow:none}
+    .timeline{border-color:#8d7c68}
   }
   </style>
 </head>
+
+
+
+<script>
+(function(){
+  const splash = document.getElementById('splash');
+  if(!splash) return;
+
+  function dismiss(){
+    splash.classList.add('fade');
+    // remove from DOM after fade
+    setTimeout(()=>splash.remove(), 700);
+    window.removeEventListener('keydown', keyHandler);
+  }
+  function keyHandler(e){
+    if(e.key==='Enter' || e.key===' ') dismiss();
+  }
+
+  splash.addEventListener('click', dismiss);
+  window.addEventListener('keydown', keyHandler);
+})();
+</script>
+    
 <body>
 
-<!-- ======== NAVBAR ======== -->
+<!-- ╔══  SPLASH  ══╗ -->
+<div id="splash">
+  <div class="splash-inner">
+    <h1>Let’s&nbsp;Dive&nbsp;into&nbsp;<br><span>Zen Economics</span></h1>
+    <p>(click anywhere to enter)</p>
+  </div>
+</div>
+<!-- ╚══════════════╝ -->
+    
 <nav class="nav">
   <div class="container">
-    <strong style="color:#fff;font-size:1.05rem">Aryan Ayyar</strong>
+    <strong style="font-size:1.03rem">Aryan Ayyar</strong>
     <div>
-      <a href="#research">Research</a>
-      <a href="#publications">Publications</a>
-      <a href="#experience">Experience</a>
-      <a href="#education">Education</a>
-      <a href="#contact">Contact</a>
+      <a href="#research">Research</a><a href="#publications">Publications</a>
+      <a href="#experience">Experience</a><a href="#education">Education</a><a href="#contact">Contact</a>
     </div>
   </div>
 </nav>
 
-<!-- ======== HERO ======== -->
 <header class="hero">
   <div class="content">
-    <h1>Financial Economist<br/>specializing in Market Microstructure &amp; Asset Pricing</h1>
-    <p>MS Finance&nbsp;&middot;&nbsp;The Hong Kong Polytechnic University</p>
+    <h1>Zen Economist</h1>
+    <p>The Hong Kong Polytechnic University</p>
     <a href="#contact" class="btn">Get in touch</a>
   </div>
 </header>
 
-<!-- ======== RESEARCH INTERESTS ======== -->
-<section id="research">
+<section id="research" class="alt-1">
   <div class="container">
     <h2>Research Interests</h2>
     <div class="tags">
-      <span>Financial Economics</span>
-      <span>Market Microstructure</span>
-      <span>Asset Pricing</span>
-      <span>Optimal Execution</span>
-      <span>Corporate Finance</span>
+      <span>Financial Economics</span><span>Market Microstructure</span><span>Asset Pricing</span>
     </div>
   </div>
 </section>
 
-<!-- ======== PUBLICATIONS ======== -->
-<section id="publications" style="background:var(--jp-light)">
+<section id="publications" class="alt-2">
   <div class="container">
     <h2>Publications</h2>
     <div class="grid">
       <div class="card">
-        <h3>Momentum, Liquidity & Stock Returns: Indian Evidence</h3>
+        <h3><a href="https://www.dropbox.com/scl/fi/shlmwcc8fri8i8qe87ds7/Momentum-Reversals-and-Liquidity-Indian-Evidence.pdf?rlkey=7fsvpkq152fylpcoj5nm6ekpn&dl=0" target="_blank">
+          Momentum, Liquidity &amp; Stock Returns: Indian Evidence</a></h3>
         <p><em>Pacific Basin Finance Journal</em>, 2023</p>
       </div>
       <div class="card">
-        <h3>Green Bonds – Sustainable Investments Dilemma</h3>
+        <h3><a href="https://www.dropbox.com/s/DROPBOX_LINK_2?dl=0" target="_blank">
+          Green Bonds — Sustainable Investments Dilemma</a></h3>
         <p><em>IVEY Case Publishing</em>, 2025</p>
       </div>
     </div>
-
-    <h3 style="margin-top:3.2rem;color:var(--jp-navy)">Work in Progress</h3>
-    <ul style="margin-left:1.4rem;list-style:disc;line-height:1.9">
-      <li>Informed Trading, Precision Neglect & Return Persistence (with Linti Zhang, 2025)</li>
-      <li>Asymmetric Information & Strategic Behavior (2025)</li>
-      <li>Asset Pricing Anomalies in an Emerging Market (with Linti Zhang, 2025)</li>
+    <h3 style="margin-top:3rem">Work in Progress</h3>
+    <ul style="margin-left:1.3rem;list-style:disc;line-height:1.85">
+      <li>Informed Trading, Precision Neglect &amp; Return Persistence (2025, w/ Linti Zhang)</li>
+      <li>Asymmetric Information &amp; Strategic Behavior (2025)</li>
+      <li>Asset Pricing Anomalies in an Emerging Market (2025, w/ Linti Zhang)</li>
     </ul>
   </div>
 </section>
 
-<!-- ======== EXPERIENCE ======== -->
-<section id="experience">
+<section id="experience" class="alt-3">
   <div class="container">
     <h2>Experience</h2>
     <div class="card">
       <h3>Research Assistant · TA PAI Management Institute</h3>
       <p><em>Dec 2022 – Jul 2024</em></p>
-      <ul style="margin-left:1.3rem;list-style:disc;line-height:1.9">
-        <li>Collaborated with Profs. Madhu Veeraraghavan, Krishna Prasad & Durga Prasad</li>
-        <li>Empirical work on momentum, liquidity, and green bond markets</li>
+      <ul style="margin-left:1.2rem;list-style:disc;line-height:1.85">
+        <li>Collaborated with Profs. Madhu Veeraraghavan, Krishna Prasad &amp; Durga Prasad</li>
+        <li>Empirical work on momentum, liquidity, and green-bond markets</li>
       </ul>
     </div>
   </div>
 </section>
 
-<!-- ======== EDUCATION ======== -->
-<section id="education" style="background:var(--jp-light)">
+<section id="education" class="alt-4">
   <div class="container">
     <h2>Education</h2>
     <div class="timeline">
-
       <div class="timeline-item">
         <h3>MS Finance · The Hong Kong Polytechnic University</h3>
-        <p>2024 – 2025<br/>
-        Dissertation: <strong>Dynamic Order Execution Mechanisms</strong> (Supervisor: Prof. Te Feng Chen)</p>
+        <p>2024 – 2025<br/>Dissertation: <strong>Dynamic Order Execution Mechanisms</strong> (Advisor: Prof. Te Feng Chen)</p>
       </div>
-
       <div class="timeline-item">
         <h3>BTech Mechatronics Engineering · Manipal Institute of Technology</h3>
-        <p>2019 – 2023<br/>
-        Dissertation: <strong>Green Financing: An Algorithmic Approach</strong> (Supervisor: Krishna Prasad)</p>
+        <p>2019 – 2023<br/>Dissertation: <strong>Green Financing: An Algorithmic Approach</strong> (Advisor: Krishna Prasad)</p>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ======== CONTACT ======== -->
-<section id="contact">
+<section id="contact" class="alt-1">
   <div class="container">
     <h2>Contact</h2>
     <p>Email: <a href="mailto:aryan.ayyar@outlook.in">aryan.ayyar@outlook.in</a><br/>
-       Phone: +852 5299 6471<br/>
-       LinkedIn: <a href="https://www.linkedin.com/in/your-linkedin" target="_blank">linkedin.com/in/your-linkedin</a></p>
-    <p style="margin-top:1.6rem"><a class="btn" href="cv.pdf" target="_blank">Download CV ↗︎</a></p>
+       Phone: +852 5299 6471&nbsp;•&nbsp;
+       <a href="https://www.linkedin.com/in/your-linkedin" target="_blank">LinkedIn</a></p>
+    <p style="margin-top:1.5rem"><a class="btn" href="cv.pdf" target="_blank">Download CV ↗︎</a></p>
   </div>
 </section>
 
 <footer>
-  © 2025 Aryan Ayyar  ·  Built with pure HTML/CSS
+  © 2025 Aryan Ayyar · built with vanilla HTML &amp; CSS
 </footer>
 
 </body>
