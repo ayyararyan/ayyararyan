@@ -1,216 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aryan Ayyar | Financial Economist</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aryan Ayyar | Financial Economist</title>
 
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
 
-<style>
-/* ----------  Core palette ---------- */
-:root{
-  --clr-primary:#004080;
-  --clr-accent:#008cff;
-  --clr-light:#f5f7fa;
-  --clr-dark:#222;
-}
+  <style>
+  /* ---------- palette ---------- */
+  :root{
+    --jp-navy: #002f6c;
+    --jp-light: #f3f3f3;
+    --jp-grey: #555;
+    --jp-link: #0060df;
+  }
 
-/* ----------  Global ---------- */
-*{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
-body{
-  font-family:"Montserrat",system-ui,Arial,sans-serif;
-  line-height:1.7;
-  color:var(--clr-dark);
-  background:var(--clr-light);
-}
-h1,h2,h3{font-family:"Merriweather",serif;color:var(--clr-primary);}
-a{color:var(--clr-accent);text-decoration:none;}
-a:hover{text-decoration:underline;}
-section{padding:4rem 0;border-bottom:1px solid #ddd;}
-.container{width:90%;max-width:1100px;margin:auto;}
-.tag{
-  display:inline-block;
-  background:#e8eef7;
-  color:var(--clr-primary);
-  padding:.25em .6em;
-  margin:.2em .2em;
-  border-radius:4px;
-  font-size:.85rem;
-}
+  /* ---------- global ---------- */
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Open Sans",Arial,sans-serif;color:#111;line-height:1.75;background:#fff}
+  h1,h2,h3{font-weight:700}
+  a{color:var(--jp-link);text-decoration:none}
+  a:hover{text-decoration:underline}
+  section{padding:4.5rem 0}
+  .container{width:90%;max-width:1200px;margin:auto}
 
-/* ----------  Header ---------- */
-header{
-  background:var(--clr-primary);
-  color:#fff;
-  text-align:center;
-  padding:4rem 1rem 5rem;
-  position:relative;
-}
-header h1{font-size:2.8rem;font-weight:700;}
-header p{font-size:1.1rem;margin-top:.5rem;}
-nav{
-  position:absolute;bottom:1rem;left:50%;transform:translateX(-50%);
-}
-nav a{
-  color:#fff;margin:0 .8rem;font-size:.9rem;
-  font-weight:600;letter-spacing:.5px;opacity:.9;
-}
-nav a:hover{opacity:1;text-decoration:none;}
+  /* ---------- navbar ---------- */
+  .nav{
+    background:var(--jp-navy);
+    padding:.9rem 0;
+    position:sticky;top:0;z-index:100;
+  }
+  .nav .container{display:flex;align-items:center;justify-content:space-between}
+  .nav a{color:#fff;font-size:.95rem;margin-left:1.5rem;opacity:.9}
+  .nav a:hover{opacity:1}
 
-/* ----------  Cards ---------- */
-.card-list{display:grid;gap:1.5rem;}
-.card{
-  background:#fff;border-radius:8px;padding:1.5rem 1.8rem;
-  box-shadow:0 4px 14px rgba(0,0,0,.05);
-}
-.card h3{margin-bottom:.5rem;font-size:1.1rem;}
+  /* ---------- hero ---------- */
+  .hero{
+    height:60vh;
+    background:url("https://images.unsplash.com/photo-1521120098171-1be41c0d45eb?auto=format&fit=crop&w=1800&q=60") center/cover no-repeat;
+    display:flex;flex-direction:column;justify-content:center;align-items:flex-start;
+    color:#fff;position:relative;
+  }
+  .hero::after{/* dark overlay */
+    content:"";position:absolute;inset:0;background:rgba(0,0,0,.45)
+  }
+  .hero .content{
+    position:relative;z-index:1;padding-left:7%;
+    max-width:650px
+  }
+  .hero h1{font-size:2.7rem;line-height:1.2;margin-bottom:.6rem}
+  .hero p{font-size:1.2rem;margin-bottom:1.8rem}
+  .btn{
+    display:inline-block;background:#fff;color:var(--jp-navy);
+    padding:.8rem 1.6rem;border-radius:4px;font-weight:600
+  }
+  .btn:hover{background:#e6eefc}
 
-/* ----------  Timeline ---------- */
-.timeline{
-  border-left:3px solid var(--clr-primary);
-  margin-left:1.2rem;padding-left:1.5rem;
-}
-.timeline-item{margin-bottom:1.8rem;position:relative;}
-.timeline-item::before{
-  content:"";position:absolute;left:-1.25rem;top:.35rem;
-  width:.8rem;height:.8rem;background:var(--clr-primary);border-radius:50%;
-}
+  /* ---------- tag cloud ---------- */
+  .tags span{
+    display:inline-block;background:var(--jp-light);
+    padding:.35rem .8rem;border-radius:3px;margin:.3rem .25rem;
+    font-size:.85rem;font-weight:600;color:var(--jp-navy)
+  }
 
-/* ----------  Footer ---------- */
-footer{
-  text-align:center;padding:2rem 1rem;font-size:.8rem;
-  background:#fafafa;color:#666;
-}
+  /* ---------- card grid ---------- */
+  .grid{display:grid;gap:2rem}
+  @media(min-width:700px){.grid{grid-template-columns:repeat(2,1fr)}}
+  .card{
+    background:#fff;border:1px solid #ddd;border-radius:6px;
+    padding:1.8rem;box-shadow:0 4px 12px rgba(0,0,0,.04)
+  }
+  .card h3{margin-bottom:.6rem;font-size:1.15rem;color:var(--jp-navy)}
 
-/* ----------  Dark-mode (system pref) ---------- */
-@media (prefers-color-scheme:dark){
-  body{background:#111;color:#ddd;}
-  section{border-color:#333;}
-  header{background:#002a60;}
-  nav a{color:#e0e0e0;}
-  .tag{background:#003d80;color:#a9c7ff;}
-  .card{background:#1c1c1c;box-shadow:none;}
-  .timeline{border-color:#005;}
-  .timeline-item::before{background:#a9c7ff;}
-}
-</style>
+  /* ---------- timeline ---------- */
+  .timeline{
+    border-left:4px solid var(--jp-navy);padding-left:1.6rem;margin-top:1.6rem
+  }
+  .timeline-item{margin-bottom:2.2rem;position:relative}
+  .timeline-item::before{
+    content:"";position:absolute;left:-1.15rem;top:.35rem;
+    width:.75rem;height:.75rem;border-radius:50%;background:var(--jp-navy)
+  }
+  .timeline-item h3{font-size:1.1rem;color:var(--jp-navy)}
+
+  /* ---------- footer ---------- */
+  footer{
+    background:#fafafa;text-align:center;padding:2rem .5rem;font-size:.85rem;color:var(--jp-grey)
+  }
+  </style>
 </head>
-
 <body>
 
-<header>
-  <h1>Aryan Ayyar</h1>
-  <p>Financial Economist&nbsp;·&nbsp;MS Finance, The Hong Kong Polytechnic University</p>
-  <nav>
-    <a href="#research">Research</a>
-    <a href="#education">Education</a>
-    <a href="#experience">Experience</a>
-    <a href="#publications">Publications</a>
-    <a href="#contact">Contact</a>
-  </nav>
+<!-- ======== NAVBAR ======== -->
+<nav class="nav">
+  <div class="container">
+    <strong style="color:#fff;font-size:1.05rem">Aryan Ayyar</strong>
+    <div>
+      <a href="#research">Research</a>
+      <a href="#publications">Publications</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ======== HERO ======== -->
+<header class="hero">
+  <div class="content">
+    <h1>Financial Economist<br/>specializing in Market Microstructure &amp; Asset Pricing</h1>
+    <p>MS Finance&nbsp;&middot;&nbsp;The Hong Kong Polytechnic University</p>
+    <a href="#contact" class="btn">Get in touch</a>
+  </div>
 </header>
 
-<!-- =========  Research Interests ========= -->
-<section id="research" class="container">
-  <h2>Research Interests</h2>
-  <div>
-    <span class="tag">Financial Economics</span>
-    <span class="tag">Market Microstructure</span>
-    <span class="tag">Asset Pricing</span>
-    <span class="tag">Corporate Finance</span>
-    <span class="tag">Optimal Execution</span>
+<!-- ======== RESEARCH INTERESTS ======== -->
+<section id="research">
+  <div class="container">
+    <h2>Research Interests</h2>
+    <div class="tags">
+      <span>Financial Economics</span>
+      <span>Market Microstructure</span>
+      <span>Asset Pricing</span>
+      <span>Optimal Execution</span>
+      <span>Corporate Finance</span>
+    </div>
   </div>
 </section>
 
-<!-- =========  Education ========= -->
-<section id="education" class="container">
-  <h2>Education</h2>
-  <div class="timeline">
-
-    <div class="timeline-item">
-      <h3>MS Finance · The Hong Kong Polytechnic University</h3>
-      <em>2024 – 2025</em><br>
-      Dissertation: <strong>Dynamic Order Execution Mechanisms</strong> (Supervisor: Prof. Te Feng Chen)
+<!-- ======== PUBLICATIONS ======== -->
+<section id="publications" style="background:var(--jp-light)">
+  <div class="container">
+    <h2>Publications</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Momentum, Liquidity & Stock Returns: Indian Evidence</h3>
+        <p><em>Pacific Basin Finance Journal</em>, 2023</p>
+      </div>
+      <div class="card">
+        <h3>Green Bonds – Sustainable Investments Dilemma</h3>
+        <p><em>IVEY Case Publishing</em>, 2025</p>
+      </div>
     </div>
 
-    <div class="timeline-item">
-      <h3>BTech Mechatronics Engineering · Manipal Institute of Technology</h3>
-      <em>2019 – 2023</em><br>
-      Dissertation: <strong>Green Financing: An Algorithmic Approach</strong> (Supervisor: Krishna Prasad)
-    </div>
-
+    <h3 style="margin-top:3.2rem;color:var(--jp-navy)">Work in Progress</h3>
+    <ul style="margin-left:1.4rem;list-style:disc;line-height:1.9">
+      <li>Informed Trading, Precision Neglect & Return Persistence (with Linti Zhang, 2025)</li>
+      <li>Asymmetric Information & Strategic Behavior (2025)</li>
+      <li>Asset Pricing Anomalies in an Emerging Market (with Linti Zhang, 2025)</li>
+    </ul>
   </div>
 </section>
 
-<!-- =========  Experience ========= -->
-<section id="experience" class="container">
-  <h2>Experience</h2>
-
-  <div class="card-list">
+<!-- ======== EXPERIENCE ======== -->
+<section id="experience">
+  <div class="container">
+    <h2>Experience</h2>
     <div class="card">
       <h3>Research Assistant · TA PAI Management Institute</h3>
-      <em>Dec 2022 – Jul 2024</em>
-      <ul>
-        <li>Collaborated with Profs. Madhu Veeraraghavan, Krishna Prasad &amp; Durga Prasad.</li>
-        <li>Empirical studies on momentum, liquidity and green-bond markets.</li>
+      <p><em>Dec 2022 – Jul 2024</em></p>
+      <ul style="margin-left:1.3rem;list-style:disc;line-height:1.9">
+        <li>Collaborated with Profs. Madhu Veeraraghavan, Krishna Prasad & Durga Prasad</li>
+        <li>Empirical work on momentum, liquidity, and green bond markets</li>
       </ul>
     </div>
   </div>
 </section>
 
-<!-- =========  Publications ========= -->
-<section id="publications" class="container">
-  <h2>Publications</h2>
+<!-- ======== EDUCATION ======== -->
+<section id="education" style="background:var(--jp-light)">
+  <div class="container">
+    <h2>Education</h2>
+    <div class="timeline">
 
-  <div class="card-list">
-    <div class="card">
-      <h3>Momentum, Liquidity and Stock Returns: Indian Evidence</h3>
-      <em>Pacific Basin Finance Journal, 2023</em>
-    </div>
+      <div class="timeline-item">
+        <h3>MS Finance · The Hong Kong Polytechnic University</h3>
+        <p>2024 – 2025<br/>
+        Dissertation: <strong>Dynamic Order Execution Mechanisms</strong> (Supervisor: Prof. Te Feng Chen)</p>
+      </div>
 
-    <div class="card">
-      <h3>Green Bonds — Sustainable Investments Dilemma</h3>
-      <em>IVEY Case Publishing, 2025</em>
-    </div>
-  </div>
+      <div class="timeline-item">
+        <h3>BTech Mechatronics Engineering · Manipal Institute of Technology</h3>
+        <p>2019 – 2023<br/>
+        Dissertation: <strong>Green Financing: An Algorithmic Approach</strong> (Supervisor: Krishna Prasad)</p>
+      </div>
 
-  <h3 style="margin-top:3rem">Work in Progress</h3>
-  <ul style="margin-left:1.2rem;list-style:disc;">
-    <li>Informed Trading, Precision Neglect &amp; Return Persistence (with Linti Zhang, 2025)</li>
-    <li>Asymmetric Information &amp; Strategic Behavior (2025)</li>
-    <li>Asset Pricing Anomalies in an Emerging Market (with Linti Zhang, 2025)</li>
-  </ul>
-</section>
-
-<!-- =========  Programming & Data ========= -->
-<section class="container">
-  <h2>Programming &amp; Data Skills</h2>
-  <div class="card-list">
-    <div class="card">
-      <strong>Data Platforms:</strong><br>
-      WRDS · CRSP · NYSE TAQ · LSEG Eikon · Bloomberg (API &amp; BQNT) · SPSS · STATA
-    </div>
-    <div class="card">
-      <strong>Programming:</strong><br>
-      Python · R (econometrics, optimization, micro-simulation)
     </div>
   </div>
 </section>
 
-<!-- =========  Contact ========= -->
-<section id="contact" class="container">
-  <h2>Contact</h2>
-  <p>Email: <a href="mailto:aryan.ayyar@outlook.in">aryan.ayyar@outlook.in</a><br>
-     Phone: +852 5299 6471<br>
-     LinkedIn: <a href="https://www.linkedin.com/in/your-linkedin" target="_blank">linkedin.com/in/your-linkedin</a></p>
-  <p><a href="cv.pdf" target="_blank">Download CV&nbsp;↗︎</a> <!-- replace cv.pdf with your file name --></p>
+<!-- ======== CONTACT ======== -->
+<section id="contact">
+  <div class="container">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:aryan.ayyar@outlook.in">aryan.ayyar@outlook.in</a><br/>
+       Phone: +852 5299 6471<br/>
+       LinkedIn: <a href="https://www.linkedin.com/in/your-linkedin" target="_blank">linkedin.com/in/your-linkedin</a></p>
+    <p style="margin-top:1.6rem"><a class="btn" href="cv.pdf" target="_blank">Download CV ↗︎</a></p>
+  </div>
 </section>
 
 <footer>
-  &copy; 2025 Aryan Ayyar · Built with 💙 and HTML/CSS
+  © 2025 Aryan Ayyar  ·  Built with pure HTML/CSS
 </footer>
 
 </body>
