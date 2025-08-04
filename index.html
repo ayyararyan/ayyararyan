@@ -5,89 +5,74 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Aryan Ayyar | Financial Economist</title>
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <!-- IBM Plex Sans (closest free analogue to JPMorgan's house font) -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 
   <style>
   /* ---------- palette ---------- */
   :root{
     --jp-navy: #002f6c;
     --jp-light: #f3f3f3;
-    --jp-grey: #555;
-    --jp-link: #0060df;
+    --jp-grey:  #555;
+    --jp-link:  #0060df;
   }
 
   /* ---------- global ---------- */
   *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:"Open Sans",Arial,sans-serif;color:#111;line-height:1.75;background:#fff}
-  h1,h2,h3{font-weight:700}
+  body{
+    font-family:"IBM Plex Sans", -apple-system, BlinkMacSystemFont,
+                "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color:#111; line-height:1.75; background:#fff;
+  }
+  h1,h2,h3{font-weight:700;font-family:"IBM Plex Sans",sans-serif}
   a{color:var(--jp-link);text-decoration:none}
   a:hover{text-decoration:underline}
   section{padding:4.5rem 0}
   .container{width:90%;max-width:1200px;margin:auto}
 
+  /* (keep the rest of your existing CSS unchanged) */
   /* ---------- navbar ---------- */
-  .nav{
-    background:var(--jp-navy);
-    padding:.9rem 0;
-    position:sticky;top:0;z-index:100;
-  }
+  .nav{background:var(--jp-navy);padding:.9rem 0;position:sticky;top:0;z-index:100;}
   .nav .container{display:flex;align-items:center;justify-content:space-between}
-  .nav a{color:#fff;font-size:.95rem;margin-left:1.5rem;opacity:.9}
+  .nav a{color:#fff;font-size:.95rem;margin-left:1.5rem;opacity:.9;font-weight:500}
   .nav a:hover{opacity:1}
 
   /* ---------- hero ---------- */
-  .hero{
-    height:60vh;
-    background:url("https://images.unsplash.com/photo-1521120098171-1be41c0d45eb?auto=format&fit=crop&w=1800&q=60") center/cover no-repeat;
-    display:flex;flex-direction:column;justify-content:center;align-items:flex-start;
-    color:#fff;position:relative;
-  }
-  .hero::after{/* dark overlay */
-    content:"";position:absolute;inset:0;background:rgba(0,0,0,.45)
-  }
-  .hero .content{
-    position:relative;z-index:1;padding-left:7%;
-    max-width:650px
-  }
+  .hero{height:60vh;background:url("https://images.unsplash.com/photo-1521120098171-1be41c0d45eb?auto=format&fit=crop&w=1800&q=60") center/cover no-repeat;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;color:#fff;position:relative;}
+  .hero::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.45)}
+  .hero .content{position:relative;z-index:1;padding-left:7%;max-width:650px}
   .hero h1{font-size:2.7rem;line-height:1.2;margin-bottom:.6rem}
   .hero p{font-size:1.2rem;margin-bottom:1.8rem}
-  .btn{
-    display:inline-block;background:#fff;color:var(--jp-navy);
-    padding:.8rem 1.6rem;border-radius:4px;font-weight:600
-  }
+  .btn{display:inline-block;background:#fff;color:var(--jp-navy);padding:.8rem 1.6rem;border-radius:4px;font-weight:600}
   .btn:hover{background:#e6eefc}
 
   /* ---------- tag cloud ---------- */
-  .tags span{
-    display:inline-block;background:var(--jp-light);
-    padding:.35rem .8rem;border-radius:3px;margin:.3rem .25rem;
-    font-size:.85rem;font-weight:600;color:var(--jp-navy)
-  }
+  .tags span{display:inline-block;background:var(--jp-light);padding:.35rem .8rem;border-radius:3px;margin:.3rem .25rem;font-size:.85rem;font-weight:600;color:var(--jp-navy)}
 
   /* ---------- card grid ---------- */
   .grid{display:grid;gap:2rem}
   @media(min-width:700px){.grid{grid-template-columns:repeat(2,1fr)}}
-  .card{
-    background:#fff;border:1px solid #ddd;border-radius:6px;
-    padding:1.8rem;box-shadow:0 4px 12px rgba(0,0,0,.04)
-  }
+  .card{background:#fff;border:1px solid #ddd;border-radius:6px;padding:1.8rem;box-shadow:0 4px 12px rgba(0,0,0,.04)}
   .card h3{margin-bottom:.6rem;font-size:1.15rem;color:var(--jp-navy)}
 
   /* ---------- timeline ---------- */
-  .timeline{
-    border-left:4px solid var(--jp-navy);padding-left:1.6rem;margin-top:1.6rem
-  }
+  .timeline{border-left:4px solid var(--jp-navy);padding-left:1.6rem;margin-top:1.6rem}
   .timeline-item{margin-bottom:2.2rem;position:relative}
-  .timeline-item::before{
-    content:"";position:absolute;left:-1.15rem;top:.35rem;
-    width:.75rem;height:.75rem;border-radius:50%;background:var(--jp-navy)
-  }
+  .timeline-item::before{content:"";position:absolute;left:-1.15rem;top:.35rem;width:.75rem;height:.75rem;border-radius:50%;background:var(--jp-navy)}
   .timeline-item h3{font-size:1.1rem;color:var(--jp-navy)}
 
   /* ---------- footer ---------- */
-  footer{
-    background:#fafafa;text-align:center;padding:2rem .5rem;font-size:.85rem;color:var(--jp-grey)
+  footer{background:#fafafa;text-align:center;padding:2rem .5rem;font-size:.85rem;color:var(--jp-grey)}
+
+  /* ---------- dark-mode (prefers-color-scheme) ---------- */
+  @media (prefers-color-scheme:dark){
+    body{background:#111;color:#ddd}
+    section{border-color:#333}
+    .nav{background:#001e46}
+    .tag{background:#003d80;color:#a9c7ff}
+    .card{background:#1c1c1c;border-color:#333;box-shadow:none}
+    .timeline{border-color:#005}
+    .timeline-item::before{background:#a9c7ff}
   }
   </style>
 </head>
