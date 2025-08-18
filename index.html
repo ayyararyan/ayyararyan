@@ -332,50 +332,54 @@ dialog::backdrop{background:rgba(0,0,0,.4)}
 
 <footer>© <span id="y"></span> 2025 Aryan Ayyar</footer>
 
-<!-- Splash dismiss -->
+<!-- Splash + PDF preview script (single block) -->
 <script>
-document.addEventListener('DOMContentLoaded',()=>{
-  const s=document.getElementById('splash');
-  if(!s) return;
-  const dismiss=()=>{s.classList.add('fade');setTimeout(()=>s.remove(),600)};
-  s.addEventListener('click',dismiss);
-  addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ')dismiss()});
-  document.getElementById('y').textContent = new Date().getFullYear();
-});
-<script>
-document.addEventListener('DOMContentLoaded',()=>{
-  const s=document.getElementById('splash');
-  if(s){
-    const dismiss=()=>{s.classList.add('fade');setTimeout(()=>s.remove(),600)};
-    s.addEventListener('click',dismiss);
-    addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ')dismiss()});
+document.addEventListener('DOMContentLoaded', () => {
+  // footer year
+  const y = document.getElementById('y');
+  if (y) y.textContent = new Date().getFullYear();
+
+  // --- Splash dismiss ---
+  const splash = document.getElementById('splash');
+  const dismiss = () => {
+    if (!splash) return;
+    splash.classList.add('fade');
+    setTimeout(() => splash.remove(), 600);
+  };
+  if (splash) {
+    splash.addEventListener('click', dismiss);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') dismiss();
+    });
   }
-  document.getElementById('y').textContent = new Date().getFullYear();
 
   // --- PDF Preview logic ---
   const dlg = document.getElementById('pdfPreview');
   const frame = document.getElementById('previewFrame');
   const closeBtn = document.getElementById('closePreview');
 
-  document.querySelectorAll('[data-preview]').forEach(btn=>{
-    btn.addEventListener('click',()=>{
-      const url = btn.getAttribute('data-preview');
-      // Use Google viewer as a fallback for browsers without native PDF support:
-      // const viewer = 'https://docs.google.com/gview?embedded=1&url=' + encodeURIComponent(url);
-      frame.src = url; // or set to viewer if you prefer
-      dlg.showModal();
+  if (dlg && frame) {
+    document.querySelectorAll('[data-preview]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const url = btn.getAttribute('data-preview');
+        // If you want a universal viewer fallback, use:
+        // const viewer = 'https://docs.google.com/gview?embedded=1&url=' + encodeURIComponent(url);
+        frame.src = url;
+        dlg.showModal();
+      });
     });
-  });
 
-  closeBtn?.addEventListener('click',()=>{ dlg.close(); frame.src=''; });
-  dlg?.addEventListener('click', (e)=>{
-    // click outside to close
-    const rect = dlg.getBoundingClientRect();
-    const inBox = e.clientX>=rect.left && e.clientX<=rect.right && e.clientY>=rect.top && e.clientY<=rect.bottom;
-    if(!inBox){ dlg.close(); frame.src=''; }
-  });
+    closeBtn?.addEventListener('click', () => { dlg.close(); frame.src = ''; });
+
+    // Click outside dialog content to close
+    dlg.addEventListener('click', (e) => {
+      const rect = dlg.getBoundingClientRect();
+      const inside = e.clientX >= rect.left && e.clientX <= rect.right &&
+                     e.clientY >= rect.top &&  e.clientY <= rect.bottom;
+      if (!inside) { dlg.close(); frame.src = ''; }
+    });
+  }
 });
-</script>
 </script>
 </body>
 </html>
