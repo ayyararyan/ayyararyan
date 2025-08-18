@@ -107,6 +107,27 @@ h3{margin-top:.4rem;margin-bottom:.6rem}
 
 /* ─── FOOTER ───────────────────────────────────────── */
 footer{text-align:center;padding:2rem .5rem;font-size:.82rem;color:var(--clr-link);background:#fff;border-top:1px solid var(--bg-parch)}
+/* ─── WRITING CARDS ─────────────────────────────── */
+.writing-grid{display:grid;gap:1.6rem}
+@media(min-width:680px){.writing-grid{grid-template-columns:repeat(2,1fr)}}
+.write-card{border:1px solid #e5e5e5;border-radius:10px;padding:1.5rem;background:#fff;
+  box-shadow:0 3px 8px rgba(0,0,0,.04);transition:.25s}
+.write-card:hover{transform:translateY(-4px);box-shadow:0 8px 20px rgba(0,0,0,.08)}
+.write-card h3{margin:0 0 .4rem}
+.write-meta{font-size:.85rem;color:var(--clr-link);margin-bottom:.8rem}
+.btn-row{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1rem}
+.btn.outline{background:transparent;color:var(--clr-main);border:1px solid var(--clr-link)}
+.btn.outline:hover{background:var(--clr-link);color:#fff}
+
+/* ─── PREVIEW DIALOG ─────────────────────────────── */
+dialog.preview{width:min(1000px,92vw);border:none;border-radius:10px;padding:0;overflow:hidden;
+  box-shadow:0 12px 30px rgba(0,0,0,.35)}
+dialog::backdrop{background:rgba(0,0,0,.4)}
+.preview-head{display:flex;justify-content:space-between;align-items:center;padding:.8rem 1rem;background:#fff;border-bottom:1px solid #eee}
+.preview-body{height:min(76vh,900px);background:#f8f8f8}
+.preview-body iframe{width:100%;height:100%;border:0}
+.icon-btn{background:transparent;border:0;font-size:1.1rem;cursor:pointer;color:var(--clr-main)}
+.icon-btn:hover{opacity:.8}
 </style>
 </head>
 
@@ -126,10 +147,13 @@ footer{text-align:center;padding:2rem .5rem;font-size:.82rem;color:var(--clr-lin
     <strong class="brand">आर्यन अय्यर | Aryan Ayyar | 阿亚尔·阿里安</strong>
     <div>
       <a href="#publications">Publications</a>
-      <a href="#education">Education</a>
-      <a href="#contact">Contact</a>
+  <a href="#wip">Work in Progress</a>
+  <a href="#writing">Personal Writing</a> <!-- ← add this -->
+  <a href="#education">Education</a>
+  <a href="#contact">Contact</a>
     </div>
   </div>
+  
 </nav>
 
 <!-- HERO -->
@@ -213,7 +237,45 @@ footer{text-align:center;padding:2rem .5rem;font-size:.82rem;color:var(--clr-lin
     </div>
   </div>
 </section>
+<!-- PERSONAL WRITING -->
+<section id="writing" class="alt-1" style="text-align:left">
+  <div class="container">
+    <h2>Personal Writing</h2>
+    <div class="writing-grid">
 
+      <!-- Short story card -->
+      <article class="write-card">
+        <h3>The Nicest Wife</h3>
+        <p class="write-meta">Short story · 2025</p>
+        <p>
+          A quiet, intimate piece about tenderness, restraint, and the discipline of attention.
+          Set against everyday rituals, it explores power, vulnerability, and grace.
+        </p>
+        <div class="btn-row">
+          <!-- Update the href to your actual file path or Dropbox link -->
+          <a class="btn" href="docs/the-nicest-wife.pdf" target="_blank" rel="noopener">Download PDF ↗︎</a>
+          <button class="btn outline" data-preview="docs/the-nicest-wife.pdf" aria-haspopup="dialog">
+            Read inline
+          </button>
+        </div>
+      </article>
+
+      <!-- (Optional) add more pieces as <article class="write-card"> ... </article> -->
+
+    </div>
+  </div>
+</section>
+
+<!-- Inline PDF preview (dialog) -->
+<dialog class="preview" id="pdfPreview" aria-label="Inline PDF preview">
+  <div class="preview-head">
+    <strong>The Nicest Wife — Preview</strong>
+    <button class="icon-btn" id="closePreview" aria-label="Close">✕</button>
+  </div>
+  <div class="preview-body">
+    <iframe id="previewFrame" title="PDF preview" loading="lazy"></iframe>
+  </div>
+</dialog>
 <!-- INDEPENDENT COMMENTARY – always open -->
 <section id="commentary" class="alt-3" style="text-align:left">
   <div class="container">
@@ -280,6 +342,40 @@ document.addEventListener('DOMContentLoaded',()=>{
   addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ')dismiss()});
   document.getElementById('y').textContent = new Date().getFullYear();
 });
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  const s=document.getElementById('splash');
+  if(s){
+    const dismiss=()=>{s.classList.add('fade');setTimeout(()=>s.remove(),600)};
+    s.addEventListener('click',dismiss);
+    addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ')dismiss()});
+  }
+  document.getElementById('y').textContent = new Date().getFullYear();
+
+  // --- PDF Preview logic ---
+  const dlg = document.getElementById('pdfPreview');
+  const frame = document.getElementById('previewFrame');
+  const closeBtn = document.getElementById('closePreview');
+
+  document.querySelectorAll('[data-preview]').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const url = btn.getAttribute('data-preview');
+      // Use Google viewer as a fallback for browsers without native PDF support:
+      // const viewer = 'https://docs.google.com/gview?embedded=1&url=' + encodeURIComponent(url);
+      frame.src = url; // or set to viewer if you prefer
+      dlg.showModal();
+    });
+  });
+
+  closeBtn?.addEventListener('click',()=>{ dlg.close(); frame.src=''; });
+  dlg?.addEventListener('click', (e)=>{
+    // click outside to close
+    const rect = dlg.getBoundingClientRect();
+    const inBox = e.clientX>=rect.left && e.clientX<=rect.right && e.clientY>=rect.top && e.clientY<=rect.bottom;
+    if(!inBox){ dlg.close(); frame.src=''; }
+  });
+});
+</script>
 </script>
 </body>
 </html>
