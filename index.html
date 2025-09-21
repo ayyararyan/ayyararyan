@@ -4,139 +4,193 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Aryan Ayyar — Financial Economist</title>
-<meta name="description" content="Financial economist focused on asset pricing and market microstructure. Work spans Kyle-type asymmetric information, optimal execution, and liquidity." />
-<meta name="theme-color" content="#555879" />
+<meta name="description" content="Financial economist focused on asset pricing, market microstructure, and rational expectations." />
+<meta name="theme-color" content="#404468" />
 <meta property="og:title" content="Aryan Ayyar — Financial Economist" />
 <meta property="og:description" content="Asset pricing · Market microstructure · Rational expectations" />
 <meta property="og:type" content="website" />
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Noto+Serif:wght@600&family=Noto+Serif+SC:wght@600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
 <style>
-/* ─── PALETTE ───────────────────────────────────────── */
+/* ─── DESIGN TOKENS ─────────────────────────────────────────────── */
 :root{
-  --clr-main:#555879;          /* deep slate (text / buttons)   */
-  --clr-link:#98A1BC;          /* steel-blue accent / links     */
-  --bg-parch:#DED3C4;          /* warm parchment section        */
-  --bg-cream:#F4EBD3;          /* light cream section           */
+  --ink:#1f2133;
+  --ink-soft:#5b5f7e;
+  --paper:#ffffff;
+  --accent:#5d65ff;
+  --accent-soft:rgba(93,101,255,.14);
+  --sand:#f3efe6;
+  --cream:#f6f4ff;
+  --radius:18px;
+  --shadow:0 32px 70px -40px rgba(24,28,74,.55);
 }
 
-/* ─── RESET + TYPE ─────────────────────────────────── */
-*{box-sizing:border-box;margin:0;padding:0}
+/* ─── BASE ─────────────────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
-  font-family:"Libre Baskerville", Baskerville, serif;
-  background:#fff;color:var(--clr-main);line-height:1.6;-webkit-font-smoothing:antialiased
+  font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background:linear-gradient(160deg,#fdf7ef 0%,#f1f4ff 52%,#edf0ff 100%);
+  color:var(--ink);
+  line-height:1.65;
+  margin:0;
+  -webkit-font-smoothing:antialiased;
 }
-h1,h2,h3{font-weight:700}
-a{color:var(--clr-link);text-decoration:none}
-a:hover{opacity:.85}
 img{max-width:100%;display:block}
+a{color:var(--accent);text-decoration:none;transition:color .2s ease}
+a:hover{text-decoration:none;color:#3139ff}
 
-/* ─── SECTIONS ─────────────────────────────────────── */
-.alt-1{background:var(--bg-parch)}
-.alt-2{background:var(--bg-cream)}
-.alt-3{background:#fff}
-section[class^="alt-"]{padding:3.2rem 0}
+h1,h2,h3{font-family:"Playfair Display","Libre Baskerville",serif;font-weight:600;color:var(--ink)}
+.lead{font-size:1.1rem;max-width:48ch}
+p{color:var(--ink-soft)}
 
-/* containers */
-.container{max-width:1000px;margin-inline:auto;padding-inline:1.6rem}
-.container>*+*{margin-top:1.6rem}
+/* ─── ACCESSIBILITY ───────────────────────────────────────────── */
+.skip-link{
+  position:absolute;
+  top:-100vh;
+  left:1rem;
+  background:var(--accent);
+  color:#fff;
+  padding:.75rem 1.4rem;
+  border-radius:999px;
+  z-index:2000;
+  transition:transform .2s ease;
+}
+.skip-link:focus{top:1rem;transform:translateY(0)}
 
-/* headings */
-h2{margin-bottom:1.2rem}
-h3{margin-top:.4rem;margin-bottom:.6rem}
+/* ─── LAYOUT HELPERS ─────────────────────────────────────────── */
+.container{max-width:1080px;margin:0 auto;padding:0 clamp(1.3rem,4vw,2.6rem)}
+main{display:flex;flex-direction:column;gap:clamp(2.8rem,6vw,4.4rem);padding-bottom:4rem}
+section{position:relative;padding:clamp(3rem,7vw,4.6rem) 0}
+.section-title{font-size:clamp(1.9rem,4vw,2.45rem);margin-bottom:1.2rem}
+.section-intro{max-width:62ch;margin-bottom:2rem}
+.split{display:grid;gap:clamp(2rem,4vw,3rem);align-items:center}
+@media(min-width:860px){.split{grid-template-columns:1.1fr 0.9fr}}
 
-/* ─── SPLASH ───────────────────────────────────────── */
-#splash{position:fixed;inset:0;z-index:9999;background:#fff;display:flex;justify-content:center;align-items:center;cursor:pointer;transition:opacity .6s ease,visibility 0s .6s}
+/* ─── NAVBAR ─────────────────────────────────────────────────── */
+.nav{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.9);backdrop-filter:blur(14px);border-bottom:1px solid rgba(93,101,255,.08)}
+.nav .container{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;padding-block:.95rem}
+.brand{font-family:"Playfair Display","Noto Serif",serif;font-weight:700;letter-spacing:.02em;font-size:1.12rem;color:var(--ink)}
+.nav-links{display:flex;align-items:center;flex-wrap:wrap;gap:.85rem}
+.nav-links a{position:relative;padding:.35rem .4rem;font-weight:500;color:var(--ink-soft)}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--accent);transition:width .25s ease}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a:hover::after,.nav-links a:focus-visible::after{width:100%}
+
+/* ─── SPLASH ─────────────────────────────────────────────────── */
+#splash{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#fff;z-index:9999;cursor:pointer;transition:opacity .6s ease,visibility 0s .6s}
 #splash.fade{opacity:0;visibility:hidden;pointer-events:none}
-.splash-inner{text-align:center}
-.splash-inner h1{font-size:clamp(2rem,6vw,3.2rem)}
-.splash-inner h1 span{color:var(--clr-link)}
-.splash-inner p{margin-top:1rem;color:var(--clr-main);font-size:.95rem}
+.splash-inner{text-align:center;padding:2rem}
+.splash-inner h1{font-size:clamp(2rem,6vw,3.4rem);font-family:"Playfair Display","Libre Baskerville",serif}
+.splash-inner h1 span{color:var(--accent)}
+.splash-inner p{margin-top:.8rem;color:var(--ink-soft)}
+@media(prefers-reduced-motion:reduce){#splash{transition:none}}
 
-/******** prefer reduced motion ********/
-@media (prefers-reduced-motion:reduce){#splash{transition:none}}
+/* ─── HERO ───────────────────────────────────────────────────── */
+.hero{position:relative;min-height:68vh;display:flex;align-items:center;color:#fff}
+.hero::before{content:"";position:absolute;inset:0;border-radius:0;background:
+  linear-gradient(118deg,rgba(28,33,82,.92) 10%,rgba(74,87,179,.78) 48%,rgba(35,38,102,.9) 92%),
+  url("hero.jpg") center/cover no-repeat;filter:saturate(1.15)}
+.hero .container{position:relative;z-index:2;display:grid;gap:clamp(2rem,4vw,4rem);align-items:center}
+@media(min-width:900px){.hero .container{grid-template-columns:minmax(280px,1fr) minmax(220px,360px)}}
+.eyebrow{text-transform:uppercase;letter-spacing:.3em;font-size:.72rem;margin-bottom:.9rem;display:inline-block;color:rgba(255,255,255,.7)}
+.hero h1{font-size:clamp(2.9rem,7vw,4.8rem);line-height:1.1;margin-bottom:1rem}
+.hero .lead{color:rgba(255,255,255,.84);font-size:1.1rem;margin-bottom:1.4rem}
+.hero-chips{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:1.8rem}
+.chip{display:inline-flex;align-items:center;gap:.35rem;padding:.45rem .85rem;border-radius:999px;background:rgba(255,255,255,.14);color:#fff;font-size:.83rem}
+.chip::before{content:"";width:.35rem;height:.35rem;border-radius:50%;background:#fff;opacity:.65}
+.hero-actions{display:flex;flex-wrap:wrap;gap:.75rem}
+.btn{display:inline-flex;align-items:center;gap:.5rem;font-weight:600;border-radius:999px;padding:.85rem 1.65rem;border:1px solid transparent;background:var(--accent);color:#fff;box-shadow:0 16px 30px -16px rgba(20,24,84,.8);transition:transform .2s ease,box-shadow .2s ease,background .2s ease}
+.btn:hover{transform:translateY(-2px);box-shadow:0 28px 45px -26px rgba(20,24,84,.75)}
+.btn.ghost{background:transparent;border-color:rgba(255,255,255,.45);color:#fff;box-shadow:none}
+.btn.ghost:hover{background:rgba(255,255,255,.12)}
+.hero-card{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.32);border-radius:var(--radius);padding:1.8rem;backdrop-filter:blur(12px);box-shadow:0 30px 60px -32px rgba(12,17,78,.65)}
+.hero-card h3{font-size:1.35rem;color:#fff;margin-bottom:.75rem}
+.hero-card p{color:rgba(255,255,255,.75)}
+.hero-card ul{list-style:none;padding:0;margin:1.2rem 0 0;display:grid;gap:.85rem}
+.hero-card li{display:flex;align-items:flex-start;gap:.6rem;color:rgba(255,255,255,.82);font-size:.94rem}
+.hero-card li::before{content:"•";color:#fff;font-size:1.2rem;line-height:1}
 
-/* ─── NAVBAR ───────────────────────────────────────── */
-.nav{background:#fff;backdrop-filter:blur(6px);border-bottom:1px solid var(--bg-parch);box-shadow:0 3px 12px rgba(0,0,0,.04);padding:.9rem 1rem;position:sticky;top:0;z-index:100}
-.nav .container{max-width:1100px;margin:auto;display:flex;justify-content:space-between;align-items:center}
-.nav a{position:relative;margin-left:1.4rem;font-size:1.05rem;color:inherit}
-.nav a:first-of-type{margin-left:0}
-.nav a::after{content:"";position:absolute;left:0;bottom:-4px;width:0;height:2px;background:var(--clr-link);transition:width .25s}
-.nav a:hover::after{width:100%}
-.brand{font-family:"Noto Serif","Noto Serif SC",serif;font-weight:600;white-space:nowrap}
+/* ─── SNAPSHOT SECTION ─────────────────────────────────────── */
+.section-soft{background:linear-gradient(135deg,rgba(255,255,255,.85),rgba(243,239,230,.9))}
+.section-soft::after{content:"";position:absolute;inset:auto 6% -40% 6%;height:55%;border-radius:40px;background:radial-gradient(circle at 20% 20%,rgba(93,101,255,.12),transparent 65%);z-index:-1}
+.stat-grid{display:grid;gap:1.1rem;margin-top:1.4rem}
+@media(min-width:720px){.stat-grid{grid-template-columns:repeat(3,1fr)}}
+.stat-card{padding:1.25rem 1.3rem;border-radius:var(--radius);background:var(--paper);box-shadow:var(--shadow);border:1px solid rgba(93,101,255,.08)}
+.stat-card span{display:block}
+.stat-label{font-size:.78rem;text-transform:uppercase;letter-spacing:.18em;color:var(--ink-soft);margin-bottom:.55rem}
+.stat-value{font-size:1.1rem;font-weight:600;color:var(--ink)}
+.feature-figure{position:relative;border-radius:26px;overflow:hidden;box-shadow:0 45px 75px -45px rgba(25,26,42,.5)}
+.feature-figure img{width:100%;height:auto;display:block}
+.feature-figure figcaption{position:absolute;left:0;bottom:0;width:100%;padding:1rem 1.4rem;background:linear-gradient(0deg,rgba(17,19,45,.78),rgba(17,19,45,0));color:#fff;font-size:.9rem}
 
-/* ─── HERO ─────────────────────────────────────────── */
-.hero{height:56vh;min-height:360px;background:url("hero.jpg") center/cover no-repeat;position:relative;display:flex;justify-content:center;align-items:center;text-align:center}
-.hero::after{content:"";position:absolute;inset:0;background:rgba(85,88,121,.45)}
-.hero .content{position:relative;z-index:1;max-width:680px;padding:0 1rem}
-.hero h1{font-size:clamp(3rem,7vw,5rem);color:#fff;text-shadow:0 2px 6px rgba(0,0,0,.55)}
-.hero p{color:#fff;margin-bottom:1.6rem}
-.btn{display:inline-block;background:var(--clr-main);color:#fff;padding:.75rem 1.5rem;border-radius:6px;font-weight:700}
-.btn:hover{transform:translateY(-1px)}
-
-/* ─── EXPERIENCE PHOTO ─────────────────────────────── */
-.exp-photo{margin-top:2rem;text-align:center}
-.exp-photo img{width:100%;max-width:720px;height:auto;border-radius:10px;box-shadow:0 4px 14px rgba(0,0,0,.08)}
-.exp-photo figcaption{margin-top:.6rem;font-size:.85rem;color:var(--clr-link)}
-
-/* ─── ACCORDIONS ───────────────────────────────────── */
-.accordion{--bd:#e3e3e3;--hl:#98A1BC}
-.accordion details{border:1px solid var(--bd);border-radius:8px;margin-bottom:1.2rem;transition:border-color .25s,box-shadow .25s}
-.accordion summary{list-style:none;cursor:pointer;padding:.95rem 1.2rem;font-weight:700;position:relative}
-.accordion summary::marker{display:none}
+/* ─── ACCORDIONS ───────────────────────────────────────────── */
+.accordion{display:grid;gap:1.1rem;margin-top:1.4rem}
+.accordion details{border-radius:var(--radius);border:1px solid rgba(93,101,255,.16);background:#fff;box-shadow:0 22px 45px -38px rgba(22,24,58,.45);transition:border-color .25s ease,transform .25s ease,box-shadow .25s ease}
+.accordion details[open]{border-color:rgba(93,101,255,.35);transform:translateY(-2px);box-shadow:0 28px 60px -40px rgba(24,28,70,.45)}
+.accordion summary{list-style:none;cursor:pointer;padding:1.2rem 1.45rem;font-weight:600;font-size:1.02rem;color:var(--ink);display:flex;align-items:center;gap:.8rem}
 .accordion summary::-webkit-details-marker{display:none}
-.accordion summary::before{content:"▸";font-size:.85rem;color:var(--clr-main);margin-right:.6rem}
-.accordion details[open] summary::before{transform:rotate(90deg)}
-.accordion details[open]{border-color:var(--hl);box-shadow:0 4px 14px rgba(0,0,0,.06)}
-.accordion p{padding:0 1.2rem 1.1rem;font-size:.95rem}
-.accordion p a{display:inline-block;margin-top:.55rem;padding:.35rem .85rem;font-size:.83rem;border:1px solid var(--hl);border-radius:4px;color:var(--hl);transition:background .25s,color .25s}
-.accordion p a:hover{background:var(--hl);color:#fff}
+.accordion summary::before{content:"";flex-shrink:0;width:1.9rem;height:1.9rem;border-radius:50%;background:var(--accent-soft);display:grid;place-items:center;font-size:1rem;color:var(--accent)}
+.accordion summary::after{content:"⌄";margin-left:auto;font-size:1rem;transition:transform .25s ease}
+.accordion details[open] summary::after{transform:rotate(180deg)}
+.accordion p{padding:0 1.45rem 1.35rem;font-size:.98rem}
+.accordion p em{color:var(--ink)}
+.accordion p a{display:inline-flex;align-items:center;gap:.35rem;margin-top:.65rem;font-size:.88rem;padding:.45rem .95rem;border-radius:999px;border:1px solid var(--accent);color:var(--accent);transition:background .2s ease,color .2s ease}
+.accordion p a:hover{background:var(--accent);color:#fff}
 
-/* ─── PAPER GRID (used if needed) ──────────────────── */
-.paper-grid{display:grid;gap:1.6rem}
-@media(min-width:680px){.paper-grid{grid-template-columns:repeat(2,1fr)}}
-.paper{border:1px solid #e5e5e5;border-radius:10px;padding:1.5rem;box-shadow:0 3px 8px rgba(0,0,0,.04);transition:.25s}
-.paper:hover{transform:translateY(-4px);box-shadow:0 8px 20px rgba(0,0,0,.08)}
-.paper a{display:inline-flex;align-items:center;gap:.4rem}
-.paper a::after{content:"↗︎";font-size:.8rem}
+/* ─── WRITING GRID ─────────────────────────────────────────── */
+.writing-grid{display:grid;gap:1.5rem;margin-top:1.6rem}
+@media(min-width:720px){.writing-grid{grid-template-columns:repeat(2,1fr)}}
+.write-card{background:#fff;border-radius:var(--radius);padding:1.75rem;border:1px solid rgba(93,101,255,.12);box-shadow:0 20px 50px -36px rgba(20,21,40,.45);display:flex;flex-direction:column;gap:1rem}
+.write-card h3{margin:0;font-size:1.35rem}
+.write-meta{font-size:.85rem;color:var(--ink-soft);letter-spacing:.08em;text-transform:uppercase}
+.write-card p{margin:0;color:var(--ink-soft)}
+.btn-row{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:auto}
+.btn.outline{background:transparent;border:1px solid rgba(93,101,255,.35);color:var(--ink)}
+.btn.outline:hover{background:var(--accent-soft);color:var(--accent)}
 
-/* ── Education timeline ────────────────────────────── */
-.edu-line{border-left:2px solid #e3e3e3;margin-top:2.0rem;padding-left:1.4rem}
-.edu-item{position:relative;margin-bottom:2.0rem}
-.edu-item::before{content:"";position:absolute;width:.7rem;height:.7rem;border-radius:50%;left:-1.05rem;top:.3rem;background:var(--clr-link)}
+/* ─── EDUCATION TIMELINE ───────────────────────────────────── */
+.edu-line{border-left:2px solid rgba(93,101,255,.25);padding-left:1.6rem;margin-top:2rem;display:grid;gap:1.9rem}
+.edu-item{position:relative;padding-left:0}
+.edu-item::before{content:"";position:absolute;left:-2.05rem;top:.4rem;width:.9rem;height:.9rem;border-radius:50%;background:var(--accent);box-shadow:0 0 0 6px rgba(93,101,255,.12)}
+.edu-item strong{font-size:1.05rem;color:var(--ink)}
 
-/* ─── FOOTER ───────────────────────────────────────── */
-footer{text-align:center;padding:2rem .5rem;font-size:.82rem;color:var(--clr-link);background:#fff;border-top:1px solid var(--bg-parch)}
-/* ─── WRITING CARDS ─────────────────────────────── */
-.writing-grid{display:grid;gap:1.6rem}
-@media(min-width:680px){.writing-grid{grid-template-columns:repeat(2,1fr)}}
-.write-card{border:1px solid #e5e5e5;border-radius:10px;padding:1.5rem;background:#fff;
-  box-shadow:0 3px 8px rgba(0,0,0,.04);transition:.25s}
-.write-card:hover{transform:translateY(-4px);box-shadow:0 8px 20px rgba(0,0,0,.08)}
-.write-card h3{margin:0 0 .4rem}
-.write-meta{font-size:.85rem;color:var(--clr-link);margin-bottom:.8rem}
-.btn-row{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1rem}
-.btn.outline{background:transparent;color:var(--clr-main);border:1px solid var(--clr-link)}
-.btn.outline:hover{background:var(--clr-link);color:#fff}
+/* ─── CONTACT CARD ─────────────────────────────────────────── */
+.contact-card{display:grid;gap:1.4rem;padding:2rem;border-radius:var(--radius);background:#fff;border:1px solid rgba(93,101,255,.14);box-shadow:0 28px 60px -40px rgba(18,19,43,.55)}
+.contact-card p{margin:0}
+.contact-links{display:flex;flex-direction:column;gap:.4rem;font-size:1rem}
+.contact-links a{color:var(--ink)}
+.contact-links a:hover{color:var(--accent)}
 
-/* ─── PREVIEW DIALOG ─────────────────────────────── */
-dialog.preview{width:min(1000px,92vw);border:none;border-radius:10px;padding:0;overflow:hidden;
-  box-shadow:0 12px 30px rgba(0,0,0,.35)}
-dialog::backdrop{background:rgba(0,0,0,.4)}
-.preview-head{display:flex;justify-content:space-between;align-items:center;padding:.8rem 1rem;background:#fff;border-bottom:1px solid #eee}
-.preview-body{height:min(76vh,900px);background:#f8f8f8}
+/* ─── FOOTER ───────────────────────────────────────────────── */
+footer{text-align:center;padding:2.4rem 1.2rem;font-size:.85rem;color:var(--ink-soft);border-top:1px solid rgba(93,101,255,.12);background:rgba(255,255,255,.82)}
+
+/* ─── DIALOG PREVIEW ───────────────────────────────────────── */
+dialog.preview{width:min(1000px,92vw);border:none;border-radius:16px;overflow:hidden;box-shadow:0 20px 80px rgba(12,16,70,.45)}
+dialog::backdrop{background:rgba(13,18,54,.48)}
+.preview-head{display:flex;justify-content:space-between;align-items:center;padding:.9rem 1.2rem;background:#fff;border-bottom:1px solid rgba(0,0,0,.06)}
+.preview-body{height:min(76vh,900px);background:#f8f8fb}
 .preview-body iframe{width:100%;height:100%;border:0}
-.icon-btn{background:transparent;border:0;font-size:1.1rem;cursor:pointer;color:var(--clr-main)}
-.icon-btn:hover{opacity:.8}
+.icon-btn{background:transparent;border:0;font-size:1.2rem;cursor:pointer;color:var(--ink)}
+.icon-btn:hover{opacity:.7}
+
+/* ─── RESPONSIVE TWEAKS ───────────────────────────────────── */
+@media(max-width:640px){
+  .nav .container{flex-direction:column;align-items:flex-start}
+  .nav-links{width:100%;justify-content:flex-start}
+  .hero .container{grid-template-columns:1fr}
+  .hero-card{display:none}
+  .stat-grid{grid-template-columns:1fr}
+  .contact-card{padding:1.6rem}
+}
 </style>
 </head>
-
 <body>
+<a class="skip-link" href="#main">Skip to main content</a>
 
 <!-- SPLASH -->
 <div id="splash" aria-label="Dismiss intro">
   <div class="splash-inner">
-    <h1>Let’s&nbsp;Dive&nbsp;into&nbsp;<br><span>Zen Economics</span></h1>
+    <h1>Let’s&nbsp;Dive&nbsp;into&nbsp;<span>Zen Economics</span></h1>
     <p>(click anywhere or press Enter)</p>
   </div>
 </div>
@@ -144,183 +198,250 @@ dialog::backdrop{background:rgba(0,0,0,.4)}
 <!-- NAVBAR -->
 <nav class="nav" aria-label="Primary">
   <div class="container">
-    <strong class="brand">आर्यन अय्यर | Aryan Ayyar | 阿亚尔·阿里安</strong>
-    <div>
+    <strong class="brand">आर्यन अय्यर · Aryan Ayyar · 阿亚尔·阿里安</strong>
+    <div class="nav-links">
+      <a href="#about">About</a>
       <a href="#publications">Publications</a>
-  <a href="#wip">Work in Progress</a>
-  <a href="#writing">Personal Writing</a> <!-- ← add this -->
-  <a href="#education">Education</a>
-  <a href="#contact">Contact</a>
+      <a href="#wip">Work in Progress</a>
+      <a href="#writing">Personal Writing</a>
+      <a href="#commentary">Commentary</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
     </div>
   </div>
-  
 </nav>
 
 <!-- HERO -->
 <header class="hero" role="banner">
-  <div class="content">
-    <h1>Zen Economics</h1>
-    <p>Asset pricing · Market microstructure · Rational expectations</p>
-    <a href="#contact" class="btn">Get in touch</a>
+  <div class="container">
+    <div>
+      <span class="eyebrow">Financial Economist</span>
+      <h1>Zen Economics</h1>
+      <p class="lead">Bridging theoretical models and practitioner insight to explain liquidity, price formation, and the subtle choreography of information in markets.</p>
+      <div class="hero-chips" role="list">
+        <span class="chip" role="listitem">Asset Pricing</span>
+        <span class="chip" role="listitem">Market Microstructure</span>
+        <span class="chip" role="listitem">Rational Expectations</span>
+      </div>
+      <div class="hero-actions">
+        <a class="btn" href="#contact">Get in touch</a>
+        <a class="btn ghost" href="#publications">View research</a>
+      </div>
+    </div>
+    <aside class="hero-card" aria-label="Snapshot">
+      <h3>Research in practice</h3>
+      <p>Current work combines empirical signal extraction with rational expectations models to create actionable views of market depth and execution cost.</p>
+      <ul>
+        <li>Building dynamic trading models that respect liquidity constraints.</li>
+        <li>Studying insider information flow for predictive return signals.</li>
+        <li>Exploring culture-driven adoption of green financing instruments.</li>
+      </ul>
+    </aside>
   </div>
 </header>
 
-<!-- handshake photo -->
-<section class="alt-3">
-  <figure>
-  <img src="polyu.jpg" alt="Aryan Ayyar greeting a colleague at PolyU event" class="hero-img">
-  <figcaption>Celebrating joint research milestones at PolyU, 2025</figcaption>
-</figure>
-</section>
-
-<!-- PUBLICATIONS – always open -->
-<section id="publications" class="alt-3" style="text-align:left">
-  <div class="container">
-    <h2>Publications</h2>
-    <div class="accordion" style="margin-top:1.2rem">
-      <details open>
-        <summary>Momentum, Liquidity & Stock Returns: Indian Evidence ↗︎</summary>
-        <p>
-          <em>Pacific Basin Finance Journal</em>, 2023<br>
-          Research assistance for authors Madhu Veeraraghavan and Abhishek Rohit.<br>
-          <a href="https://www.dropbox.com/scl/fi/shlmwcc8fri8i8qe87ds7/Momentum-Reversals-and-Liquidity-Indian-Evidence.pdf?dl=0" target="_blank" rel="noopener">Download</a>
-        </p>
-      </details>
-      <details open>
-        <summary>Green Bonds — Sustainable Investments Dilemma ↗︎</summary>
-        <p>
-          <em>IVEY Case Publishing</em>, 2025<br>
-          <a href="https://www.dropbox.com/s/DROPBOX_LINK_2?dl=0" target="_blank" rel="noopener">View case</a>
-        </p>
-      </details>
+<main id="main">
+  <!-- ABOUT / SNAPSHOT -->
+  <section id="about" class="section-soft">
+    <div class="container split">
+      <div>
+        <h2 class="section-title">Research that listens to the market</h2>
+        <p class="section-intro">Aryan Ayyar approaches finance with a macro curiosity and a microstructural lens. Drawing on engineering precision and PolyU research collaborations, his work focuses on how information asymmetry, execution frictions, and investor preferences reshape the incentives of modern capital markets.</p>
+        <div class="stat-grid">
+          <div class="stat-card">
+            <span class="stat-label">Current Focus</span>
+            <span class="stat-value">Dynamic insider trading &amp; liquidity risk</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Methods</span>
+            <span class="stat-value">Rational expectations · Optimal execution · Time-series inference</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Collaborations</span>
+            <span class="stat-value">PolyU · Manipal · Industry partners</span>
+          </div>
+        </div>
+      </div>
+      <figure class="feature-figure">
+        <img src="polyu.jpg" alt="Aryan Ayyar greeting a colleague at a PolyU research event" />
+        <figcaption>Celebrating joint research milestones at PolyU, 2025</figcaption>
+      </figure>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- WORKING PAPERS – always open -->
-<section id="wip" class="alt-3" style="text-align:left">
-  <div class="container">
-    <h2>Work in Progress</h2>
-    <div class="accordion">
-      <details open>
-        <summary>Dynamic Insider Trading and Return Predictability↗︎</summary>
-        <p>
-          Working paper [2025]<br>
-          <a href="insider-momentum.pdf" target="_blank" rel="noopener">Download</a>
-        </p>
-      </details>
-      <details open>
-        <summary>Asset Pricing Anomalies in an Emerging Market ↗︎</summary>
-        <p>Working paper</p>
-      </details>
-      <details open>
-        <summary>Individualistic Cultures’ Pro-Environmental Preferences in Green Financing ↗︎</summary>
-        <p>
-          Working paper [with Krishna Prasad and Durga Prasad, 2024]<br>
-          <a href="green-bond.pdf" target="_blank" rel="noopener">Download</a>
-        </p>
-      </details>
-      <details open>
-        <summary>Dynamic Order Execution Mechanisms ↗︎</summary>
-        <p>
-          Master’s thesis [under Te Feng Chen, PolyU, 2025]<br>
-          <a href="mast-thes.pdf" target="_blank" rel="noopener">Download</a>
-        </p>
-      </details>
-      <details open>
-        <summary>Asymmetric Information and Strategic Behavior ↗︎</summary>
-        <p>
-          A multiperiod model of insider leverage limits and market depth.<br>
-          <a href="https://www.dropbox.com/scl/fi/dpooh39dqo1w1t6iupgft/bp-mkt.pdf?dl=0" target="_blank" rel="noopener">Download</a>
-        </p>
-      </details>
+  <!-- PUBLICATIONS -->
+  <section id="publications">
+    <div class="container">
+      <h2 class="section-title">Publications</h2>
+      <p class="section-intro">Peer-reviewed work capturing the evolution of emerging-market liquidity and sustainable investment architecture.</p>
+      <div class="accordion">
+        <details open>
+          <summary>Momentum, Liquidity &amp; Stock Returns: Indian Evidence</summary>
+          <p>
+            <em>Pacific Basin Finance Journal</em>, 2023<br />
+            Research assistance for authors Madhu Veeraraghavan and Abhishek Rohit.<br />
+            <a href="https://www.dropbox.com/scl/fi/shlmwcc8fri8i8qe87ds7/Momentum-Reversals-and-Liquidity-Indian-Evidence.pdf?dl=0" target="_blank" rel="noopener">Download paper ↗︎</a>
+          </p>
+        </details>
+        <details open>
+          <summary>Green Bonds — Sustainable Investments Dilemma</summary>
+          <p>
+            <em>IVEY Case Publishing</em>, 2025<br />
+            <a href="https://www.dropbox.com/s/DROPBOX_LINK_2?dl=0" target="_blank" rel="noopener">View case ↗︎</a>
+          </p>
+        </details>
+      </div>
     </div>
-  </div>
-</section>
-<!-- PERSONAL WRITING -->
-<section id="writing" class="alt-1" style="text-align:left">
-  <div class="container">
-    <h2>Personal Writing</h2>
-    <div class="writing-grid">
+  </section>
 
-      <!-- (Optional) add more pieces as <article class="write-card"> ... </article> -->
-
+  <!-- WORKING PAPERS -->
+  <section id="wip">
+    <div class="container">
+      <h2 class="section-title">Work in Progress</h2>
+      <p class="section-intro">Ongoing projects connecting structural models and market data to surface new perspectives on price efficiency.</p>
+      <div class="accordion">
+        <details open>
+          <summary>Dynamic Insider Trading and Return Predictability</summary>
+          <p>
+            Working paper [2025]<br />
+            <a href="insider-momentum.pdf" target="_blank" rel="noopener">Download ↗︎</a>
+          </p>
+        </details>
+        <details open>
+          <summary>Asset Pricing Anomalies in an Emerging Market</summary>
+          <p>Working paper</p>
+        </details>
+        <details open>
+          <summary>Individualistic Cultures’ Pro-Environmental Preferences in Green Financing</summary>
+          <p>
+            Working paper with Krishna Prasad and Durga Prasad (2024)<br />
+            <a href="green-bond.pdf" target="_blank" rel="noopener">Download ↗︎</a>
+          </p>
+        </details>
+        <details open>
+          <summary>Dynamic Order Execution Mechanisms</summary>
+          <p>
+            Master’s thesis under Te Feng Chen, PolyU (2025)<br />
+            <a href="mast-thes.pdf" target="_blank" rel="noopener">Download ↗︎</a>
+          </p>
+        </details>
+        <details open>
+          <summary>Asymmetric Information and Strategic Behavior</summary>
+          <p>
+            A multiperiod model of insider leverage limits and market depth.<br />
+            <a href="https://www.dropbox.com/scl/fi/dpooh39dqo1w1t6iupgft/bp-mkt.pdf?dl=0" target="_blank" rel="noopener">Download ↗︎</a>
+          </p>
+        </details>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <!-- PERSONAL WRITING -->
+  <section id="writing" class="section-soft">
+    <div class="container">
+      <h2 class="section-title">Personal Writing</h2>
+      <p class="section-intro">Notes from the intersection of markets, culture, and daily practice. Essays mix narrative experiments with applied intuition.</p>
+      <div class="writing-grid">
+        <article class="write-card">
+          <div>
+            <p class="write-meta">Essay · 2024</p>
+            <h3>Rough Volatility and Fractional Stochastic Processes</h3>
+            <p>An intuitive walk through the Hurst exponent, Volterra kernels, and why the fractional view of volatility matters for execution.</p>
+          </div>
+          <div class="btn-row">
+            <a class="btn outline" href="rough-volatility-essay.pdf" target="_blank" rel="noopener">Download essay ↗︎</a>
+          </div>
+        </article>
+        <article class="write-card">
+          <div>
+            <p class="write-meta">Field Notes · 2025</p>
+            <h3>Competitive Equilibrium Models</h3>
+            <p>Concise notes on Arrow–Debreu equilibrium structure, Sonnenschein–Mantel–Debreu results, and welfare implications for policy.</p>
+          </div>
+          <div class="btn-row">
+            <a class="btn outline" href="equilibrium-models.pdf" target="_blank" rel="noopener">Download notes ↗︎</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMENTARY -->
+  <section id="commentary">
+    <div class="container">
+      <h2 class="section-title">Independent Commentary</h2>
+      <p class="section-intro">Extended reflections that blend theory with practitioner dialogue.</p>
+      <div class="accordion">
+        <details open>
+          <summary>Rough Volatility and Fractional Stochastic Processes</summary>
+          <p>
+            An intuitive essay blending Hurst exponent, fractional Brownian motion, and Volterra equations.<br />
+            <a href="rough-volatility-essay.pdf" target="_blank" rel="noopener">Download ↗︎</a>
+          </p>
+        </details>
+        <details open>
+          <summary>Competitive Equilibrium Models</summary>
+          <p>
+            Notes on Arrow–Debreu, Sonnenschein–Mantel–Debreu aggregation, and welfare results.<br />
+            <a href="equilibrium-models.pdf" target="_blank" rel="noopener">Download ↗︎</a>
+          </p>
+        </details>
+        <details open>
+          <summary>Rational Expectations and Informational Efficiency</summary>
+          <p>
+            Primer on Grossman–Stiglitz, Kyle, and noisy rational expectations equilibria.<br />
+            <a href="https://www.dropbox.com/scl/fi/nqyo8pyxlmbg8mtkobq1l/rational-expectations.pdf?dl=0" target="_blank" rel="noopener">Download ↗︎</a>
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education" class="section-soft">
+    <div class="container">
+      <h2 class="section-title">Education</h2>
+      <p class="section-intro">Engineering intuition meets financial rigor.</p>
+      <div class="edu-line">
+        <div class="edu-item">
+          <p><strong>MS Finance</strong>, The Hong Kong Polytechnic University (2024–2025)</p>
+        </div>
+        <div class="edu-item">
+          <p><strong>BTech Mechatronics Engineering</strong>, Manipal Institute of Technology (2019–2023)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">Contact</h2>
+      <p class="section-intro">Let’s collaborate on research, policy design, or execution strategy.</p>
+      <div class="contact-card">
+        <div class="contact-links">
+          <a href="mailto:aryan.ayyar@outlook.in">aryan.ayyar@outlook.in</a>
+          <span>+852&nbsp;5299&nbsp;6471</span>
+          <a href="https://www.linkedin.com/in/your-linkedin" target="_blank" rel="noopener">LinkedIn ↗︎</a>
+        </div>
+        <a class="btn" href="cv.pdf" target="_blank" rel="noopener">Download CV ↗︎</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>© <span id="y"></span> Aryan Ayyar</footer>
 
 <!-- Inline PDF preview (dialog) -->
 <dialog class="preview" id="pdfPreview" aria-label="Inline PDF preview">
   <div class="preview-head">
-    <strong>The Nicest Wife — Preview</strong>
-    <button class="icon-btn" id="closePreview" aria-label="Close">✕</button>
+    <strong>Document preview</strong>
+    <button class="icon-btn" id="closePreview" aria-label="Close preview">✕</button>
   </div>
   <div class="preview-body">
     <iframe id="previewFrame" title="PDF preview" loading="lazy"></iframe>
   </div>
 </dialog>
-<!-- INDEPENDENT COMMENTARY – always open -->
-<section id="commentary" class="alt-3" style="text-align:left">
-  <div class="container">
-    <h2>Independent Commentary</h2>
-    <div class="accordion" style="margin-top:1.2rem">
-      <details open>
-    <summary>Rough Volatility and Fractional Stochastic Processes ↗︎</summary>
-    <p>
-      An intuitive essay blending Hurst exponent, fractional Brownian motion, and Volterra equations<br>
-      <a href="rough-volatility-essay.pdf" target="_blank" rel="noopener">Download</a>
-    </p>
-  </details>
-      <details open>
-        <summary>Competitive Equilibrium Models ↗︎</summary>
-        <p>
-          Notes on Arrow–Debreu, SMD aggregation and welfare results<br>
-          <a href="equilibrium-models.pdf" target="_blank" rel="noopener">Download</a>
-        </p>
-      </details>
-      <details open>
-        <summary>Rational Expectations and Informational Efficiency ↗︎</summary>
-        <p>
-          Primer on Grossman–Stiglitz, Kyle and noisy REE models<br>
-          <a href="https://www.dropbox.com/scl/fi/nqyo8pyxlmbg8mtkobq1l/rational-expectations.pdf?dl=0" target="_blank" rel="noopener">Download</a>
-        </p>
-      </details>
-    </div>
-  </div>
-</section>
-
-<!-- EDUCATION – semicircle timeline -->
-<section id="education" class="alt-3" style="text-align:left">
-  <div class="container">
-    <h2>Education</h2>
-    <div class="edu-line">
-      <div class="edu-item">
-        <p><strong>MS Finance</strong>, The Hong Kong Polytechnic University (2024–2025)</p>
-      </div>
-      <div class="edu-item">
-        <p><strong>BTech Mechatronics Engineering</strong>, Manipal Institute of Technology (2019–2023)</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="alt-2" style="text-align:center">
-  <div class="container">
-    <h2>Contact</h2>
-    <div class="card-flex" style="display:flex;flex-direction:row;gap:1.8rem;align-items:center;justify-content:center;border:1px solid #e5e5e5;border-radius:10px;padding:1.6rem 1.8rem;background:#fff;box-shadow:0 3px 8px rgba(0,0,0,.05)">
-      <div style="flex:1">
-        <p>Email · <a href="mailto:aryan.ayyar@outlook.in">aryan.ayyar@outlook.in</a><br>
-           Phone · +852&nbsp;5299&nbsp;6471<br>
-           <a href="https://www.linkedin.com/in/your-linkedin" target="_blank" rel="noopener">LinkedIn</a>
-        </p>
-        <a class="btn" href="cv.pdf" target="_blank" rel="noopener" style="margin-top:1rem">Download&nbsp;CV&nbsp;↗︎</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer>© <span id="y"></span> Aryan Ayyar</footer>
 
 <!-- Splash + PDF preview script (single block) -->
 <script>
@@ -352,16 +473,13 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('[data-preview]').forEach(btn => {
       btn.addEventListener('click', () => {
         const url = btn.getAttribute('data-preview');
-        // If you want a universal viewer fallback, use:
-        // const viewer = 'https://docs.google.com/gview?embedded=1&url=' + encodeURIComponent(url);
-        frame.src = url;
-        dlg.showModal();
+        frame.src = url || '';
+        if (url) dlg.showModal();
       });
     });
 
     closeBtn?.addEventListener('click', () => { dlg.close(); frame.src = ''; });
 
-    // Click outside dialog content to close
     dlg.addEventListener('click', (e) => {
       const rect = dlg.getBoundingClientRect();
       const inside = e.clientX >= rect.left && e.clientX <= rect.right &&
