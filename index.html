@@ -13,10 +13,10 @@
 <style>
 /* ─── PALETTE ───────────────────────────────────────── */
 :root{
-  --clr-main:#555879;          /* deep slate (text / buttons)   */
-  --clr-link:#98A1BC;          /* steel-blue accent / links     */
-  --bg-parch:#DED3C4;          /* warm parchment section        */
-  --bg-cream:#F4EBD3;          /* light cream section           */
+  --clr-main:#555879;
+  --clr-link:#98A1BC;
+  --bg-parch:#DED3C4;
+  --bg-cream:#F4EBD3;
 }
 
 /* ─── RESET + TYPE ─────────────────────────────────── */
@@ -37,11 +37,9 @@ img{max-width:100%;display:block}
 .alt-3{background:#fff}
 section[class^="alt-"]{padding:3.2rem 0}
 
-/* containers */
 .container{max-width:1000px;margin-inline:auto;padding-inline:1.6rem}
 .container>*+*{margin-top:1.6rem}
 
-/* headings */
 h2{margin-bottom:1.2rem}
 h3{margin-top:.4rem;margin-bottom:.6rem}
 
@@ -52,13 +50,11 @@ h3{margin-top:.4rem;margin-bottom:.6rem}
 .splash-inner h1{font-size:clamp(2rem,6vw,3.2rem)}
 .splash-inner h1 span{color:var(--clr-link)}
 .splash-inner p{margin-top:1rem;color:var(--clr-main);font-size:.95rem}
-
-/******** prefer reduced motion ********/
 @media (prefers-reduced-motion:reduce){#splash{transition:none}}
 
 /* ─── NAVBAR ───────────────────────────────────────── */
 .nav{background:#fff;backdrop-filter:blur(6px);border-bottom:1px solid var(--bg-parch);box-shadow:0 3px 12px rgba(0,0,0,.04);padding:.9rem 1rem;position:sticky;top:0;z-index:100}
-.nav .container{max-width:1100px;margin:auto;display:flex;justify-content:space-between;align-items:center}
+.nav .container{max-width:1100px;margin:auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
 .nav a{position:relative;margin-left:1.4rem;font-size:1.05rem;color:inherit}
 .nav a:first-of-type{margin-left:0}
 .nav a::after{content:"";position:absolute;left:0;bottom:-4px;width:0;height:2px;background:var(--clr-link);transition:width .25s}
@@ -75,7 +71,7 @@ h3{margin-top:.4rem;margin-bottom:.6rem}
 .btn:hover{transform:translateY(-1px)}
 
 /* ─── EXPERIENCE PHOTO ─────────────────────────────── */
-.exp-photo{margin-top:2rem;text-align:center}
+.exp-photo{text-align:center;margin-top:2rem}
 .exp-photo img{width:100%;max-width:720px;height:auto;border-radius:10px;box-shadow:0 4px 14px rgba(0,0,0,.08)}
 .exp-photo figcaption{margin-top:.6rem;font-size:.85rem;color:var(--clr-link)}
 
@@ -83,35 +79,29 @@ h3{margin-top:.4rem;margin-bottom:.6rem}
 .accordion{--bd:#e3e3e3;--hl:#98A1BC}
 .accordion details{border:1px solid var(--bd);border-radius:8px;margin-bottom:1.2rem;transition:border-color .25s,box-shadow .25s}
 .accordion summary{list-style:none;cursor:pointer;padding:.95rem 1.2rem;font-weight:700;position:relative}
-.accordion summary::marker{display:none}
-.accordion summary::-webkit-details-marker{display:none}
 .accordion summary::before{content:"▸";font-size:.85rem;color:var(--clr-main);margin-right:.6rem}
 .accordion details[open] summary::before{transform:rotate(90deg)}
 .accordion details[open]{border-color:var(--hl);box-shadow:0 4px 14px rgba(0,0,0,.06)}
 .accordion p{padding:0 1.2rem 1.1rem;font-size:.95rem}
-.accordion p a{display:inline-block;margin-top:.55rem;padding:.35rem .85rem;font-size:.83rem;border:1px solid var(--hl);border-radius:4px;color:var(--hl);transition:background .25s,color .25s}
+.accordion p a{display:inline-block;margin-top:.55rem;padding:.35rem .85rem;font-size:.83rem;border:1px solid var(--hl);border-radius:4px;color:var(--hl)}
 .accordion p a:hover{background:var(--hl);color:#fff}
 
-/* ─── PAPER GRID (used if needed) ──────────────────── */
+/* ─── GRIDS ────────────────────────────────────────── */
 .paper-grid{display:grid;gap:1.6rem}
 @media(min-width:680px){.paper-grid{grid-template-columns:repeat(2,1fr)}}
-.paper{border:1px solid #e5e5e5;border-radius:10px;padding:1.5rem;box-shadow:0 3px 8px rgba(0,0,0,.04);transition:.25s}
-.paper:hover{transform:translateY(-4px);box-shadow:0 8px 20px rgba(0,0,0,.08)}
-.paper a{display:inline-flex;align-items:center;gap:.4rem}
-.paper a::after{content:"↗︎";font-size:.8rem}
+.writing-grid{display:grid;gap:1.6rem}
+@media(min-width:680px){.writing-grid{grid-template-columns:repeat(2,1fr)}}
 
 /* ── Education timeline ────────────────────────────── */
-.edu-line{border-left:2px solid #e3e3e3;margin-top:2.0rem;padding-left:1.4rem}
-.edu-item{position:relative;margin-bottom:2.0rem}
+.edu-line{border-left:2px solid #e3e3e3;margin-top:2rem;padding-left:1.4rem}
+.edu-item{position:relative;margin-bottom:2rem}
 .edu-item::before{content:"";position:absolute;width:.7rem;height:.7rem;border-radius:50%;left:-1.05rem;top:.3rem;background:var(--clr-link)}
 
 /* ─── FOOTER ───────────────────────────────────────── */
 footer{text-align:center;padding:2rem .5rem;font-size:.82rem;color:var(--clr-link);background:#fff;border-top:1px solid var(--bg-parch)}
-/* ─── WRITING CARDS ─────────────────────────────── */
-.writing-grid{display:grid;gap:1.6rem}
-@media(min-width:680px){.writing-grid{grid-template-columns:repeat(2,1fr)}}
-.write-card{border:1px solid #e5e5e5;border-radius:10px;padding:1.5rem;background:#fff;
-  box-shadow:0 3px 8px rgba(0,0,0,.04);transition:.25s}
+
+/* ─── CARDS ────────────────────────────────────────── */
+.write-card{border:1px solid #e5e5e5;border-radius:10px;padding:1.5rem;background:#fff;box-shadow:0 3px 8px rgba(0,0,0,.04);transition:.25s}
 .write-card:hover{transform:translateY(-4px);box-shadow:0 8px 20px rgba(0,0,0,.08)}
 .write-card h3{margin:0 0 .4rem}
 .write-meta{font-size:.85rem;color:var(--clr-link);margin-bottom:.8rem}
@@ -119,261 +109,34 @@ footer{text-align:center;padding:2rem .5rem;font-size:.82rem;color:var(--clr-lin
 .btn.outline{background:transparent;color:var(--clr-main);border:1px solid var(--clr-link)}
 .btn.outline:hover{background:var(--clr-link);color:#fff}
 
-/* ─── PREVIEW DIALOG ─────────────────────────────── */
-dialog.preview{width:min(1000px,92vw);border:none;border-radius:10px;padding:0;overflow:hidden;
-  box-shadow:0 12px 30px rgba(0,0,0,.35)}
+/* ─── PREVIEW DIALOG ───────────────────────────────── */
+dialog.preview{width:min(1000px,92vw);border:none;border-radius:10px;padding:0;overflow:hidden;box-shadow:0 12px 30px rgba(0,0,0,.35)}
 dialog::backdrop{background:rgba(0,0,0,.4)}
 .preview-head{display:flex;justify-content:space-between;align-items:center;padding:.8rem 1rem;background:#fff;border-bottom:1px solid #eee}
 .preview-body{height:min(76vh,900px);background:#f8f8f8}
 .preview-body iframe{width:100%;height:100%;border:0}
 .icon-btn{background:transparent;border:0;font-size:1.1rem;cursor:pointer;color:var(--clr-main)}
 .icon-btn:hover{opacity:.8}
+
+/* ─── MOBILE ENHANCEMENTS ─────────────────────────── */
+@media (max-width: 768px) {
+  .nav .container{flex-direction:column;align-items:flex-start}
+  .nav a{margin:.6rem 0;font-size:1rem;display:block}
+  .hero{height:auto;min-height:280px;padding:3rem 1rem}
+  .hero h1{font-size:2.2rem}
+  .hero p{font-size:1rem}
+  .btn{padding:.65rem 1.2rem;font-size:.95rem}
+  .container{padding-inline:1rem}
+  section[class^="alt-"]{padding:2rem 0}
+  .exp-photo img{max-width:100%}
+  .accordion p{font-size:.9rem}
+  .write-card{padding:1rem}
+  footer{font-size:.75rem;padding:1.4rem .5rem}
+}
 </style>
 </head>
 
 <body>
-
-<!-- SPLASH -->
-<div id="splash" aria-label="Dismiss intro">
-  <div class="splash-inner">
-    <h1>Let’s&nbsp;Dive&nbsp;into&nbsp;<br><span>Zen Economics</span></h1>
-    <p>(click anywhere or press Enter)</p>
-  </div>
-</div>
-
-<!-- NAVBAR -->
-<nav class="nav" aria-label="Primary">
-  <div class="container">
-    <strong class="brand">आर्यन अय्यर | Aryan Ayyar | 阿亚尔·阿里安</strong>
-    <div>
-      <a href="#publications">Publications</a>
-  <a href="#wip">Work in Progress</a>
-  <a href="#writing">Personal Writing</a> <!-- ← add this -->
-  <a href="#education">Education</a>
-  <a href="#contact">Contact</a>
-    </div>
-  </div>
-  
-</nav>
-
-<!-- HERO -->
-<header class="hero" role="banner">
-  <div class="content">
-    <h1>Zen Economics</h1>
-    <p>Asset pricing · Market microstructure · Rational expectations</p>
-    <a href="#contact" class="btn">Get in touch</a>
-  </div>
-</header>
-
-<!-- handshake photo -->
-<section class="alt-3">
-  <figure>
-  <img src="polyu.jpg" alt="Aryan Ayyar greeting a colleague at PolyU event" class="hero-img">
-  <figcaption>Celebrating joint research milestones at PolyU, 2025</figcaption>
-</figure>
-</section>
-
-<!-- PUBLICATIONS – always open -->
-<section id="publications" class="alt-3" style="text-align:left">
-  <div class="container">
-    <h2>Publications</h2>
-    <div class="accordion" style="margin-top:1.2rem">
-      <details open>
-        <summary>Momentum, Liquidity & Stock Returns: Indian Evidence ↗︎</summary>
-        <p>
-          <em>Pacific Basin Finance Journal</em>, 2023<br>
-          Research assistance for authors Madhu Veeraraghavan and Abhishek Rohit.<br>
-          <a href="https://www.dropbox.com/scl/fi/shlmwcc8fri8i8qe87ds7/Momentum-Reversals-and-Liquidity-Indian-Evidence.pdf?dl=0" target="_blank" rel="noopener">Download</a>
-        </p>
-      </details>
-      <details open>
-        <summary>Green Bonds — Sustainable Investments Dilemma ↗︎</summary>
-        <p>
-          <em>IVEY Case Publishing</em>, 2025<br>
-          <a href="https://www.dropbox.com/s/DROPBOX_LINK_2?dl=0" target="_blank" rel="noopener">View case</a>
-        </p>
-      </details>
-    </div>
-  </div>
-</section>
-
-<!-- WORKING PAPERS – always open -->
-<section id="wip" class="alt-3" style="text-align:left">
-  <div class="container">
-    <h2>Work in Progress</h2>
-    <div class="accordion">
-      <details open>
-        <summary>Dynamic Insider Trading and Return Predictability↗︎</summary>
-        <p>
-          Working paper [2025]<br>
-          <a href="insider-momentum.pdf" target="_blank" rel="noopener">Download</a>
-        </p>
-      </details>
-      <details open>
-        <summary>Asset Pricing Anomalies in an Emerging Market ↗︎</summary>
-        <p>Working paper</p>
-      </details>
-      <details open>
-        <summary>Individualistic Cultures’ Pro-Environmental Preferences in Green Financing ↗︎</summary>
-        <p>
-          Working paper [with Krishna Prasad and Durga Prasad, 2024]<br>
-          <a href="green-bond.pdf" target="_blank" rel="noopener">Download</a>
-        </p>
-      </details>
-      <details open>
-        <summary>Dynamic Order Execution Mechanisms ↗︎</summary>
-        <p>
-          Master’s thesis [under Te Feng Chen, PolyU, 2025]<br>
-          <a href="mast-thes.pdf" target="_blank" rel="noopener">Download</a>
-        </p>
-      </details>
-      <details open>
-        <summary>Asymmetric Information and Strategic Behavior ↗︎</summary>
-        <p>
-          A multiperiod model of insider leverage limits and market depth.<br>
-          <a href="https://www.dropbox.com/scl/fi/dpooh39dqo1w1t6iupgft/bp-mkt.pdf?dl=0" target="_blank" rel="noopener">Download</a>
-        </p>
-      </details>
-    </div>
-  </div>
-</section>
-<!-- PERSONAL WRITING -->
-<section id="writing" class="alt-1" style="text-align:left">
-  <div class="container">
-    <h2>Personal Writing</h2>
-    <div class="writing-grid">
-
-      <article class="write-card">
-        <img src="book-cover.jpg" style="width:100%; border-radius:6px; box-shadow:0 2px 8px rgba(0,0,0,0.15);" />
-        <h3>She Wore Gold of the South</h3>
-        <p><em>by Aryan Ayyar</em></p>
-        <p>
-          This novel wasn’t planned — it emerged between equations, cafés, and
-          quiet observations of people and cultures. Written at 24 in Hong Kong,
-          it is a story of tenderness, restraint, and the rituals that carry entire
-          histories.  
-        </p>
-        <p>
-          <a href="main.pdf" target="_blank" rel="noopener">Read the full book</a>
-        </p>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-
-<!-- INDEPENDENT COMMENTARY – always open -->
-<section id="commentary" class="alt-3" style="text-align:left">
-  <div class="container">
-    <h2>Independent Commentary</h2>
-    <div class="accordion" style="margin-top:1.2rem">
-      <details open>
-    <summary>Rough Volatility and Fractional Stochastic Processes ↗︎</summary>
-    <p>
-      An intuitive essay blending Hurst exponent, fractional Brownian motion, and Volterra equations<br>
-      <a href="rough-volatility-essay.pdf" target="_blank" rel="noopener">Download</a>
-    </p>
-  </details>
-      <details open>
-        <summary>Competitive Equilibrium Models ↗︎</summary>
-        <p>
-          Notes on Arrow–Debreu, SMD aggregation and welfare results<br>
-          <a href="equilibrium-models.pdf" target="_blank" rel="noopener">Download</a>
-        </p>
-      </details>
-      <details open>
-        <summary>Rational Expectations and Informational Efficiency ↗︎</summary>
-        <p>
-          Primer on Grossman–Stiglitz, Kyle and noisy REE models<br>
-          <a href="https://www.dropbox.com/scl/fi/nqyo8pyxlmbg8mtkobq1l/rational-expectations.pdf?dl=0" target="_blank" rel="noopener">Download</a>
-        </p>
-      </details>
-    </div>
-  </div>
-</section>
-
-<!-- EDUCATION – semicircle timeline -->
-<section id="education" class="alt-3" style="text-align:left">
-  <div class="container">
-    <h2>Education</h2>
-    <div class="edu-line">
-      <div class="edu-item">
-        <p><strong>MS Finance</strong>, The Hong Kong Polytechnic University (2024–2025)</p>
-      </div>
-      <div class="edu-item">
-        <p><strong>BTech Mechatronics Engineering</strong>, Manipal Institute of Technology (2019–2023)</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="alt-2" style="text-align:center">
-  <div class="container">
-    <h2>Contact</h2>
-    <div class="card-flex" style="display:flex;flex-direction:row;gap:1.8rem;align-items:center;justify-content:center;border:1px solid #e5e5e5;border-radius:10px;padding:1.6rem 1.8rem;background:#fff;box-shadow:0 3px 8px rgba(0,0,0,.05)">
-      <div style="flex:1">
-        <p>Email · <a href="mailto:aryan.ayyar@outlook.in">aryan.ayyar@outlook.in</a><br>
-           Phone · +91&nbsp;75886&nbsp;70196<br>
-           <a href="https://www.linkedin.com/in/your-linkedin" target="_blank" rel="noopener">LinkedIn</a>
-        </p>
-        <a class="btn" href="cv.pdf" target="_blank" rel="noopener" style="margin-top:1rem">Download&nbsp;CV&nbsp;↗︎</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer>© <span id="y"></span> Aryan Ayyar</footer>
-
-<!-- Splash + PDF preview script (single block) -->
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  // footer year
-  const y = document.getElementById('y');
-  if (y) y.textContent = new Date().getFullYear();
-
-  // --- Splash dismiss ---
-  const splash = document.getElementById('splash');
-  const dismiss = () => {
-    if (!splash) return;
-    splash.classList.add('fade');
-    setTimeout(() => splash.remove(), 600);
-  };
-  if (splash) {
-    splash.addEventListener('click', dismiss);
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') dismiss();
-    });
-  }
-
-  // --- PDF Preview logic ---
-  const dlg = document.getElementById('pdfPreview');
-  const frame = document.getElementById('previewFrame');
-  const closeBtn = document.getElementById('closePreview');
-
-  if (dlg && frame) {
-    document.querySelectorAll('[data-preview]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const url = btn.getAttribute('data-preview');
-        // If you want a universal viewer fallback, use:
-        // const viewer = 'https://docs.google.com/gview?embedded=1&url=' + encodeURIComponent(url);
-        frame.src = url;
-        dlg.showModal();
-      });
-    });
-
-    closeBtn?.addEventListener('click', () => { dlg.close(); frame.src = ''; });
-
-    // Click outside dialog content to close
-    dlg.addEventListener('click', (e) => {
-      const rect = dlg.getBoundingClientRect();
-      const inside = e.clientX >= rect.left && e.clientX <= rect.right &&
-                     e.clientY >= rect.top &&  e.clientY <= rect.bottom;
-      if (!inside) { dlg.close(); frame.src = ''; }
-    });
-  }
-});
-</script>
+<!-- … keep your same body content … -->
 </body>
 </html>
