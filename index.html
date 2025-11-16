@@ -343,8 +343,7 @@ dialog::backdrop{background:rgba(0,0,0,.4)}
 
 <!-- CONTACT -->
 <section id="contact" class="alt-2" style="text-align:center">
-  <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
-  <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="large" data-theme="dark" data-type="VERTICAL" data-vanity="aryan-ayyar" data-version="v1">
+    <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="large" data-theme="dark" data-type="VERTICAL" data-vanity="aryan-ayyar" data-version="v1">
   <a class="badge-base__link LI-simple-link" href="https://in.linkedin.com/in/aryan-ayyar?trk=profile-badge">Aryan Ayyar</a>
 </div>
   
@@ -366,6 +365,7 @@ dialog::backdrop{background:rgba(0,0,0,.4)}
 
 <!-- JS: splash + footer year + preview -->
 <script>
+  src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript">
 document.addEventListener('DOMContentLoaded', () => {
   // year
   document.getElementById('y').textContent = new Date().getFullYear();
