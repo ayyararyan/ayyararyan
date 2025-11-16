@@ -360,20 +360,31 @@ dialog::backdrop{background:rgba(0,0,0,.4)}
 
 <footer>© <span id="y"></span> Aryan Ayyar</footer>
 
-<!-- JS: splash + footer year + preview -->
-<script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript">
+<!-- LinkedIn badge script -->
+<script src="https://platform.linkedin.com/badges/js/profile.js"
+        async defer type="text/javascript"></script>
+
+<!-- Your own script -->
+<script>
 document.addEventListener('DOMContentLoaded', () => {
   // year
   document.getElementById('y').textContent = new Date().getFullYear();
 
   // splash dismiss
-  const splash=document.getElementById('splash');
-  const dismiss=()=>{if(!splash)return;splash.classList.add('fade');setTimeout(()=>splash.remove(),600)};
-  if(splash){
-    splash.addEventListener('click',dismiss);
-    document.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ')dismiss()});
+  const splash = document.getElementById('splash');
+  const dismiss = () => {
+    if (!splash) return;
+    splash.classList.add('fade');
+    setTimeout(() => splash.remove(), 600);
+  };
+  if (splash) {
+    splash.addEventListener('click', dismiss);
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') dismiss();
+    });
   }
 });
 </script>
+
 </body>
 </html>
