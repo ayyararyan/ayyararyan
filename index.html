@@ -78,6 +78,17 @@ h3{margin-top:.4rem;margin-bottom:.6rem}
 .nav a:hover::after{width:100%}
 .brand{font-family:"Noto Serif","Noto Serif SC",serif;font-weight:600;white-space:nowrap}
 
+/* HIGHLIGHT CARDS */
+.highlight-grid{display:grid;gap:1rem;margin-top:1rem}
+@media(min-width:720px){.highlight-grid{grid-template-columns:repeat(3,1fr)}}
+.highlight-card{border:1px solid #e5e5e5;border-radius:10px;padding:1.2rem;background:#fff;box-shadow:0 3px 10px rgba(0,0,0,.05);transition:.25s;display:flex;flex-direction:column;gap:.4rem;min-height:100%}
+.highlight-card:hover{transform:translateY(-3px);box-shadow:0 10px 22px rgba(0,0,0,.07)}
+.highlight-card strong{display:flex;align-items:center;font-size:1.05rem}
+.highlight-card strong span{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:var(--bg-cream);margin-right:.6rem;font-size:1.1rem}
+.highlight-card p{font-size:.95rem;flex:1;color:#444}
+.highlight-card .btn.inline{align-self:flex-start;padding:.45rem .85rem;font-size:.9rem;border-radius:5px;box-shadow:none;margin-top:.5rem}
+.highlight-card small{color:var(--clr-link);display:block;margin-top:.4rem}
+
 /* HERO */
 .hero{height:56vh;min-height:360px;background:url("hero.jpg") center/cover no-repeat;position:relative;display:flex;justify-content:center;align-items:center;text-align:center}
 .hero::after{content:"";position:absolute;inset:0;background:rgba(85,88,121,.45)}
@@ -166,6 +177,7 @@ dialog::backdrop{background:rgba(0,0,0,.4)}
   <div class="container">
     <strong class="brand">आर्यन अय्यर | Aryan Ayyar </strong>
     <div>
+      <a href="#highlights">Highlights</a>
       <a href="#publications">Publications</a>
       <a href="#wip">Work in Progress</a>
       <a href="#books">Books</a>
@@ -189,6 +201,33 @@ dialog::backdrop{background:rgba(0,0,0,.4)}
     <a href="#contact" class="btn">Get in touch</a>
   </div>
 </header>
+
+<!-- HIGHLIGHTS -->
+<section id="highlights" class="alt-2" aria-label="Highlights">
+  <div class="container">
+    <h2>Highlights</h2>
+    <div class="highlight-grid">
+      <div class="highlight-card">
+        <strong><span aria-hidden="true">📊</span> Research Focus</strong>
+        <p>Rational expectations, market microstructure, and asset pricing in emerging markets, with a recent emphasis on liquidity and execution.</p>
+        <a class="btn inline outline" href="#publications">See publications</a>
+      </div>
+      <div class="highlight-card">
+        <strong><span aria-hidden="true">🛣️</span> Featured Work</strong>
+        <p>Metastability-aware adaptive traffic signals for gridlocked cities — deep reinforcement learning tuned to real-world constraints.</p>
+        <div>
+          <a class="btn inline" href="maats.pdf" target="_blank" rel="noopener">Read working paper ↗︎</a>
+          <small>Presented to Bangalore urban planning working group</small>
+        </div>
+      </div>
+      <div class="highlight-card">
+        <strong><span aria-hidden="true">🤝</span> Collaborations</strong>
+        <p>Open to co-authoring on order execution, asymmetric information, and sustainability-linked finance. Let’s refine complex models together.</p>
+        <a class="btn inline outline" href="#contact">Book a conversation</a>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- handshake photo -->
 <section class="alt-3">
@@ -398,6 +437,8 @@ dialog::backdrop{background:rgba(0,0,0,.4)}
 
 <footer>© <span id="y"></span> Aryan Ayyar</footer>
 
+<button id="top-btn" aria-label="Back to top" style="position:fixed;right:1.5rem;bottom:1.5rem;border:0;background:var(--clr-main);color:#fff;padding:.65rem .8rem;border-radius:50%;box-shadow:0 8px 18px rgba(0,0,0,.18);cursor:pointer;opacity:0;pointer-events:none;transition:.3s">↑</button>
+
 <!-- LinkedIn badge script -->
 <script src="https://platform.linkedin.com/badges/js/profile.js"
         async defer type="text/javascript"></script>
@@ -420,6 +461,20 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('keydown', e => {
       if (e.key === 'Enter' || e.key === ' ') dismiss();
     });
+  }
+
+  // back to top button
+  const topBtn = document.getElementById('top-btn');
+  const toggleTopBtn = () => {
+    if (!topBtn) return;
+    const show = window.scrollY > 320;
+    topBtn.style.opacity = show ? '1' : '0';
+    topBtn.style.pointerEvents = show ? 'auto' : 'none';
+  };
+  if (topBtn) {
+    toggleTopBtn();
+    window.addEventListener('scroll', toggleTopBtn, { passive: true });
+    topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   }
 });
 </script>
