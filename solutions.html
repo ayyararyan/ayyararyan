@@ -1,653 +1,465 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proprietary Solutions for Optimal Execution</title>
-   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Fira+Code:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&family=Source+Serif+Pro:wght@400;600&display=swap" rel="stylesheet">
-
-</head>
-<body>
-    <header>
-        <div class="header-container">
-            <div class="logo">Zen Economist</div>
-            <nav>
-                <a href="index.html">← Back to Portfolio</a>
-                <a href="#slippage">Slippage</a>
-                <a href="#almgren">Almgren-Chriss</a>
-                <a href="#closing">Explore</a>
-            </nav>
-        </div>
-    </header>
-
-    <div class="hero">
-        <div class="hero-content">
-            <h1>Excellence in Execution</h1>
-            <p class="subtitle">Where milliseconds and strategy converge to unlock Alpha</p>
-            <p class="description">In markets, speed and precision matter. But so does subtlety. The challenge: how do you execute a massive trade without moving markets against you?</p>
-        </div>
-    </div>
-
-    <div class="container">
-        <!-- The Hidden Cost of Trading -->
-        <section id="slippage">
-            <h2>The Hidden Cost of Trading</h2>
-            <p class="intro">Why does execution cost matter? Because every basis point compounds across your career.</p>
-
-            <h3>A Matter of Scale</h3>
-            <p>Consider a hypothetical scenario: You're a portfolio manager overseeing $500 million in assets. Your strategy suggests selling your entire Apple position—worth $50 million—this morning. The dilemma is immediate & unavoidable.</p>
-
-            <h3>Three Constraints</h3>
-            <div class="subsections">
-                <div class="subsection">
-                    <h4>Market Impact</h4>
-                    <p>Dump it all at once, & you'll move the market against yourself. The price crashes. Your losses compound. A buyer sees your massive order & knows they can push you lower.</p>
-                </div>
-                <div class="subsection">
-                    <h4>Execution Risk</h4>
-                    <p>Sell too slowly, & the market might turn against you. The price falls while you're still unwinding. An hour of delays could cost you millions if sentiment shifts.</p>
-                </div>
-                <div class="subsection">
-                    <h4>Timing Uncertainty</h4>
-                    <p>How many shares per minute? Per hour? Should you accelerate when the market is liquid or when it's tight? The math isn't obvious to the untrained eye.</p>
-                </div>
-            </div>
-
-            <div class="quote">
-                "The cost of trading isn't just commissions. It's the price movement you create by trading." — A lesson from market microstructure that separates amateurs from professionals.
-            </div>
-
-            <h3>Slippage Defined</h3>
-            <p>Slippage is the silent thief in execution. It's the difference between the price you expected to receive & the price you actually received. In basis points (0.01% of price), a $50M trade with 5 basis points of slippage costs $25,000. It never shows up as a line item on your statement—it's simply the friction of trading.</p>
-
-            <div class="callout">
-                <h4>The Real Cost</h4>
-                <p>For institutional traders, slippage accumulates. A 2% reduction in execution costs across all trades translates to millions in alpha annually. This is why trading desks obsess over execution microseconds.</p>
-            </div>
-        </section>
-
-        <!-- Understanding the Trade-off -->
-        <section id="tradeoff">
-            <h2>Understanding the Trade-off</h2>
-            <p class="intro">Markets present a fundamental tension that cannot be escaped—only balanced.</p>
-
-            <div class="visual-center">Fast Execution  ⟷  Minimal Market Impact</div>
-
-            <h3>Temporary Impact: The Immediate Effect</h3>
-            <p>When you submit a large market order, the immediate price you receive reflects the impact of your order. Sellers demand a discount to absorb your volume rapidly. This effect is instantaneous—you pay it the moment you trade—but temporary. Once your order clears, prices may recover as liquidity providers adjust their inventories.</p>
-
-            <h3>Permanent Impact: The Lingering Cost</h3>
-            <p>But markets are information-efficient machines. If you're selling a massive position, sophisticated observers infer something about the asset's future value. "Why would such a large investor liquidate?" they ask. This inference persists. The price doesn't fully recover. This is the permanent component—the cost embedded in the new equilibrium price.</p>
-
-            <h3>Timing Risk: The Shadow of Uncertainty</h3>
-            <p>The longer you execute, the more exposure you have to adverse market movements. Volatility becomes your enemy. If you spread your execution over days & the market drops 2%, all those pending sell orders now execute at worse prices. Execute too fast, & you create market impact. Execute too slow, & you suffer timing risk. There is no escape—only optimization.</p>
-
-            <h3>The Optimization Problem</h3>
-            <p>You cannot have both speed & minimal impact. You must choose the balance that minimizes total cost. This balance depends on market conditions, your risk tolerance, & the size of your trade. The solution is not obvious. It requires mathematics.</p>
-        </section>
-
-        <!-- The Almgren-Chriss Revolution -->
-        <section id="almgren">
-            <h2>The Almgren-Chriss Revolution</h2>
-            <p class="intro">In 1999, two mathematicians asked a question that transformed trading: How should one execute a large trade optimally?</p>
-
-            <h3>A Symphony of Execution</h3>
-            <p>Imagine conducting an orchestra. You're not asking the musicians to play as loud as possible—that would be cacophony. You're not asking them to play so quietly that the audience can't hear—that would be silence. You're conducting a piece where timing, dynamics, & rest are equally important. Each section plays their part at the right moment, with the right intensity.</p>
-
-            <p>The Almgren-Chriss model is the conductor's baton. It tells each "section" (each time period) exactly how much to "play" (execute). The result: a symphony of execution that's mathematically optimal. Instead of guessing how much to sell at 9:30 AM, 10:00 AM, & 10:30 AM, the model prescribes the exact quantities. The execution curve it produces is often convex—front-loaded at the beginning, then tapering off—which empirically matches how sophisticated traders actually execute.</p>
-
-            <div class="quote">
-                "The innovation is not in finding a perfect strategy—markets are too complex for perfection. It's in formalizing the trade-off so that you can optimize intelligently." — The core principle of quantitative execution.
-            </div>
-
-            <h3>The Core Insight</h3>
-            <p>Almgren-Chriss works by formulating execution as an optimization problem. It explicitly models temporary impact, permanent impact, & timing risk. Then it solves for the execution strategy that minimizes a cost function balancing all three. The mathematical elegance is in the result: a clean, closed-form solution that practitioners can actually use.</p>
-
-            <h3>The Risk Aversion Parameter</h3>
-            <p>The model introduces a parameter λ (lambda), your risk aversion coefficient. A trader with high λ wants to execute faster, accepting more market impact to reduce timing risk. A patient trader with low λ is willing to endure timing risk to minimize impact. This parameter lets you dial in your preference. It acknowledges that different traders have different constraints & objectives.</p>
-
-            <h3>From Theory to Practice</h3>
-            <p>The elegance of Almgren-Chriss isn't merely academic. It's used daily by trading desks worldwide. Portfolio managers use it to set execution parameters. Quantitative traders use it as a benchmark. Regulators use it to evaluate whether a trade was executed "at best execution"—a legal requirement in many jurisdictions.</p>
-
-            <div class="callout">
-                <h4>Historical Note</h4>
-                <p>Published in 2000 in the Journal of Economic Dynamics and Control, the paper "Optimal Execution of Portfolio Transactions" by Robert Almgren & Neil Chriss is one of the most cited works in quantitative finance. It remains the foundation for modern optimal execution strategies.</p>
-            </div>
-        </section>
-
-        <!-- Transaction Cost Analysis -->
-        <section id="tca">
-            <h2>Transaction Cost Analysis (TCA)</h2>
-            <p class="intro">Almgren-Chriss tells you how to execute. TCA tells you whether you did.</p>
-
-            <h3>The Art of Measurement</h3>
-            <p>Transaction Cost Analysis is the systematic study of execution quality. It answers a critical question after every trade: Did I get a fair price, or did I overpay due to slippage, commissions, & market impact? For institutional traders executing millions of shares daily, TCA is the feedback mechanism that drives improvement.</p>
-
-            <h3>Three Phases of TCA</h3>
-            <div class="subsections">
-                <div class="subsection">
-                    <h4>Pre-Trade Analysis</h4>
-                    <p>Before executing, establish a benchmark. What should this trade cost in fair market conditions? This requires understanding market liquidity, volatility, spreads, & microstructure. You're asking: "In a normal market, what would be a reasonable price for this trade?"</p>
-                </div>
-                <div class="subsection">
-                    <h4>Execution Analysis</h4>
-                    <p>During execution, monitor in real-time. Compare your actual fills to the market baseline. Are you achieving better prices than expected? Worse? Is the variance due to market conditions or execution strategy? This real-time feedback allows you to adjust.</p>
-                </div>
-                <div class="subsection">
-                    <h4>Post-Trade Analysis</h4>
-                    <p>After execution, dissect the results. Quantify the "implementation shortfall"—the difference between your decision price & your actual average fill price. Identify whether the variance came from bad luck (market moved against you) or bad execution (your strategy was suboptimal).</p>
-                </div>
-            </div>
-
-            <h3>Implementation Shortfall: The Key Metric</h3>
-            <p>This is TCA's centerpiece. Implementation shortfall = (Decision Price - Average Fill Price) × Quantity. For a $50M trade where you decided at $150 but averaged $149.95, your shortfall is 5 basis points × $50M = $25,000. Small numbers, but over thousands of trades annually, this determines whether you're at a performance advantage or disadvantage.</p>
-
-            <div class="quote">
-                "You cannot improve what you cannot measure. TCA transforms execution from an art into a science." — A principle institutional traders live by.
-            </div>
-
-            <h3>Data-Driven Excellence</h3>
-            <p>Modern TCA requires sophisticated infrastructure: tick-level market data from multiple venues, real-time order book snapshots, latency measurements, & machine learning models to decompose slippage into its components (temporary vs. permanent, intentional vs. algorithmic). Spreadsheets won't cut it. You need specialized tools.</p>
-
-            <div class="callout">
-                <h4>Emerging Capability: Real-Time TCA</h4>
-                <p>Historically, TCA was end-of-day. Now, leading firms employ intraday TCA—allowing traders to monitor execution quality continuously & adjust strategies mid-trade if slippage exceeds thresholds. This feedback loop accelerates learning.</p>
-            </div>
-        </section>
-
-        <!-- Order Matching Engines -->
-        <section id="matching">
-            <h2>Order Matching Engines</h2>
-            <p class="intro">Behind every executed trade is a matching engine—the invisible conductor connecting buyers with sellers.</p>
-
-            <h3>The Heart of Markets</h3>
-            <p>A matching engine is specialized software that scans order books & pairs complementary orders with remarkable speed. When you submit a buy order for 1,000 shares of Apple at $150, the engine searches for sellers willing to offer 1,000 shares at $150 or better. Once a match is found, the trade executes in microseconds. This happens billions of times daily across global exchanges.</p>
-
-            <h3>Matching Algorithms</h3>
-            <p>Different venues employ different rules for matching, & these rules have profound implications for market fairness & efficiency:</p>
-            <ul>
-                <li><strong>FIFO (First-In-First-Out):</strong> Orders are matched by arrival time. The first buyer gets priority. Simple, fair, & widely used.</li>
-                <li><strong>Pro-Rata:</strong> Resting orders are allocated volume proportionally to their size. Larger sellers get larger allocations. This incentivizes liquidity provision.</li>
-                <li><strong>Time-Price Priority:</strong> Hybrids that balance time priority with price priority. Complex but sophisticated.</li>
-            </ul>
-
-            <h3>Engineering Sophistication</h3>
-            <p>Modern matching engines are marvels of engineering. They must operate with nanosecond latency (milliseconds would be considered slow), support dozens of order types (market, limit, iceberg, stop-loss, pegged), handle time-in-force rules (Good-Till-Cancel, Fill-or-Kill, Immediate-or-Cancel), manage multiple order books simultaneously, & maintain full auditability for regulatory compliance. During peak volume, they process thousands of trades per second without breaking.</p>
-
-            <h3>Beyond Equities</h3>
-            <p>While exchanges pioneered matching engines for stock trading, modern engines now power derivatives markets (futures, options), foreign exchange, cryptocurrencies, tokenized assets (real-world assets traded as digital tokens), & alternative venues (dark pools, decentralized exchanges). The core logic remains elegant—match complementary orders efficiently—but the complexity & scale have grown exponentially.</p>
-
-            <div class="callout">
-                <h4>The Latency Frontier</h4>
-                <p>In high-frequency trading, microseconds matter. A trading firm's matching engine must process orders faster than competitors to maintain competitive advantage. This drives relentless engineering innovation: custom hardware, optimized algorithms, & careful attention to every nanosecond of latency.</p>
-            </div>
-        </section>
-
-        <!-- Integration -->
-        <section id="integration">
-            <h2>The Synergy: Bringing It Together</h2>
-            <p class="intro">Optimal execution is a three-part harmony, each component necessary, none sufficient alone.</p>
-
-            <h3>The Trilogy</h3>
-            <div class="subsections">
-                <div class="subsection">
-                    <h4>Strategy: Almgren-Chriss</h4>
-                    <p>Determines how much to trade at each point in time to minimize expected costs. Prescribes an execution curve based on market conditions & risk tolerance.</p>
-                </div>
-                <div class="subsection">
-                    <h4>Execution: Matching Engines</h4>
-                    <p>Executes the strategy in real-time, matching your orders with counterparties at the best available prices within microseconds.</p>
-                </div>
-                <div class="subsection">
-                    <h4>Measurement: TCA</h4>
-                    <p>Measures the outcome, quantifying whether the strategy was executed effectively & informing future improvements through data-driven feedback.</p>
-                </div>
-            </div>
-
-            <h3>The Competitive  Advantage</h3>
-            <p>Proprietary trading firms that excel at this trifecta enjoy a profound competitive advantage. They execute 10% cheaper than competitors on the same positions because they've invested in superior algorithms, infrastructure, & analysis. Over a year of thousands of trades, this compounds into extraordinary returns. They've turned execution excellence into a moat—a defensible advantage competitors cannot easily replicate.</p>
-
-            <div class="quote">
-                "Alpha is alpha, but basis points are basis points. The best traders generate returns not only by predicting price movements, but by executing them efficiently." — A market-tested principle.
-            </div>
-        </section>
-
-        <!-- The Future -->
-        <section id="future">
-            <h2>The Future of Execution</h2>
-            <p class="intro">Execution science is still young. The frontier expands daily.</p>
-
-            <h3>Adaptive Strategies via Machine Learning</h3>
-            <p>Instead of static strategies (even optimized ones like Almgren-Chriss), researchers are training reinforcement learning agents to adapt execution in real-time based on live market conditions, order flow patterns, & liquidity shifts. The agent learns to time its orders optimally without being told the mathematical formula. This is execution that learns & improves with each trade.</p>
-
-            <h3>Real-Time TCA & Adjustment</h3>
-            <p>Traditional TCA was end-of-day analysis. Modern solutions offer intraday TCA—allowing traders to monitor execution quality continuously. If slippage exceeds thresholds mid-execution, strategies can be adjusted in real-time. This feedback loop accelerates learning & improvement.</p>
-
-            <h3>Multi-Venue Coordination</h3>
-            <p>Execution now spans multiple venues simultaneously: lit exchanges, dark pools, alternative trading systems, decentralized platforms. Optimal execution must coordinate across all of them intelligently, routing orders to the venue offering the best execution at each moment. This complexity would have seemed impossible a decade ago.</p>
-
-            <h3>Regulatory Evolution</h3>
-            <p>Mandates like MiFID II (Europe) & best execution rules (US) require brokers & traders to demonstrate they're achieving favorable execution. This regulatory pressure is driving sophistication, transparency, & standardization in TCA & execution analytics. Compliance & performance are increasingly intertwined.</p>
-        </section>
-
-        <!-- Closing -->
-        <section id="closing">
-            <h2>Excellence in Execution</h2>
-            <p>In markets where information travels at light speed & competition is fierce, execution is one of the few levers under your control. Almgren-Chriss, TCA, & matching engines represent the frontier of this discipline—the union of mathematics, technology, & market wisdom. Whether you're a quantitative trader, a portfolio manager, or building trading infrastructure, mastery of optimal execution is a differentiator.</p>
-
-            <div class="quote">
-                "The best traders are not those who predict markets most accurately. They are those who execute most efficiently. Prediction is art. Execution is science." — A principle derived from decades of market microstructure research.
-            </div>
-
-            <div class="cta-section">
-                <p style="font-size: 1.2rem; margin-bottom: 1.5rem; font-weight: 600;">Explore how proprietary execution solutions can enhance your trading strategy.</p>
-                <a href="index.html" class="cta-button">Return to Portfolio</a>
-                <a href="mailto:ayyar.aryan@manipal.edu" class="cta-button" style="margin-left: 1rem;">Discuss Execution Strategies</a>
-            </div>
-        </section>
-    </div>
-
-    <footer>
-        <div class="footer-content">
-            <p>Proprietary Solutions for Optimal Execution and Transaction Cost Analysis</p>
-            <p style="font-size: 0.9rem; color: #7a8aaa;">Bridging mathematics, technology, and market wisdom</p>
-            <div class="footer-nav">
-                <a href="index.html">← Back to Portfolio</a>
-                <a href="https://github.com/ayyararyan">GitHub</a>
-                <a href="https://www.linkedin.com/in/aryan-ayyar">LinkedIn</a>
-                <a href="mailto:aryan.ayyar.learner@gmail.com">Email</a>
-            </div>
-            <p style="margin-top: 2rem; font-size: 0.85rem;">© 2025 Aryan Ayyar. All rights reserved.</p>
-        </div>
-    </footer>
-</body>
-</html>
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    html {
-        scroll-behavior: smooth;
-    }
-
-    body {
-    font-family: 'JetBrains Mono', 'Consolas', monospace;
-    color: #0dd40d;
-    background-color:7A7FB3;
-    line-height: 1.7;
-    font-size: 13px;
-    font-weight: 400;
-}
-
-
-    /* Header & Navigation */
-    header {
-        font-family: 'Consolas', monospace;
-        background-color: #111721;
-        color: #ffffff;
-        padding: 1.5rem 2rem;
-        position: sticky;
-        top: 2;
-        z-index: 1000;
-        backdrop-filter: blur(5px);
-        border-bottom: 1px solid rgba(74, 144, 226, 0.1);
-    }
-
-    .header-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .logo {
-font-family: 'Consolas', monospace;
-font-weight: 500;
-font-size: 2.5rem;
-letter-spacing: -0.8px;
-text-transform: none;
-}
-
-nav a {
-    color: #ffffff;
-    text-decoration: none;
-    margin-left: 2.5rem;
-    font-family: 'Consolas', monospace;
-    font-size: 0.875rem;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    transition: color 0.3s ease;
-}
-
-    nav a:hover {
-        color: #4a90e2;
-    }
-
-    /* Hero Section */
-.hero {
-    background: linear-gradient(120deg, rgba(30, 35, 50, 0.30) 0%, rgba(42, 52, 71, 0.9) 100%),
-                url('order-book.gif') center/cover no-repeat;
-    font-family: 'Consolas', monospace;
-    font-size: 3.0rem;
-    font-weight: 300;
-    margin-bottom: 1rem;
-    letter-spacing: +2.5px;
-    line-height: 1.05;
-    text-transform: none;
-    color: #ffffff;
-    padding: 8rem 2rem;
-    text-align: center;
-    border-bottom: 1px solid rgba(74, 144, 226, 0.2);
-    position: relative;
-    overflow: hidden;
-}
-
-
-    .hero-content {
-        max-width: 800px;
-        margin: 0 auto;
-    }
-
-    .hero h1 {
-        font-family: 'Consolas', monospace;
-        font-size: 4.5rem;
-        font-weight: 400;
-        margin-bottom: 1rem;
-        letter-spacing: -1px;
-        line-height: 1.4;
-    }
-
-    .hero .subtitle {
-        font-family: 'Consolas', monospace;
-        font-size: 1.3rem;
-        color: #b3c9ff;
-        margin-bottom: 2rem;
-        font-weight: 300;
-    }
-
-    .hero .description {
-        font-size: 1.1rem;
-        color: #d0d8e8;
-        max-width: 600px;
-        margin: 0 auto;
-        line-height: 1.8;
-    }
-
-    /* Main Content */
-    .container {
-        max-width: 1000px;
-        margin: 0 auto;
-        padding: 0 2rem;
-        color: #0dd40d;
-    }
-
-    section {
-        padding: 6rem 0;
-        border-bottom: 1px solid #f0f2f7;
-    }
-
-    section:last-of-type {
-        border-bottom: none;
-    }
-
-    h2 {
-        font-family: 'Consolas', monospace;
-        font-size: 2.5rem;
-        font-weight: 300;
-        margin-bottom: 1.5rem;
-        color: #1a2332;
-        letter-spacing: -0.5px;
-    }
-
-    h3 {
-        font-family: 'Consolas', monospace;
-        font-size: 1.4rem;
-        font-weight: 600;
-        margin-top: 2.5rem;
-        margin-bottom: 1rem;
-        color: #2a3447;
-        letter-spacing: -0.3px;
-    }
-
-    p {
-        margin-bottom: 1.5rem;
-        color: #2a3447;
-        line-height: 1.85;
-    }
-
-    .intro {
-        font-family: 'Consolas', monospace;
-        font-size: 1.1rem;
-        color: #4a5568;
-        margin-bottom: 2rem;
-        font-style: italic;
-    }
-
-    .divider {
-        font-family: 'Consolas', monospace;
-        text-align: center;
-        font-size: 1.5rem;
-        color: #4a90e2;
-        margin: 2rem 0;
-        opacity: 0.6;
-    }
-
-    /* Quotes & Callouts */
-    .quote {
-        border-left: 4px solid #4a90e2;
-        padding-left: 2rem;
-        margin: 2rem 0;
-        color: #4a5568;
-        font-size: 1.05rem;
-        background-color: #f8f9fa;
-        padding: 1.5rem 2rem;
-        border-radius: 4px;
-    }
-
-    .callout {
-        background-color: #f0f5ff;
-        border-left: 4px solid #4a90e2;
-        padding: 1.5rem 2rem;
-        margin: 2rem 0;
-        border-radius: 4px;
-    }
-
-    .callout h4 {
-        font-family: 'Consolas', monospace;
-        font-weight: 600;
-        color: #1a2332;
-        margin-bottom: 0.5rem;
-        font-size: 1.05rem;
-    }
-
-    .callout p {
-        font-family: 'Consolas', monospace;
-        margin: 0;
-        color: #2a3447;
-    }
-
-    /* Lists */
-    ul {
-        margin: 1.5rem 0;
-        padding-left: 2rem;
-    }
-
-    li {
-        margin-bottom: 1rem;
-        color: #2a3447;
-    }
-
-    /* Subsections with cards */
-    .subsections {
-        display: grid;
-        gap: 2rem;
-        margin-top: 2rem;
-    }
-
-    .subsection {
-        padding: 2rem;
-        background-color: #f8f9fa;
-        border-radius: 6px;
-        border: 1px solid #e5e8f0;
-        transition: all 0.3s ease;
-    }
-
-    .subsection:hover {
-        border-color: #4a90e2;
-        box-shadow: 0 4px 12px rgba(74, 144, 226, 0.1);
-    }
-
-    .subsection h4 {
-        font-family: 'Inter', system-ui, sans-serif;
-        font-size: 1.2rem;
-        font-weight: 600;
-        color: #1a2332;
-        margin-bottom: 1rem;
-    }
-
-    .subsection p {
-        margin: 0;
-        font-size: 0.95rem;
-    }
-
-    /* Visual Elements */
-    .visual-center {
-        text-align: center;
-        font-size: 1.5rem;
-        font-family: 'Inter', system-ui, sans-serif;
-        font-weight: 600;
-        color: #4a90e2;
-        margin: 2rem 0;
-        letter-spacing: 2px;
-    }
-
-    /* Buttons & CTAs */
-    .cta-button {
-        display: inline-block;
-        background-color: #4a90e2;
-        color: #ffffff;
-        padding: 1rem 2rem;
-        border-radius: 4px;
-        text-decoration: none;
-        font-family: 'Inter', system-ui, sans-serif;
-        font-weight: 600;
-        transition: all 0.3s ease;
-        border: none;
-        cursor: pointer;
-        font-size: 1rem;
-    }
-
-    .cta-button:hover {
-        background-color: #3a7bc8;
-        transform: translateY(-2px);
-        box-shadow: 0 8px 24px rgba(74, 144, 226, 0.3);
-    }
-
-    .cta-section {
-        text-align: center;
-        margin-top: 3rem;
-        padding-top: 2rem;
-        border-top: 1px solid #e5e8f0;
-    }
-
-    /* Footer */
-    footer {
-        background-color: #1a2332;
-        color: #ffffff;
-        padding: 3rem 2rem;
-        text-align: center;
-    }
-
-    .footer-content {
-        max-width: 900px;
-        margin: 0 auto;
-    }
-
-    footer p {
-        color: #b3c9ff;
-        margin-bottom: 1rem;
-    }
-
-    footer a {
-        color: #4a90e2;
-        text-decoration: none;
-        transition: color 0.3s ease;
-    }
-
-    footer a:hover {
-        color: #6aacff;
-    }
-
-    .footer-nav {
-        margin-top: 2rem;
-        padding-top: 2rem;
-        border-top: 1px solid rgba(74, 144, 226, 0.2);
-    }
-
-    .footer-nav a {
-        display: inline-block;
-        margin: 0 1rem;
-        font-size: 0.9rem;
-    }
-
-    /* Animation */
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(30px);
+    <title>Proprietary Solutions — Zen Economist</title>
+    <meta name="theme-color" content="#fbf1c7">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* Gruvbox Light Variables */
+        :root {
+            --bg-primary: #fbf1c7;
+            --bg-secondary: #ebdbb2;
+            --bg-code: #282828;
+            --fg-primary: #3c3836;
+            --fg-secondary: #504945;
+            --fg-code: #fbf1c7;
+            --accent-link: #d65d0e;
+            --accent-tech: #458588;
+            --accent-green: #98971a;
+            --accent-red: #cc241d;
+
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-sans: 'Inter', sans-serif;
+
+            --line-height-body: 1.7;
+            --max-width: 720px;
         }
-        to {
-            opacity: 1;
-            transform: translateY(0);
+
+        /* Reset & Base */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
-    }
 
-    section {
-        animation: fadeInUp 0.8s ease-out;
-    }
+        body {
+            background-color: var(--bg-primary);
+            color: var(--fg-primary);
+            font-family: var(--font-sans);
+            line-height: var(--line-height-body);
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
 
-    /* Responsive */
-    @media (max-width: 768px) {
-        .hero h1 {
-            font-size: 2.5rem;
+        /* Typography */
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        nav,
+        .meta,
+        .tag,
+        code,
+        .code-style {
+            font-family: var(--font-mono);
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
         }
 
         h2 {
-            font-size: 2rem;
+            font-size: 1.4rem;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--fg-secondary);
+            padding-bottom: 0.5rem;
+            display: inline-block;
         }
 
         h3 {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            margin-top: 1.5rem;
+            color: var(--accent-tech);
         }
 
-        .header-container {
-            flex-direction: column;
+        h4 {
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+            color: var(--fg-secondary);
+            font-weight: 700;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            color: var(--fg-secondary);
+        }
+
+        a {
+            color: var(--accent-link);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(214, 93, 14, 0.3);
+            transition: all 0.2s ease;
+        }
+
+        a:hover {
+            border-bottom-width: 3px;
+            opacity: 0.9;
+        }
+
+        ul {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+            color: var(--fg-secondary);
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Layout */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        /* Header */
+        header {
+            margin-bottom: 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
             gap: 1rem;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--fg-primary);
+            border: none;
+        }
+
+        .logo:hover {
+            border: none;
         }
 
         nav {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1rem;
+            gap: 1.2rem;
+            font-size: 0.9rem;
         }
 
-        nav a {
-            margin-left: 0;
-        }
-
+        /* Hero */
         .hero {
-            padding: 4rem 1.5rem;
+            margin-bottom: 4rem;
         }
 
-        section {
-            padding: 3rem 0;
+        .hero .subtitle {
+            font-family: var(--font-mono);
+            color: var(--accent-tech);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
         }
-    }
 
-</style>
+        /* Components */
+        .callout {
+            background-color: rgba(60, 56, 54, 0.05);
+            border-left: 3px solid var(--accent-tech);
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        .quote {
+            font-family: var(--font-mono);
+            font-style: italic;
+            color: var(--accent-green);
+            padding: 1rem;
+            border: 1px dashed var(--fg-secondary);
+            margin: 2rem 0;
+        }
+
+        .code-block {
+            background-color: var(--bg-code);
+            color: var(--fg-code);
+            padding: 1.2rem;
+            border-radius: 4px;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .code-block::before {
+            content: "Analysis";
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: #504945;
+            color: #d5c4a1;
+            font-size: 0.6rem;
+            padding: 2px 6px;
+            border-bottom-left-radius: 4px;
+        }
+
+        .subsection {
+            margin-bottom: 2rem;
+            padding: 1rem;
+            border: 1px solid rgba(60, 56, 54, 0.1);
+            border-radius: 4px;
+        }
+
+        .visual-center {
+            text-align: center;
+            font-family: var(--font-mono);
+            color: var(--accent-link);
+            font-weight: bold;
+            margin: 2rem 0;
+            padding: 1rem;
+            border: 1px solid var(--accent-link);
+            display: inline-block;
+            width: 100%;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 5rem;
+            border-top: 1px dashed var(--fg-secondary);
+            padding-top: 1.5rem;
+            font-size: 0.85rem;
+            font-family: var(--font-mono);
+            color: var(--fg-secondary);
+            text-align: center;
+        }
+
+        .footer-nav {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-nav a {
+            margin: 0 0.5rem;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav {
+                flex-wrap: wrap;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Navbar -->
+        <header role="banner">
+            <a href="index.html" class="logo">~/ayyar_aryan</a>
+            <nav role="navigation">
+                <a href="index.html">.. (Up)</a>
+                <a href="#slippage">Slippage</a>
+                <a href="#almgren">Almgren-Chriss</a>
+                <a href="#matching">Matching</a>
+            </nav>
+        </header>
+
+        <!-- Hero -->
+        <main>
+            <div class="hero">
+                <h1>Excellence in Execution</h1>
+                <p class="subtitle">// Where milliseconds and strategy converge to unlock Alpha</p>
+                <p>
+                    In markets, speed and precision matter. But so does subtlety. The challenge: how do you execute a
+                    massive trade without moving markets against you?
+                </p>
+            </div>
+
+            <!-- Slippage -->
+            <section id="slippage">
+                <h2>The Hidden Cost of Trading</h2>
+                <p>Why does execution cost matter? Because every basis point compounds across your career.</p>
+
+                <h3>A Matter of Scale</h3>
+                <p>Consider a hypothetical scenario: You're a portfolio manager overseeing $500 million in assets. Your
+                    strategy suggests selling your entire Apple position—worth $50 million—this morning. The dilemma is
+                    immediate & unavoidable.</p>
+
+                <div class="subsection">
+                    <h4>Market Impact</h4>
+                    <p>Dump it all at once, & you'll move the market against yourself. The price crashes. Your losses
+                        compound. A buyer sees your massive order & knows they can push you lower.</p>
+                </div>
+
+                <div class="subsection">
+                    <h4>Execution Risk</h4>
+                    <p>Sell too slowly, & the market might turn against you. The price falls while you're still
+                        unwinding. An hour of delays could cost you millions if sentiment shifts.</p>
+                </div>
+
+                <div class="subsection">
+                    <h4>Timing Uncertainty</h4>
+                    <p>How many shares per minute? Per hour? Should you accelerate when the market is liquid or when
+                        it's tight? The math isn't obvious to the untrained eye.</p>
+                </div>
+
+                <div class="quote">
+                    "The cost of trading isn't just commissions. It's the price movement you create by trading."
+                </div>
+
+                <div class="callout">
+                    <h4>Slippage Defined</h4>
+                    <p>Slippage is the silent thief in execution. It's the difference between the price you expected to
+                        receive & the price you actually received. In basis points (0.01% of price), a $50M trade with 5
+                        basis points of slippage costs $25,000.</p>
+                </div>
+            </section>
+
+            <!-- Trade-off -->
+            <section id="tradeoff">
+                <h2>Understanding the Trade-off</h2>
+
+                <div class="visual-center">
+                    Fast Execution <span style="color:var(--fg-primary)">⟷</span> Minimal Market Impact
+                </div>
+
+                <h3>Temporary vs. Permanent Impact</h3>
+                <p><strong>Temporary Impact:</strong> The immediate liquidity cost. You pay it the moment you trade, but
+                    prices may recover.</p>
+                <p><strong>Permanent Impact:</strong> The information cost. "Why is he selling?" Prices adjust to a new
+                    equilibrium and don't recover.</p>
+
+                <div class="code-block">
+                    <span style="color:var(--accent-green)">def</span> optimize_execution(speed, impact):<br>
+                    &nbsp;&nbsp;<span style="color:var(--accent-tech)">if</span> speed > threshold:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;return max(impact)<br>
+                    &nbsp;&nbsp;<span style="color:var(--accent-tech)">else</span>:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;return min(impact) + timing_risk
+                </div>
+
+                <p>You cannot have both speed & minimal impact. You must choose the balance that minimizes total cost.
+                </p>
+            </section>
+
+            <!-- Almgren-Chriss -->
+            <section id="almgren">
+                <h2>The Almgren-Chriss Revolution</h2>
+                <p>In 1999, two mathematicians asked a question that transformed trading: How should one execute a large
+                    trade optimally?</p>
+
+                <h3>A Symphony of Execution</h3>
+                <p>The Almgren-Chriss model is the conductor's baton. It tells each "section" (each time period) exactly
+                    how much to "play" (execute). The result: a symphony of execution that's mathematically optimal.</p>
+
+                <div class="callout">
+                    <h4>The Risk Aversion Parameter (λ)</h4>
+                    <p>The model introduces a parameter λ (lambda). High λ = fast execution (accept impact to reduce
+                        risk). Low λ = patient execution (accept risk to minimize impact).</p>
+                </div>
+
+                <p>The innovation is not in finding a perfect strategy—markets are too complex for perfection. It's in
+                    formalizing the trade-off so that you can optimize intelligently.</p>
+            </section>
+
+            <!-- TCA -->
+            <section id="tca">
+                <h2>Transaction Cost Analysis (TCA)</h2>
+                <p>Almgren-Chriss tells you how to execute. TCA tells you whether you did.</p>
+
+                <h3>Implementation Shortfall</h3>
+                <p>This is TCA's centerpiece. <code>(Decision Price - Average Fill Price) × Quantity</code>. Small
+                    numbers, but over thousands of trades, this determines your alpha.</p>
+
+                <ul>
+                    <li><strong>Pre-Trade:</strong> Establish a benchmark (arrival price).</li>
+                    <li><strong>Execution:</strong> Monitor real-time variance.</li>
+                    <li><strong>Post-Trade:</strong> Dissect the results. Was it bad luck or bad strategy?</li>
+                </ul>
+            </section>
+
+            <!-- Matching Engines -->
+            <section id="matching">
+                <h2>Order Matching Engines</h2>
+                <p>Behind every executed trade is a matching engine—the invisible conductor connecting buyers with
+                    sellers.</p>
+
+                <div class="code-block">
+                    <span style="color:#fe8019">Match_Event</span>:<br>
+                    ORDER_ID: 102938<br>
+                    SIDE: BUY<br>
+                    QTY: 1000<br>
+                    PRICE: 150.00<br>
+                    <span style="color:var(--accent-green)">>> MATCH FOUND (23μs)</span>
+                </div>
+
+                <p><strong>FIFO:</strong> First-In-First-Out. Simple, fair.<br>
+                    <strong>Pro-Rata:</strong> Volume gets volume. Incentivizes size.<br>
+                    <strong>Time-Price:</strong> The standard hybrid.
+                </p>
+            </section>
+
+            <!-- Integration -->
+            <section id="integration">
+                <h2>The Synergy</h2>
+                <p>Optimal execution is a three-part harmony:</p>
+
+                <ol style="margin-left:1.5rem; font-family: var(--font-mono); color: var(--fg-secondary);">
+                    <li><strong>Strategy:</strong> Almgren-Chriss determines the curve.</li>
+                    <li><strong>Execution:</strong> Matching engines pair the orders.</li>
+                    <li><strong>Measurement:</strong> TCA validates the result.</li>
+                </ol>
+
+                <div class="quote">
+                    "Alpha is alpha, but basis points are basis points."
+                </div>
+            </section>
+
+            <!-- Closing -->
+            <section id="closing">
+                <h2>Closing Thoughts</h2>
+                <p>In markets where information travels at light speed, execution is one of the few levers under your
+                    control. Whether you're a quant, a PM, or a dev, mastery of these mechanics is a differentiator.</p>
+
+                <div style="margin-top:2rem; text-align:center;">
+                    <a href="index.html" style="font-weight:bold; margin-right:1rem;">Back to Portfolio</a>
+                    <a href="mailto:aryan.ayyar.learner@gmail.com">Discuss Strategies -></a>
+                </div>
+            </section>
+
+        </main>
+
+        <footer>
+            <p>Proprietary Solutions for Optimal Execution.</p>
+            <div class="footer-nav">
+                <a href="index.html">Home</a>
+                <a href="https://github.com/ayyararyan">GitHub</a>
+                <a href="https://www.linkedin.com/in/aryan-ayyar">LinkedIn</a>
+            </div>
+            <p>&copy; <span id="year"></span> Aryan Ayyar. All rights reserved.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+
+</body>
+
+</html>
