@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aryan Ayyar — Writing</title>
+    <meta name="description" content="A curated collection of novels and short stories.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* Cozy Zen Palette */
+        :root {
+            --bg-cozy: #FAFAF9;
+            --fg-cozy: #333333;
+            --fg-muted: #666666;
+            --accent-cozy: #D4A373;
+            /* Warm Terracotta/Gold */
+
+            --font-serif: 'Playfair Display', serif;
+            --font-ui: 'Inter', sans-serif;
+
+            --max-width: 680px;
+        }
+
+        /* Reset & Base */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-cozy);
+            color: var(--fg-cozy);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+            opacity: 0;
+            /* For fade-in */
+            animation: fadeIn 1.2s ease-out forwards;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Typography */
+        h1,
+        h2,
+        h3,
+        p.serif {
+            font-family: var(--font-serif);
+        }
+
+        body,
+        nav,
+        .action-link,
+        footer {
+            font-family: var(--font-ui);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            letter-spacing: -0.5px;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+            /* font-style: italic; Removed per user request */
+            color: var(--fg-muted);
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            color: var(--fg-muted);
+            font-size: 1.05rem;
+        }
+
+        /* Links */
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .action-link {
+            color: var(--accent-cozy);
+            font-weight: 500;
+            font-size: 0.9rem;
+            position: relative;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .action-link::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 0;
+            height: 1px;
+            background-color: var(--accent-cozy);
+            transition: width 0.4s ease;
+        }
+
+        .action-link:hover::after {
+            width: 100%;
+        }
+
+        /* Layout */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+        }
+
+        nav {
+            margin-bottom: 4rem;
+        }
+
+        .nav-link {
+            font-size: 0.9rem;
+            color: var(--fg-muted);
+        }
+
+        .nav-link:hover {
+            color: var(--fg-cozy);
+        }
+
+        /* Cards/Sections */
+        section {
+            margin-bottom: 5rem;
+        }
+
+        .book-card {
+            margin-bottom: 3.5rem;
+            padding-left: 1.5rem;
+            border-left: 2px solid transparent;
+            transition: border-color 0.5s ease;
+        }
+
+        .book-card:hover {
+            border-left-color: rgba(212, 163, 115, 0.3);
+            /* Accent transparent */
+        }
+
+        .description {
+            font-family: var(--font-serif);
+            font-size: 1.1em;
+            color: var(--fg-cozy);
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 6rem;
+            color: var(--fg-muted);
+            font-size: 0.85rem;
+            font-style: italic;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 3rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Navigation -->
+        <nav>
+            <a href="index.html" class="nav-link">← Return to Garden</a>
+        </nav>
+
+        <header>
+            <h1>Selected Works</h1>
+        </header>
+
+        <!-- Novels Section -->
+        <section id="novels">
+            <h2>Novels and Books</h2>
+
+            <article class="book-card">
+                <h3>Crossroads at Interlaken</h3>
+                <p class="description">
+                    Between two lakes in the Swiss Alps, a town built for in-between things. On a snow-locked night, an
+                    Indian quant and a Pakistani psychiatrist drop their defenses to test a dangerous question: what
+                    happens when you stop hedging against feeling?
+                </p>
+                <a href="crossroads-at-interlaken.pdf" target="_blank" class="action-link">Read Excerpt / Download</a>
+            </article>
+
+            <article class="book-card">
+                <h3>She Wore Gold of the South</h3>
+                <p class="description">
+                    Written at 24 in Hong Kong. A story of tenderness, restraint, and the rituals that carry entire
+                    histories.
+                </p>
+                <a href="main.pdf" target="_blank" class="action-link">Read Full Book</a>
+            </article>
+        </section>
+
+        <!-- Short Stories Section -->
+        <section id="stories">
+            <h2>Short Stories</h2>
+
+            <article class="book-card">
+                <h3>The Nicest Wife</h3>
+                <p class="description">
+                    "Love is the discipline of attention." A coffee shop encounter that begins with a cruel bet and ends
+                    with a devastatingly tender realization about the fragility of trust.
+                </p>
+                <a href="#" class="action-link">Read Story</a>
+            </article>
+        </section>
+
+        <footer>
+            <p>"The discipline of attention."</p>
+        </footer>
+
+    </div>
+
+</body>
+
+</html>
