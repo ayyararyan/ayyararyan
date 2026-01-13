@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aryan Ayyar — Polymath Mechanic</title>
+  <meta name="description"
+    content="Mathematician and economist focused on asset pricing and market microstructure. Work spans Kyle-type asymmetric information, optimal execution, and liquidity.">
+  <meta name="theme-color" content="#fbf1c7">
+  <meta property="og:title" content="Aryan Ayyar — Financial Economist">
+  <meta property="og:description" content="Asset pricing · Market microstructure · Rational expectations">
+  <meta property="og:type" content="website">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap"
+    rel="stylesheet">
+
+  <style>
+    /* Gruvbox Light Variables */
+    :root {
+      --bg-primary: #fbf1c7;
+      --bg-secondary: #ebdbb2;
+      --bg-code: #282828;
+      --fg-primary: #3c3836;
+      --fg-secondary: #504945;
+      --fg-code: #fbf1c7;
+      --accent-link: #d65d0e;
+      --accent-tech: #458588;
+      --accent-green: #98971a;
+
+      --font-mono: 'JetBrains Mono', monospace;
+      --font-sans: 'Inter', sans-serif;
+
+      --line-height-body: 1.7;
+      --max-width: 720px;
+    }
+
+    /* Reset & Base */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--fg-primary);
+      font-family: var(--font-sans);
+      line-height: var(--line-height-body);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* Typography */
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    nav,
+    .meta,
+    .tag,
+    code,
+    .code-style {
+      font-family: var(--font-mono);
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      margin-top: 3rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 2px solid var(--fg-secondary);
+      padding-bottom: 0.5rem;
+      display: inline-block;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent-tech);
+    }
+
+    p {
+      margin-bottom: 1.2rem;
+      color: var(--fg-secondary);
+    }
+
+    a {
+      color: var(--accent-link);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(214, 93, 14, 0.3);
+      transition: all 0.2s ease;
+    }
+
+    a:hover {
+      border-bottom-width: 3px;
+      opacity: 0.9;
+    }
+
+    /* Layout */
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    /* Header / Nav */
+    header {
+      margin-bottom: 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--fg-primary);
+      border: none;
+    }
+
+    .logo:hover {
+      border: none;
+    }
+
+    nav {
+      display: flex;
+      gap: 1.2rem;
+      font-size: 0.9rem;
+    }
+
+    /* Hero */
+    .hero {
+      margin-bottom: 5rem;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 10px;
+      height: 1.8rem;
+      background-color: var(--accent-link);
+      animation: blink 1s step-end infinite;
+      vertical-align: middle;
+      margin-left: 4px;
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
+
+    .bio {
+      font-size: 1.1rem;
+      max-width: 600px;
+    }
+
+    .hero-btn {
+      display: inline-block;
+      margin-top: 1rem;
+      font-family: var(--font-mono);
+      font-weight: bold;
+      border-bottom: 2px solid var(--accent-link);
+    }
+
+    /* Sections */
+    section {
+      margin-bottom: 4rem;
+    }
+
+    /* Code/Research Style */
+    .research-item {
+      background-color: rgba(60, 56, 54, 0.03);
+      border-left: 3px solid var(--accent-tech);
+      padding: 1rem 1.2rem;
+      margin-bottom: 1.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+    }
+
+    .research-item a {
+      /* Make links stand out in these blocks */
+      font-weight: 500;
+    }
+
+    .research-item p {
+      margin-bottom: 0.5rem;
+      color: var(--fg-primary);
+    }
+
+    .code-block {
+      background-color: var(--bg-code);
+      color: var(--fg-code);
+      padding: 1rem;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      overflow-x: auto;
+    }
+
+    .code-block::before {
+      content: "Terminal";
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: #504945;
+      color: #d5c4a1;
+      font-size: 0.6rem;
+      padding: 2px 6px;
+      border-bottom-left-radius: 4px;
+    }
+
+    .code-title {
+      color: var(--accent-green);
+      font-weight: bold;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .code-meta {
+      color: #a89984;
+      display: block;
+      font-size: 0.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Writing Grid */
+    .writing-card {
+      margin-bottom: 2rem;
+    }
+
+    .writing-card img {
+      width: 100%;
+      border-radius: 4px;
+      filter: sepia(20%);
+      transition: filter 0.3s;
+      margin-bottom: 1rem;
+    }
+
+    .writing-card:hover img {
+      filter: sepia(0%);
+    }
+
+    /* Education */
+    .edu-item {
+      margin-bottom: 1rem;
+      display: flex;
+      gap: 1rem;
+    }
+
+    .edu-marker {
+      color: var(--accent-tech);
+    }
+
+    /* Contact */
+    .contact-links {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 1rem;
+      font-family: var(--font-mono);
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 5rem;
+      border-top: 1px dashed var(--fg-secondary);
+      padding-top: 1.5rem;
+      font-size: 0.85rem;
+      font-family: var(--font-mono);
+      color: var(--fg-secondary);
+      text-align: center;
+    }
+
+    /* Utilities */
+    .new-badge {
+      font-size: 0.7em;
+      color: var(--accent-link);
+      vertical-align: super;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      nav {
+        flex-wrap: wrap;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+      }
+    }
+
+    /* Medium Ticker - Retro Terminal Style */
+    .ticker-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 32px;
+      line-height: 32px;
+      background-color: #1e1e1e;
+      /* Dark terminal background */
+      color: #00ff41;
+      /* Cyber green */
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.8rem;
+      z-index: 1000;
+      overflow: hidden;
+      white-space: nowrap;
+      border-bottom: 2px solid #333;
+    }
+
+    .ticker-wrap {
+      width: 100%;
+      overflow: hidden;
+      padding-left: 100%;
+      /* Start off-screen */
+    }
+
+    .ticker-move {
+      display: inline-block;
+      white-space: nowrap;
+      animation: ticker-slide 30s linear infinite;
+    }
+
+    .ticker-move:hover {
+      animation-play-state: paused;
+    }
+
+    .ticker-item {
+      display: inline-block;
+      padding: 0 1rem;
+    }
+
+    .ticker-item a {
+      color: #00ff41;
+      text-decoration: none;
+      border-bottom: none;
+    }
+
+    .ticker-item a:hover {
+      text-decoration: underline;
+      border-bottom: none;
+      opacity: 1;
+    }
+
+    @keyframes ticker-slide {
+      0% {
+        transform: translate3d(0, 0, 0);
+      }
+
+      100% {
+        transform: translate3d(-100%, 0, 0);
+      }
+    }
+
+    /* Push body down to not hide content behind fixed ticker */
+    body {
+      padding-top: 32px;
+      position: relative;
+      /* Ensure body establishes context if needed */
+    }
+
+    /* Living Zen Background */
+    #zen-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      /* Base level */
+      pointer-events: none;
+      /* Let clicks pass through */
+    }
+
+    /* Content Wrapper to sit ABOVE background */
+    .container,
+    .hero-section {
+      position: relative;
+      z-index: 1;
+      /* Explicitly above canvas */
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Zen Background Canvas -->
+  <canvas id="zen-bg"></canvas>
+
+  <!-- Medium Ticker -->
+  <div id="ticker-container" class="ticker-container">
+    <div class="ticker-wrap">
+      <div class="ticker-move" id="ticker-content">
+        <!-- JS will populate this -->
+        <span class="ticker-item">:: System Online :: Fetching latest signals...</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- Navbar -->
+    <header role="banner">
+      <a href="#" class="logo">~/ayyar_aryan</a>
+      <nav role="navigation">
+        <a href="writing.html">Writing</a>
+        <a href="#research">Research</a>
+        <a href="#code">Code</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <!-- Hero -->
+    <main>
+      <div class="hero">
+        <h1>Aryan Ayyar<span class="cursor"></span></h1>
+        <p class="bio code-style" style="color: var(--accent-tech);">
+          // Mathematician & Economist <br>
+          // Focusing on asset pricing, market microstructure & liquidity
+        </p>
+        <p style="margin-top: 1.5rem;">
+          Welcome to my digital garden. I explore the invisible choreography of modern markets—where latency skirmishes,
+          hidden queues, and behavioral kinks tug prices away from theory.
+        </p>
+        <a href="#contact" class="hero-btn">Get in touch -></a>
+
+        <figure style="margin-top: 3rem; text-align: center;">
+          <img src="polyu.jpg" alt="Aryan Ayyar in Zen Kurta style at PolyU"
+            style="max-width: 100%; border-radius: 4px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); filter: sepia(30%); transition: filter 0.3s ease;">
+          <figcaption
+            style="margin-top: 0.8rem; font-family: var(--font-mono); font-size: 0.8rem; color: var(--fg-secondary);">
+            // PolyU Joint Graduation Dinner, 2025
+          </figcaption>
+        </figure>
+
+        <style>
+          figure img:hover {
+            filter: sepia(0%);
+          }
+        </style>
+      </div>
+
+      <section id="research">
+        <h2>Research & Publications</h2>
+
+        <div class="code-block">
+          <span class="code-title">Momentum, Liquidity & Stock Returns: Indian Evidence</span>
+          <span class="code-meta">Pacific Basin Finance Journal [2023]</span>
+          <p>Research assistance for authors Madhu Veeraraghavan and Abhishek Rohit.</p>
+          <div style="margin-top:0.5rem">
+            <a href="https://www.dropbox.com/scl/fi/shlmwcc8fri8i8qe87ds7/Momentum-Reversals-and-Liquidity-Indian-Evidence.pdf?dl=0"
+              target="_blank">[PDF Download]</a>
+          </div>
+        </div>
+
+        <div class="research-item">
+          <h3>Green Bonds — Sustainable Investments Dilemma</h3>
+          <p class="meta">IVEY Case Publishing, 2025</p>
+          <a href="https://www.dropbox.com/s/DROPBOX_LINK_2?dl=0" target="_blank">View Case -></a>
+        </div>
+
+        <div class="code-block">
+          <span class="code-title">Multidimensional Latency for Queue Tomography</span>
+          <span class="code-meta">Working Paper [2025]</span>
+          <p class="code-comment">// Introduces "queue tomography" to reconstruct hidden liquidity structures in limit
+            order books.</p>
+          <div style="margin-top:0.5rem">
+            <a href="MDLT.pdf" target="_blank">./download_paper.sh</a>
+          </div>
+        </div>
+
+        <div class="research-item">
+          <h3>Metastability-Aware Adaptive Traffic Signal Control</h3>
+          <p>Proposes a robust framework blending macroscopic traffic theory with deep reinforcement learning for
+            Bangalore’s gridlocked reality.</p>
+          <a href="maats.pdf" target="_blank">Download -></a>
+        </div>
+
+        <div class="research-item">
+          <h3>Dynamic Insider Trading and Return Predictability</h3>
+          <p>Working paper [2025]</p>
+          <a href="insider-momentum.pdf" target="_blank">Download -></a>
+        </div>
+
+        <div class="research-item">
+          <h3>Individualistic Cultures’ Pro-Environmental Preferences in Green Financing</h3>
+          <p>Working paper [with Krishna Prasad and Durga Prasad, 2024]</p>
+          <a href="green-bond.pdf" target="_blank">Download -></a>
+        </div>
+
+        <div class="research-item">
+          <h3>Dynamic Order Execution Mechanisms</h3>
+          <p>Master’s thesis [under Te Feng Chen, PolyU, 2025]</p>
+          <a href="mast-thes.pdf" target="_blank">Download -></a>
+        </div>
+
+        <div class="research-item">
+          <h3>Asymmetric Information and Strategic Behavior</h3>
+          <p>A multiperiod model of insider leverage limits and market depth.</p>
+          <a href="https://www.dropbox.com/scl/fi/dpooh39dqo1w1t6iupgft/bp-mkt.pdf?dl=0" target="_blank">Download -></a>
+        </div>
+      </section>
+
+      <section id="independent-commentary">
+        <h2>Independent Commentary</h2>
+        <div class="research-item">
+          <h3>Rough Volatility and Fractional Stochastic Processes</h3>
+          <p>An intuitive essay blending Hurst exponent, fractional Brownian motion, and Volterra equations.</p>
+          <a href="rough-volatility-essay.pdf" target="_blank">Download -></a>
+        </div>
+        <div class="research-item">
+          <h3>Competitive Equilibrium Models</h3>
+          <p>Notes on Arrow–Debreu, SMD aggregation and welfare results.</p>
+          <a href="equilibrium-models.pdf" target="_blank">Download -></a>
+        </div>
+        <div class="research-item">
+          <h3>Rational Expectations and Informational Efficiency</h3>
+          <p>On Grossman–Stiglitz, Kyle and dynamic REE models.</p>
+          <a href="kyle-models.pdf" target="_blank">Download -></a>
+        </div>
+      </section>
+
+      <section id="books">
+        <h2>Books</h2>
+        <div class="writing-card">
+          <h3>Mechanics of Market Dynamics [2025]</h3>
+          <p>A field guide to the invisible choreography of modern markets. Blending microstructure research with
+            narrative vignettes.</p>
+          <a href="market-dynamics.pdf" target="_blank">Download the book -></a>
+        </div>
+      </section>
+
+      <section id="writing">
+        <h2>Personal Writing</h2>
+
+        <div class="writing-card">
+          <h3>She Wore Gold of the South</h3>
+          <p class="meta">by Aryan Ayyar</p>
+          <p>Written at 24 in Hong Kong, a story of tenderness, restraint, and the rituals that carry entire histories.
+          </p>
+          <a href="main.pdf" target="_blank">Read full book -></a>
+        </div>
+
+        <div class="writing-card">
+          <h3>Crossroads at Interlaken</h3>
+          <p class="meta">by Aryan Ayyar</p>
+          <p>On a snow-locked night in Interlaken, an Indian quant and a Pakistani psychiatrist drop their defences.</p>
+          <a href="crossroads-at-interlaken.pdf" target="_blank">Read full book -></a>
+        </div>
+      </section>
+
+      <div style="text-align:center; margin-top:-2rem; margin-bottom:4rem;">
+        <a href="writing.html" class="hero-btn" style="border-bottom: 1px solid var(--accent-link);">View Full
+          Collection -></a>
+      </div>
+
+      <section id="solutions">
+        <h2>Proprietary Solutions <span class="new-badge">NEW</span></h2>
+        <p>Access my custom built tools and algorithms.</p>
+        <a href="solutions.html" target="_blank">Access Solutions -></a>
+      </section>
+
+      <section id="education">
+        <h2>Education</h2>
+        <div class="edu-item">
+          <span class="edu-marker">>></span>
+          <div>
+            <strong>MS Finance</strong><br>
+            The Hong Kong Polytechnic University (2024–2025)
+          </div>
+        </div>
+        <div class="edu-item">
+          <span class="edu-marker">>></span>
+          <div>
+            <strong>BTech Mechatronics Engineering</strong><br>
+            Manipal Institute of Technology (2019–2023)
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <h2>Contact</h2>
+        <p>Let's collaborate on research or discuss market mechanics.</p>
+        <div class="contact-links">
+          <a href="mailto:aryan.ayyar@outlook.in">Email</a>
+          <a href="cv.pdf" target="_blank">CV</a>
+          <a href="https://www.linkedin.com/in/aryan-ayyar" target="_blank">LinkedIn</a>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <p>&copy; <span id="year"></span> Aryan Ayyar. Built with Zen.</p>
+    </footer>
+
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Medium Ticker Logic
+    async function fetchMediumTicker() {
+      const RSS_URL = 'https://medium.com/feed/@aryan.ayyar.learner';
+      const API_ENDPOINT = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(RSS_URL)}`;
+      const tickerContent = document.getElementById('ticker-content');
+
+      try {
+        const response = await fetch(API_ENDPOINT);
+        const data = await response.json();
+
+        if (data.status === 'ok' && data.items.length > 0) {
+          // Take top 5 items
+          const items = data.items.slice(0, 5);
+
+          let tickerHTML = '';
+          // Duplicate items to ensure smooth infinite loop if list is short
+          // Ideally for infinite CSS loop we need enough content to fill screen + overflow
+          // We will create a sufficiently long string
+
+          const buildItem = (item) => `<span class="ticker-item"><a href="${item.link}" target="_blank">:: ${item.title.replace(/&amp;/g, '&')} ::</a></span>`;
+
+          const itemsHTML = items.map(buildItem).join('');
+
+          // Repeat content to ensure it's long enough for the loop
+          tickerHTML = itemsHTML + itemsHTML + itemsHTML;
+
+          tickerContent.innerHTML = tickerHTML;
+        } else {
+          // Fallback or just keep the default "System Online"
+        }
+      } catch (error) {
+        console.error('Failed to load Medium ticker:', error);
+        // Hide ticker or leave default message
+        // document.getElementById('ticker-container').style.display = 'none';
+      }
+    }
+
+    // Run on load
+    fetchMediumTicker();
+
+    // --- Living Zen Background Script ---
+    (function initZenBackground() {
+      const canvas = document.getElementById('zen-bg');
+      const ctx = canvas.getContext('2d');
+      let particles = [];
+      const particleCount = 100; // Increased density
+
+      // Mouse tracking
+      let mouse = { x: -1000, y: -1000 }; // Initialize off-screen
+
+      window.addEventListener('mousemove', (e) => {
+        mouse.x = e.clientX; // Standard property
+        mouse.y = e.clientY;
+      });
+
+      // Resize canvas
+      function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      window.addEventListener('resize', resize);
+      resize(); // Initial sizing
+
+      // Particle Class
+      class Particle {
+        constructor() {
+          this.init();
+        }
+
+        init() {
+          this.x = Math.random() * canvas.width;
+          this.y = Math.random() * canvas.height;
+          // Brownian motion-ish velocity (slightly faster)
+          this.vx = (Math.random() - 0.5) * 0.8;
+          this.vy = (Math.random() - 0.5) * 0.8;
+          this.size = Math.random() * 2.5 + 1.5; // 1.5 to 4px (slightly larger)
+          this.color = 'rgba(60, 56, 54, 0.2)'; // Increased opacity for visibility
+        }
+
+        update() {
+          // Standard motion
+          this.x += this.vx;
+          this.y += this.vy;
+
+          // Repel from mouse (Market Impact)
+          if (mouse.x != null) {
+            let dx = mouse.x - this.x;
+            let dy = mouse.y - this.y;
+            let distance = Math.sqrt(dx * dx + dy * dy);
+            const forceRadius = 150;
+
+            if (distance < forceRadius) {
+              const forceDirectionX = dx / distance;
+              const forceDirectionY = dy / distance;
+              const maxDistance = forceRadius;
+              const force = (maxDistance - distance) / maxDistance;
+              const directionX = forceDirectionX * force * 1.5; // Repulsion strength
+              const directionY = forceDirectionY * force * 1.5;
+
+              this.x -= directionX;
+              this.y -= directionY;
+            }
+          }
+
+          // Wrap edges
+          if (this.x < 0) this.x = canvas.width;
+          if (this.x > canvas.width) this.x = 0;
+          if (this.y < 0) this.y = canvas.height;
+          if (this.y > canvas.height) this.y = 0;
+        }
+
+        draw() {
+          ctx.fillStyle = this.color;
+          ctx.beginPath();
+          // Draw as small horizontal lines (limit orders) or dots
+          // Let's do small rectangles
+          ctx.rect(this.x, this.y, this.size * 2, this.size);
+          ctx.fill();
+        }
+      }
+
+      // Fill particles
+      for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+      }
+
+      // Animation Loop
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        particles.forEach(p => {
+          p.update();
+          p.draw();
+        });
+
+        requestAnimationFrame(animate);
+      }
+      animate();
+    })();
+  </script>
+
+</body>
+
+</html>
