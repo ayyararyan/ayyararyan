@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Now | Aryan Ayyar</title>
+  <meta name="description" content="What Aryan Ayyar is focused on right now.">
+  <meta name="theme-color" content="#f5f1e8">
+  <meta property="og:title" content="Now | Aryan Ayyar">
+  <meta property="og:description" content="What Aryan Ayyar is focused on right now.">
+  <meta property="og:type" content="website">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600&family=Source+Code+Pro:wght@400;600&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-primary: #f5f1e8;
+      --bg-secondary: #efe7d8;
+      --fg-primary: #333333;
+      --fg-muted: #6b6460;
+      --accent-link: #d4773a;
+      --accent-tech: #4a9b9b;
+      --accent-line: #e2dac8;
+      --terminal-bg: #2b2b2b;
+      --terminal-fg: #f5f1e8;
+
+      --font-serif: 'Crimson Text', serif;
+      --font-mono: 'Source Code Pro', monospace;
+      --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+
+      --max-width: 960px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      background-image:
+        radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.5), transparent 55%),
+        radial-gradient(circle at 80% 0%, rgba(255, 255, 255, 0.35), transparent 50%),
+        linear-gradient(180deg, #f7f3ea 0%, #f2ecde 100%);
+      color: var(--fg-primary);
+      font-family: var(--font-body);
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: var(--font-serif);
+      font-weight: 600;
+      color: var(--fg-primary);
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.6rem;
+    }
+
+    p {
+      margin-bottom: 1.2rem;
+      color: var(--fg-muted);
+    }
+
+    a {
+      color: var(--accent-link);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(212, 119, 58, 0.25);
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+
+    a:hover {
+      border-bottom-color: var(--accent-link);
+      color: var(--fg-primary);
+    }
+
+    .subtitle {
+      font-family: var(--font-mono);
+      color: var(--accent-tech);
+      font-size: 0.95rem;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    header {
+      margin-bottom: 3.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .logo {
+      font-family: var(--font-mono);
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--fg-primary);
+      border: none;
+    }
+
+    .logo:hover {
+      border: none;
+      color: var(--fg-primary);
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+    }
+
+    footer {
+      margin-top: 5rem;
+      border-top: 1px solid var(--accent-line);
+      padding-top: 1.5rem;
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--fg-muted);
+    }
+
+    #zen-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .now-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .now-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .last-updated {
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      color: var(--fg-muted);
+    }
+
+    .now-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    .now-section {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--accent-line);
+    }
+
+    .now-section:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .section-heading {
+      font-family: var(--font-mono);
+      color: var(--accent-link);
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 0.2rem;
+    }
+
+    .section-content {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      color: var(--fg-primary);
+    }
+
+    .section-content ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .section-content li {
+      margin-bottom: 0.6rem;
+      color: var(--fg-muted);
+    }
+
+    @media (max-width: 900px) {
+      .now-section {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 700px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      header {
+        gap: 1.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="zen-bg"></canvas>
+
+  <div class="container">
+    <header role="banner">
+      <a href="index.html" class="logo">~/ayyar_aryan</a>
+      <nav role="navigation" aria-label="Primary">
+        <a href="writing.html">Writing</a>
+        <a href="index.html#research">Research</a>
+        <a href="/code">Code</a>
+        <a href="musings.html">Musings</a>
+        <a href="shoshin.html">Shoshin</a>
+        <a href="now.html">Now</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="now-container">
+        <div class="now-header">
+          <div>
+            <h1>Now</h1>
+            <p class="subtitle">// What I am focused on right now</p>
+          </div>
+          <p class="last-updated">Last updated: January 2026</p>
+        </div>
+
+        <div class="now-grid">
+          <div class="now-section">
+            <h2 class="section-heading">Working On</h2>
+            <div class="section-content">
+              <p>I am currently refining my Master's thesis for publication — specifically the sections on fast-slow-fast
+                execution profiles when a Bayesian market maker is learning. There is a stubborn technical detail
+                about belief updating rates that needs cleaner exposition.</p>
+              <p>I am drafting a technical essay on rough volatility models for a finance journal — something
+                accessible but rigorous, inspired by Gatheral's work but grounded in limit order book mechanics.</p>
+              <p>I am working on <em>Rain Hits Glass</em>, a novel-in-progress set in France. The structure is becoming
+                clearer: alternating chapters in French and English, moving between Paris cafes and memory fragments.
+                It is slow work, but necessary.</p>
+            </div>
+          </div>
+
+          <div class="now-section">
+            <h2 class="section-heading">Reading</h2>
+            <div class="section-content">
+              <ul>
+                <li>Continuous-Time Stochastic Control and Optimization (Fleming &amp; Soner)</li>
+                <li>The Ministry for the Future (Kim Stanley Robinson)</li>
+                <li>Queue tomography papers from INFORMS journals</li>
+                <li>Old Sanskrit commentaries on the Gita (in translation)</li>
+                <li>Random papers from arXiv on market microstructure</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="now-section">
+            <h2 class="section-heading">Thinking About</h2>
+            <div class="section-content">
+              <p>I keep circling back to the question of how much transparency is optimal in markets. Kyle's model
+                says informed traders profit by staying opaque. But mechanism design literature argues transparency
+                reduces adverse selection. Which framework wins depends on whether you think markets exist to aggregate
+                information or to facilitate trade. I am not sure they are the same goal.</p>
+              <p>I am mapping how attention management from my recent Medium piece on Sanskrit connects to market
+                design. If liquidity is attention, what does it mean to waste liquidity? Can we design markets that
+                discourage attentional spam?</p>
+              <p>I am exploring the intersection of stoicism and stochastic control. Marcus Aurelius and
+                Almgren-Chriss are saying similar things: do not control the outcome, control the response. This feels
+                important for both trading and life.</p>
+            </div>
+          </div>
+
+          <div class="now-section">
+            <h2 class="section-heading">Exploring</h2>
+            <div class="section-content">
+              <ul>
+                <li>Early morning cycling routes through Hebbal and Cubbon Park</li>
+                <li>Yoga studios in Indiranagar (looking for one that feels right)</li>
+                <li>French language refreshers (for the novel, and also to think differently)</li>
+                <li>Meditation retreats near Coorg (planning for March)</li>
+                <li>New cafes with good acoustics for deep work</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; <span id="year"></span> Aryan Ayyar. Built with Zen.</p>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    (function initZenBackground() {
+      const canvas = document.getElementById('zen-bg');
+      const ctx = canvas.getContext('2d');
+      let particles = [];
+      const particleCount = 100;
+      let mouse = { x: -1000, y: -1000 };
+
+      window.addEventListener('mousemove', (e) => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+      });
+
+      function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+
+      window.addEventListener('resize', resize);
+      resize();
+
+      class Particle {
+        constructor() {
+          this.init();
+        }
+
+        init() {
+          this.x = Math.random() * canvas.width;
+          this.y = Math.random() * canvas.height;
+          this.vx = (Math.random() - 0.5) * 0.8;
+          this.vy = (Math.random() - 0.5) * 0.8;
+          this.size = Math.random() * 2.5 + 1.5;
+          this.color = 'rgba(60, 56, 54, 0.2)';
+        }
+
+        update() {
+          this.x += this.vx;
+          this.y += this.vy;
+
+          if (mouse.x != null) {
+            let dx = mouse.x - this.x;
+            let dy = mouse.y - this.y;
+            let distance = Math.sqrt(dx * dx + dy * dy);
+            const forceRadius = 150;
+
+            if (distance < forceRadius) {
+              const forceDirectionX = dx / distance;
+              const forceDirectionY = dy / distance;
+              const maxDistance = forceRadius;
+              const force = (maxDistance - distance) / maxDistance;
+              const directionX = forceDirectionX * force * 1.5;
+              const directionY = forceDirectionY * force * 1.5;
+
+              this.x -= directionX;
+              this.y -= directionY;
+            }
+          }
+
+          if (this.x < 0) this.x = canvas.width;
+          if (this.x > canvas.width) this.x = 0;
+          if (this.y < 0) this.y = canvas.height;
+          if (this.y > canvas.height) this.y = 0;
+        }
+
+        draw() {
+          ctx.fillStyle = this.color;
+          ctx.beginPath();
+          ctx.rect(this.x, this.y, this.size * 2, this.size);
+          ctx.fill();
+        }
+      }
+
+      for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        particles.forEach((particle) => {
+          particle.update();
+          particle.draw();
+        });
+
+        requestAnimationFrame(animate);
+      }
+
+      animate();
+    })();
+  </script>
+</body>
+
+</html>

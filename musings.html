@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Musings | Aryan Ayyar</title>
+  <meta name="description" content="Brief observations from Aryan Ayyar's digital garden.">
+  <meta name="theme-color" content="#f5f1e8">
+  <meta property="og:title" content="Musings | Aryan Ayyar">
+  <meta property="og:description" content="Brief observations from the digital garden.">
+  <meta property="og:type" content="website">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600&family=Source+Code+Pro:wght@400;600&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-primary: #f5f1e8;
+      --bg-secondary: #efe7d8;
+      --fg-primary: #333333;
+      --fg-muted: #6b6460;
+      --accent-link: #d4773a;
+      --accent-tech: #4a9b9b;
+      --accent-line: #e2dac8;
+      --terminal-bg: #2b2b2b;
+      --terminal-fg: #f5f1e8;
+
+      --font-serif: 'Crimson Text', serif;
+      --font-mono: 'Source Code Pro', monospace;
+      --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+
+      --max-width: 960px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      background-image:
+        radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.5), transparent 55%),
+        radial-gradient(circle at 80% 0%, rgba(255, 255, 255, 0.35), transparent 50%),
+        linear-gradient(180deg, #f7f3ea 0%, #f2ecde 100%);
+      color: var(--fg-primary);
+      font-family: var(--font-body);
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: var(--font-serif);
+      font-weight: 600;
+      color: var(--fg-primary);
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.6rem;
+    }
+
+    p {
+      margin-bottom: 1.2rem;
+      color: var(--fg-muted);
+    }
+
+    a {
+      color: var(--accent-link);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(212, 119, 58, 0.25);
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+
+    a:hover {
+      border-bottom-color: var(--accent-link);
+      color: var(--fg-primary);
+    }
+
+    .subtitle {
+      font-family: var(--font-mono);
+      color: var(--accent-tech);
+      font-size: 0.95rem;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    header {
+      margin-bottom: 3.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .logo {
+      font-family: var(--font-mono);
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--fg-primary);
+      border: none;
+    }
+
+    .logo:hover {
+      border: none;
+      color: var(--fg-primary);
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+    }
+
+    footer {
+      margin-top: 5rem;
+      border-top: 1px solid var(--accent-line);
+      padding-top: 1.5rem;
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--fg-muted);
+    }
+
+    #zen-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .musings-container {
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    .musing-entry {
+      margin-bottom: 3.5rem;
+    }
+
+    .entry-date {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #8c8479;
+      display: inline-block;
+      margin-bottom: 1rem;
+      transition: color 0.2s ease;
+    }
+
+    .entry-date:hover {
+      color: var(--accent-link);
+    }
+
+    .entry-content p {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      color: var(--fg-primary);
+    }
+
+    .entry-divider {
+      border: none;
+      border-top: 1px solid var(--accent-line);
+      margin: 2.5rem 0;
+    }
+
+    .entry-figure {
+      margin-top: 1.5rem;
+    }
+
+    .entry-figure img {
+      width: 100%;
+      border-radius: 4px;
+      border: 1px solid rgba(51, 51, 51, 0.1);
+      box-shadow: 0 6px 14px rgba(51, 51, 51, 0.08);
+    }
+
+    .entry-caption {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--fg-muted);
+      margin-top: 0.5rem;
+    }
+
+    @media (max-width: 700px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      header {
+        gap: 1.5rem;
+      }
+
+      .musing-entry {
+        margin-bottom: 3rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="zen-bg"></canvas>
+
+  <div class="container">
+    <header role="banner">
+      <a href="index.html" class="logo">~/ayyar_aryan</a>
+      <nav role="navigation" aria-label="Primary">
+        <a href="writing.html">Writing</a>
+        <a href="index.html#research">Research</a>
+        <a href="/code">Code</a>
+        <a href="musings.html">Musings</a>
+        <a href="shoshin.html">Shoshin</a>
+        <a href="now.html">Now</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-hero">
+        <h1>Musings</h1>
+        <p class="subtitle">// Brief observations from the digital garden</p>
+      </section>
+
+      <section class="musings-container" aria-label="Musing entries">
+        <article class="musing-entry">
+          <time class="entry-date" datetime="2026-01-20">2026.01.20</time>
+          <div class="entry-content">
+            <p>I returned to Bengaluru with a thesis in my bag and a softer sense of time. Hong Kong felt like a clean
+              execution venue — everything precise, the bars high, the spreads tight. Here the air is warmer and the
+              cadence is human. I am a Fellow in Residence at MAHE now, which feels like a quiet threshold between
+              student and researcher. The work on belief management and optimal execution is complete in the
+              administrative sense, but the questions still breathe.</p>
+            <p>At a cafe near a traffic circle, I watched the morning queue dynamics unfold. Autos cut in like market
+              orders, buses hold the line like patient depth, and the slow merge is a Bayesian update in public. Rain
+              tapped the window in small pulses. The barista dragged chalk across a menu board — a small, precise sound
+              that reminded me of orders arriving one at a time. I am learning that completion is only a timestamp.
+              Still updating.</p>
+          </div>
+        </article>
+
+        <hr class="entry-divider">
+
+        <article class="musing-entry">
+          <time class="entry-date" datetime="2026-01-15">2026.01.15</time>
+          <div class="entry-content">
+            <p>I have been listening to Sri Venkateswara Suprabhatam in the mornings, a small ritual after writing
+              about attention arbitrage. I do not understand every line, but repetition is a kind of scaffolding. The
+              chant arrives a fraction sooner each day, like a price discovery loop that remembers the last print.</p>
+            <p>Microstructure taught me that liquidity forms where attention rests. When I split my focus, the book
+              thins. I am practicing a simple constraint: one screen, one cup of coffee, one sound. The discipline is
+              not heroic; it is procedural. Some mornings I fail and the spread widens anyway.</p>
+          </div>
+        </article>
+
+        <hr class="entry-divider">
+
+        <article class="musing-entry">
+          <time class="entry-date" datetime="2026-01-08">2026.01.08</time>
+          <div class="entry-content">
+            <p>The Almgren-Chriss curve still feels like a life strategy: fast at the start, slow in the middle, fast
+              at the end. The urgency profile is not just a trading heuristic; it is a rhythm for work. Begin with a
+              burst, then sink into the slow liquidity of craft, then push through the closing auction of a deadline.</p>
+            <p>I am writing a novel titled <em>Rain Hits Glass</em>, and the pacing behaves the same way. A story needs
+              momentum early, patience in the middle, and a clear exit. The middle is where most of the signal hides.
+              Not all value shows up in the arrival price.</p>
+          </div>
+        </article>
+
+        <hr class="entry-divider">
+
+        <article class="musing-entry">
+          <time class="entry-date" datetime="2025-12-28">2025.12.28</time>
+          <div class="entry-content">
+            <p>I cycled through Cubbon Park at dawn. The chain made a steady, metallic whisper, and the air smelled like
+              wet soil and eucalyptus. The city wakes like an order book: first the walkers, then the vendors, then the
+              blur of scooters. Each layer adds depth. You can feel the day set its price.</p>
+            <p>Vendors setting up carts are liquidity providers arriving — laying out inventory, quoting with their
+              posture. The old man with the tea urn is a patient bid. A sudden dog chase is a market order. I returned
+              home with clearer thoughts and a quiet ache in my legs, still rolling.</p>
+          </div>
+        </article>
+
+        <hr class="entry-divider">
+
+        <article class="musing-entry">
+          <time class="entry-date" datetime="2025-12-15">2025.12.15</time>
+          <div class="entry-content">
+            <p>I read Kyle (1985) for the tenth time and still find a new corner of it. The model is small, almost
+              austere, but its implications are fractal. Every reread changes the story. The informed trader is quiet,
+              but the market listens harder than it admits.</p>
+            <p>Information wants to be traded, but slowly. Good papers age like whiskey; they get smoother without
+              losing the burn. I underlined a line I have underlined before, and the chalk dust on my fingers felt like
+              a reminder that even clean theories leave residue.</p>
+          </div>
+        </article>
+
+        <hr class="entry-divider">
+
+        <article class="musing-entry">
+          <time class="entry-date" datetime="2025-12-01">2025.12.01</time>
+          <div class="entry-content">
+            <p>A Starbucks near the station has become my trading floor. The ambient noise is market noise — orders
+              called out, milk steaming, cups clinking. Too quiet and I overfit; too loud and I miss the signal. There
+              is a narrow band where focus finds depth.</p>
+            <p>I watch people execute their own life strategies. The student sprints in and out like an aggressive
+              market order. The retired couple parks like a patient limit order at a good price. Everyone has an
+              arrival price, and no one writes it down.</p>
+          </div>
+        </article>
+
+        <hr class="entry-divider">
+
+        <article class="musing-entry">
+          <time class="entry-date" datetime="2025-11-20">2025.11.20</time>
+          <div class="entry-content">
+            <p>In Munnar, the Shola forests sit like sky islands — fragments of green floating in mist. The ecosystem is
+              broken into pockets, but the pockets still speak to one another through water, birds, and hidden roots.
+              It feels like fragmented liquidity: visible pools separated by distance, connected by unseen pathways.</p>
+            <p>The wind moves in small bursts, and the leaves answer in quiet waves. There is structure inside the
+              fragmentation, a geometry you do not see until you are patient. Markets and forests share that patience.
+              I am still learning to stay long enough to notice.</p>
+          </div>
+        </article>
+
+        <hr class="entry-divider">
+
+        <article class="musing-entry">
+          <time class="entry-date" datetime="2025-11-05">2025.11.05</time>
+          <div class="entry-content">
+            <p>The gap between model and reality keeps widening and narrowing like a reluctant spread. Bayesian market
+              makers are elegant on paper; in code they are temperamental. The belief updating rates that look clean in
+              notation behave like wet clay once I implement them.</p>
+            <p>I keep a log of failed experiments and the line count keeps rising. It is humbling to build something
+              that does not quite work, and to keep building anyway. I am learning to fail forward, slowly.</p>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; <span id="year"></span> Aryan Ayyar. Built with Zen.</p>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    (function initZenBackground() {
+      const canvas = document.getElementById('zen-bg');
+      const ctx = canvas.getContext('2d');
+      let particles = [];
+      const particleCount = 100;
+      let mouse = { x: -1000, y: -1000 };
+
+      window.addEventListener('mousemove', (e) => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+      });
+
+      function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+
+      window.addEventListener('resize', resize);
+      resize();
+
+      class Particle {
+        constructor() {
+          this.init();
+        }
+
+        init() {
+          this.x = Math.random() * canvas.width;
+          this.y = Math.random() * canvas.height;
+          this.vx = (Math.random() - 0.5) * 0.8;
+          this.vy = (Math.random() - 0.5) * 0.8;
+          this.size = Math.random() * 2.5 + 1.5;
+          this.color = 'rgba(60, 56, 54, 0.2)';
+        }
+
+        update() {
+          this.x += this.vx;
+          this.y += this.vy;
+
+          if (mouse.x != null) {
+            let dx = mouse.x - this.x;
+            let dy = mouse.y - this.y;
+            let distance = Math.sqrt(dx * dx + dy * dy);
+            const forceRadius = 150;
+
+            if (distance < forceRadius) {
+              const forceDirectionX = dx / distance;
+              const forceDirectionY = dy / distance;
+              const maxDistance = forceRadius;
+              const force = (maxDistance - distance) / maxDistance;
+              const directionX = forceDirectionX * force * 1.5;
+              const directionY = forceDirectionY * force * 1.5;
+
+              this.x -= directionX;
+              this.y -= directionY;
+            }
+          }
+
+          if (this.x < 0) this.x = canvas.width;
+          if (this.x > canvas.width) this.x = 0;
+          if (this.y < 0) this.y = canvas.height;
+          if (this.y > canvas.height) this.y = 0;
+        }
+
+        draw() {
+          ctx.fillStyle = this.color;
+          ctx.beginPath();
+          ctx.rect(this.x, this.y, this.size * 2, this.size);
+          ctx.fill();
+        }
+      }
+
+      for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        particles.forEach((particle) => {
+          particle.update();
+          particle.draw();
+        });
+
+        requestAnimationFrame(animate);
+      }
+
+      animate();
+    })();
+  </script>
+</body>
+
+</html>
